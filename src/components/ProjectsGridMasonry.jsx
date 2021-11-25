@@ -15,11 +15,10 @@ const ProjectsGridMasonry = ({ input }) => {
   const { filter } = useContext(FiltersContext)
 
   useEffect(() => {
-    // const token = PubSub.subscribe("GRID_VIEW_COLOR", (e, color) => {
-    //   console.log(color)
-    //   backDropRef.current.style.backgroundColor = color
-    // })
+    _renderIsotope()
+  }, [])
 
+  const _renderIsotope = () => {
     const columnWidth = gridRef.current
       .querySelector(".card-s")
       .getBoundingClientRect().width
@@ -41,9 +40,7 @@ const ProjectsGridMasonry = ({ input }) => {
           .forEach((el) => el.classList.add("reveal"))
       }, 150)
     })
-
-    // return () => PubSub.unsubscribe(token)
-  }, [])
+  }
 
   useEffect(() => {
     if (isoRef.current) {

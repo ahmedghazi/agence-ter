@@ -3,12 +3,16 @@ import { graphql } from "gatsby"
 import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
 import { repositoryConfigs } from "../core/prismicPreviews"
 import PubSub from "pubsub-js"
+import loadable from "@loadable/component"
 import SEO from "../components/seo"
 import { FiltersWrapper } from "../contexts/FiltersWrapper"
 import ProjectsFilter from "../components/ProjectsFilters"
 // import ProjectCard from "../components/ProjectCard"
-import ProjectsGridMasonry from "../components/ProjectsGridMasonry"
+// import ProjectsGridMasonry from "../components/ProjectsGridMasonry"
 import ProjectsTable from "../components/ProjectsTable"
+const ProjectsGridMasonry = loadable(() =>
+  import("../components/ProjectsGridMasonry")
+)
 
 export const pageQuery = graphql`
   query Projects {
