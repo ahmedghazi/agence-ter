@@ -1,0 +1,50 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "Default site name"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Description",
+        "placeholder": "Default site description"
+      }
+    },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Image"
+      }
+    },
+    "links": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "label": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+              "label": "Label"
+            }
+          },
+          "url": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "Url"
+            }
+          }
+        },
+        "label": "Links"
+      }
+    }
+  }
+}

@@ -1,0 +1,139 @@
+@font-face {
+  // font-family: 'SuisseIntl-Regular';
+  // src: url('./fonts/SuisseIntl-Regular.woff') format('woff'),
+  // url('./fonts/SuisseIntl-Regular.woff2') format('woff2');
+  // font-weight: normal;
+  // font-style: normal;
+  // //font-display
+}
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,600;0,700;1,300;1,600;1,700&display=swap");
+
+body {
+  color: black;
+  font-family: var(--font-primary);
+  font-size: var(--text-md);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.headline {
+  font-size: var(--text-md);
+  font-weight: normal;
+}
+
+/* Links */
+a,
+.btn {
+  // color: blue;
+  text-decoration: none;
+  &:focus,
+  &:active,
+  &:hover {
+    //color: $hover;
+  }
+  &.outline {
+    border: var(--border);
+    padding: 0em 0.3em;
+    border-radius: 5px;
+    &:hover {
+      color: white;
+      background: black;
+      border-color: black;
+    }
+  }
+}
+
+/* Text elements */
+p {
+  // margin-bottom: 0;
+  //line-height: 1.4;
+  // hyphens: auto;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &:empty {
+    display: none;
+  }
+}
+.texte {
+  p {
+    text-indent: 1em;
+  }
+  p:first-child {
+    text-indent: 0;
+  }
+}
+
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+
+button {
+  background: transparent;
+}
+
+hr {
+  background-color: #000;
+  border: 0;
+  height: 1px;
+  margin-bottom: 1.5em;
+}
+
+pre {
+  background: #f4f4f4;
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+  overflow: auto;
+  padding: 0.75em 1.5em;
+}
+
+abbr,
+acronym,
+dfn {
+  border-bottom: var(--border);
+  cursor: help;
+}
+address {
+  display: block;
+  font-style: initial;
+}
+ins {
+  background: #fff9c0;
+  text-decoration: none;
+}
+sup,
+sub {
+  font-size: 10px;
+  height: 0;
+  line-height: 1;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  bottom: 1ex;
+}
+sub {
+  top: 0.5ex;
+}
+
+@media all and (max-width: $sm) {
+  // body,h1,h2,h3,.fM{
+  // 	font-size: 20px;
+  // }
+  // .fS{font-size: 20px}
+  // .fXS{font-size: 12px}
+  // .texte p{
+  // 	text-indent: 20px;
+  // 	&:first-child{text-indent: 0}
+  // }
+}

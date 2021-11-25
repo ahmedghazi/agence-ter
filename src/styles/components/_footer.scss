@@ -1,0 +1,9 @@
+footer {
+  padding: var(--space-1);
+}
+
+@media all and (max-width: $sm) {
+  footer {
+    padding: var(--space-0);
+  }
+}

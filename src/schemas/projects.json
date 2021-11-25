@@ -1,0 +1,80 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title"
+      }
+    },
+    "projects_featured": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "item": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": ["project"],
+              "label": "Item"
+            }
+          },
+          "largeur": {
+            "type": "Select",
+            "config": {
+              "options": ["S", "M", "L"],
+              "default_value": "S",
+              "label": "Largeur",
+              "placeholder": "Largeur dans la grille"
+            }
+          },
+          "offset": {
+            "type": "Text",
+            "config": {
+              "label": "Offset",
+              "placeholder": "décalage du titre x%,y% : -50%,-90%"
+            }
+          },
+          "marge_interne": {
+            "type": "Text",
+            "config": {
+              "label": "Marge interne",
+              "placeholder": "sous la forme marge-top,marge-right,marge-bottom,marge-left (défaut à 0)"
+            }
+          }
+        },
+        "label": "Projects Featured"
+      }
+    }
+  },
+  "SEO": {
+    "meta_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Meta title"
+      }
+    },
+    "meta_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Meta description"
+      }
+    },
+    "meta_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Meta image"
+      }
+    }
+  }
+}

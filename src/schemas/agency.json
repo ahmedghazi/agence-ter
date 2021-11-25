@@ -1,0 +1,146 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": null,
+        "choices": {
+          "team": {
+            "type": "Slice",
+            "fieldset": "Team",
+            "description": "Section Team",
+            "icon": "view_list",
+            "display": "list",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+                  "label": "Title"
+                }
+              }
+            },
+            "repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              },
+              "name": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Name"
+                }
+              },
+              "position_fr": {
+                "type": "Text",
+                "config": {
+                  "label": "Position FR"
+                }
+              },
+              "position_en": {
+                "type": "Text",
+                "config": {
+                  "label": "Position EN"
+                }
+              },
+              "mail": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Mail",
+                  "select": null
+                }
+              },
+              "bio_fr": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "allowTargetBlank": true,
+                  "label": "Bio fr"
+                }
+              },
+              "bio_en": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "allowTargetBlank": true,
+                  "label": "Bio en"
+                }
+              }
+            }
+          },
+          "image_textes": {
+            "type": "Slice",
+            "fieldset": "Image Textes ",
+            "description": "Image avec texte en colonne",
+            "icon": "art_track",
+            "display": "list",
+            "non-repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              }
+            },
+            "repeat": {
+              "texte": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                  "allowTargetBlank": true,
+                  "label": "Texte"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "SEO": {
+    "meta_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Meta title"
+      }
+    },
+    "meta_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Meta description"
+      }
+    },
+    "meta_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Meta image"
+      }
+    }
+  }
+}

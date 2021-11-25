@@ -1,0 +1,73 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+        "label": "Title"
+      }
+    },
+    "agences": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "nom": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading2",
+              "label": "Nom",
+              "placeholder": "Nom de l'agence"
+            }
+          },
+          "infos_fr": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+              "allowTargetBlank": true,
+              "label": "Infos fr"
+            }
+          },
+          "infos_en": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+              "allowTargetBlank": true,
+              "label": "Infos en"
+            }
+          }
+        },
+        "label": "Agences"
+      }
+    }
+  },
+  "SEO": {
+    "meta_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Meta title"
+      }
+    },
+    "meta_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Meta description"
+      }
+    },
+    "meta_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Meta image"
+      }
+    }
+  }
+}

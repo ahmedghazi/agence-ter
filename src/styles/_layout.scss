@@ -1,0 +1,42 @@
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  &.is-transiting {
+    main {
+      opacity: 0;
+    }
+  }
+}
+
+main {
+  padding: var(--space-1);
+  transition: opacity 0.4s ease-in-out;
+  position: relative;
+}
+.h-main {
+  height: calc(100vh - var(--headerHeight));
+}
+
+.bg-gray {
+  background: var(--color-gray);
+}
+.md-1e {
+  margin-bottom: 1em;
+}
+@media all and (min-width: $md) {
+}
+
+.sm-only {
+  display: none;
+}
+@media all and (max-width: $md) {
+  body {
+  }
+  .sm-only {
+    display: block;
+  }
+  .hidden-sm {
+    display: none;
+  }
+}

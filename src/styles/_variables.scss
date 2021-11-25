@@ -1,0 +1,72 @@
+/* BASE VARIABLES
+ *******************/
+:root {
+  --appHeight: 100%;
+  --headerHeight: 50px;
+  --color-primary: #fff;
+  --color-black: #000;
+  --color-gray: #878787;
+  --color-yellow: #faf796;
+
+  --font-primary: "Source Sans Pro", sans-serif;
+
+  --text-_sm: 11px;
+  --text-_md: 14px;
+  --text-_lg: 20px;
+
+  --text-sm: 11px;
+  --text-md: 14px;
+  --text-lg: 24px;
+  --text-xl: 64px;
+
+  --space-xxs: 5px;
+  --space-xs: 10px;
+  --space-sm: 20px;
+  --space-md: 40px;
+  --space-lg: 60px;
+  --space-xl: 120px;
+
+  --gutter: 10px;
+  --border-width: 1px;
+  --border: var(--border-width) solid;
+
+  --e-both--slow: cubic-bezier(0.45, 0, 0.55, 1);
+  --e-both--medium: cubic-bezier(0.76, 0, 0.24, 1);
+  --e-in--medium: cubic-bezier(0.5, 0, 0.75, 0);
+  --e-out--medium: cubic-bezier(0.25, 1, 0.5, 1);
+  --e-out--fast: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Sizes */
+// $max-width: 1800px;
+// $headerHeight: 100px;
+// $headerHeightMobile: 50px;
+
+/* Colors */
+// $color1: #000;
+// $color2: #126dd6;
+
+//$links: $color1;
+//$hover: $color2;
+
+// $bg: white;
+
+/* PADDINGS */
+// $gutter: 5px;
+// $margeXS: $gutter * 2; //10px
+// $margeS: $margeXS * 2; //20px
+// $margeM: $margeXS * 4; //40px
+// $margeL: $margeXS * 8; //80px
+// $margeXL: $margeL * 2; //160px
+
+/* Fonts */
+// $fontPrimary: helvetica, sans-serif;
+// $fontSecondary: serif;
+
+// $borderWidth: 1px;
+// $border: $borderWidth solid;
+
+/* Breakpoints */
+$sm: 768px;
+$md: 1080px;
+$lg: 1441px;

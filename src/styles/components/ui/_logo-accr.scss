@@ -1,0 +1,40 @@
+.logo-accr{
+  // @include flexbox();
+  // max-width: 200px;
+  &:hover,
+  &.is-active{
+    .leftover{
+      max-width: 2.433333333333333em;
+    }
+  }
+  span{
+    
+    display: inline-block;
+    line-height: 1;
+    vertical-align: top;
+    &.word{
+      // @include flexbox();
+      // justify-content:flex-start;
+      // .accr{flex: 1}
+      // .leftover{flex: 0;}
+    }
+  }
+  .leftover{
+    // @include anime(4s, 0s);
+    transition: max-width .3s ease-in-out;
+    // transition: max-width .6s ease-in-out;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    // transform-origin: center left;
+  }
+}
+.template-home .logo-accr{
+  .leftover{max-width: 2.433333333333333em;}
+}
+.is-nav .logo-accr,
+.template-project:not(.is-nav) .logo-accr{
+  .leftover{
+    max-width: 0;
+  }
+}

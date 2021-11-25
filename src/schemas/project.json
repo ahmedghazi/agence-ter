@@ -1,0 +1,140 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Slug"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+        "label": "Title"
+      }
+    },
+    "texte_fr": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item",
+        "allowTargetBlank": true,
+        "label": "Texte FR"
+      }
+    },
+    "texte_en": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "allowTargetBlank": true,
+        "label": "Texte EN"
+      }
+    },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Image"
+      }
+    },
+    "pictogramme": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Pictogramme"
+      }
+    },
+    "images": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "image": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Image"
+            }
+          }
+        },
+        "label": "Images"
+      }
+    }
+  },
+  "SEO": {
+    "meta_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Meta title"
+      }
+    },
+    "meta_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Meta description"
+      }
+    },
+    "meta_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Meta image"
+      }
+    }
+  },
+  "Metas": {
+    "id": {
+      "type": "Text",
+      "config": {
+        "label": "ID",
+        "placeholder": "identifiant du projet (visible sur l'index)"
+      }
+    },
+    "theme": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["tag_theme"],
+        "label": "Thème"
+      }
+    },
+    "year": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["tag_year"],
+        "label": "Year"
+      }
+    },
+    "localisation": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["tag_localisation"],
+        "label": "Localisation"
+      }
+    },
+    "superficie": {
+      "type": "Text",
+      "config": {
+        "label": "Superficie"
+      }
+    },
+    "budget": {
+      "type": "Text",
+      "config": {
+        "label": "Budget"
+      }
+    },
+    "phase": {
+      "type": "Text",
+      "config": {
+        "label": "Phase"
+      }
+    }
+  }
+}
