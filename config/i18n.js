@@ -20,6 +20,8 @@ module.exports = {
     actualites: "actualités",
     distinctions: "distinctions",
     filtrer: "Filtrer",
+    prevProject: "Projet précédent",
+    nextProject: "Projet suivant",
   },
   "en-gb": {
     default: false,
@@ -40,5 +42,7 @@ module.exports = {
     actualites: "news",
     distinctions: "award",
     filtrer: "Filter",
+    prevProject: "Previous projet",
+    nextProject: "Next projet",
   },
 }

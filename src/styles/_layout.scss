@@ -2,6 +2,7 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 body {
+  // @include debugFiletY(124px);
   &.is-transiting {
     main {
       opacity: 0;
@@ -21,7 +22,7 @@ main {
 .bg-gray {
   background: var(--color-gray);
 }
-.md-1e {
+.mb-1e {
   margin-bottom: 1em;
 }
 @media all and (min-width: $md) {

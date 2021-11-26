@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./Header"
 import Footer from "./Footer"
 import Cursor from "./ui/Cursor"
+import { FiltersWrapper } from "../contexts/FiltersWrapper"
 
 const WrapperContext = React.createContext()
 
@@ -65,12 +66,14 @@ const Layout = ({ children, pageContext }) => {
 
   return (
     <WrapperContext.Provider value={{ settings }}>
-      <div id="page">
-        <Header direction={direction} />
-        <main>{children}</main>
-        <Footer />
-        {/* <Cursor color="black" size="20" /> */}
-      </div>
+      <FiltersWrapper>
+        <div id="page">
+          <Header direction={direction} />
+          <main>{children}</main>
+          <Footer />
+          {/* <Cursor color="black" size="20" /> */}
+        </div>
+      </FiltersWrapper>
     </WrapperContext.Provider>
   )
 }

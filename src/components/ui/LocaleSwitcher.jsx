@@ -18,7 +18,7 @@ const LocaleSwitcher = () => {
     ))
   }
 
-  return <ul className="locale-switcher pl-sm">{renderLanguages()}</ul>
+  return <ul className="locale-switcher ">{renderLanguages()}</ul>
 }
 
 export default LocaleSwitcher

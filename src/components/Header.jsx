@@ -29,9 +29,9 @@ const Header = ({ direction }) => {
           <Menu />
         </div>
         <div className="col-md-3 hidden-sm">
-          <div className="flex justify-end items-center font-light-">
+          <div className="flex justify-end items-center font-light">
             <Social input={settings.data.links} />
-            <Link to="/contacts" className="btn outline ml-sm">
+            <Link to="/contacts" className="btn outline mx-sm">
               Contacts
             </Link>
             <LocaleSwitcher />

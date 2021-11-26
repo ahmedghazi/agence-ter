@@ -5,7 +5,7 @@ const initialFiltersState = ""
 
 const FiltersWrapper = ({ children }) => {
   const [filter, dispatch] = useState(initialFiltersState)
-
+  console.log(filter)
   return (
     <FiltersContext.Provider value={{ filter, dispatch }}>
       {children}

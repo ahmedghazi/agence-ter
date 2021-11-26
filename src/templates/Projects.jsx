@@ -5,14 +5,14 @@ import { repositoryConfigs } from "../core/prismicPreviews"
 import PubSub from "pubsub-js"
 import loadable from "@loadable/component"
 import SEO from "../components/seo"
-import { FiltersWrapper } from "../contexts/FiltersWrapper"
+// import { FiltersWrapper } from "../contexts/FiltersWrapper"
 import ProjectsFilter from "../components/ProjectsFilters"
-// import ProjectCard from "../components/ProjectCard"
 // import ProjectsGridMasonry from "../components/ProjectsGridMasonry"
-import ProjectsTable from "../components/ProjectsTable"
+// import ProjectsTable from "../components/ProjectsTable"
 const ProjectsGridMasonry = loadable(() =>
   import("../components/ProjectsGridMasonry")
 )
+const ProjectsTable = loadable(() => import("../components/ProjectsTable"))
 
 export const pageQuery = graphql`
   query Projects {
@@ -88,18 +88,18 @@ const PageProjects = ({ data }) => {
         page={true}
       />
 
-      <FiltersWrapper>
-        <div className="header mb-lg">
-          <div className="row">
-            <div className="col-md-2 hidden-sm"></div>
-            <div className="col-xs">
-              <ProjectsFilter />
-            </div>
+      {/* <FiltersWrapper> */}
+      <div className="header mb-lg sticky top-0">
+        <div className="row">
+          <div className="col-md-2 hidden-sm"></div>
+          <div className="col-xs">
+            <ProjectsFilter />
           </div>
         </div>
-        {isTableView && <ProjectsTable input={projects_featured} />}
-        {!isTableView && <ProjectsGridMasonry input={projects_featured} />}
-      </FiltersWrapper>
+      </div>
+      {isTableView && <ProjectsTable input={projects_featured} />}
+      {!isTableView && <ProjectsGridMasonry input={projects_featured} />}
+      {/* </FiltersWrapper> */}
     </div>
   )
 }

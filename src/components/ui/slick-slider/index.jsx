@@ -4,7 +4,7 @@ import SliderCursorPrevNextText from "./SliderCursorPrevNextText"
 import PubSub from "pubsub-js"
 import "./slick.css" //impossible de l'importer direct ici à cause de purge-css
 
-const Slider = ({ children }) => {
+const Slider = ({ children, settingsOverride }) => {
   const sliderRef = useRef()
 
   const [index, setIndex] = useState(0)
@@ -27,9 +27,10 @@ const Slider = ({ children }) => {
     PubSub.publish("SLIDER_CHANGE", index)
   }, [index])
 
-  const settings = {
+  const settingsDefault = {
     // autoplay: !isMobile,
-    autoplay: true,
+    autoplaySpeed: 3000,
+    autoplay: false,
     dots: false,
     // speed: isMobile ? 250 : 500,
     speed: 500,
@@ -40,6 +41,11 @@ const Slider = ({ children }) => {
     prevArrow: <SliderCursorPrevNextText label="prev" left="0%" />,
     nextArrow: <SliderCursorPrevNextText label="next" left="50%" />,
   }
+  const settings = {
+    ...settingsDefault,
+    ...settingsOverride,
+  }
+  // console.log(settings)
 
   return (
     <ReactSlick {...settings} ref={sliderRef}>

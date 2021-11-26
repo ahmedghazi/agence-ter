@@ -1,5 +1,11 @@
-img{
-    max-width: 100%;
+img {
+  max-width: 100%;
 }
 
-.hidden{display: none;}
+.hidden {
+  display: none;
+}
+
+.slideRight {
+  @include slide(right, 0);
+}

@@ -34,6 +34,11 @@ const Menu = () => {
             </Link>
           </li>
         ))}
+        <li className="menu-item sm-only">
+          <Link to="/contacts" className="btn outline mx-sm">
+            Contacts
+          </Link>
+        </li>
       </ul>
     </nav>
   )
