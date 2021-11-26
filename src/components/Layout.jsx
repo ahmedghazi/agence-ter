@@ -17,7 +17,8 @@ const query = graphql`
 
 const Layout = ({ children, pageContext }) => {
   const { settings } = useStaticQuery(query)
-  // console.log(settings)
+  const { template } = pageContext
+  // console.log(pageContext)
   const [direction, setDirection] = useState()
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const Layout = ({ children, pageContext }) => {
     // const ww = window.innerWidth;
     // const wh = window.innerHeight;
     document.documentElement.style.setProperty(
-      "--appHeight",
+      "--app-height",
       window.innerHeight + "px"
     )
 
@@ -59,13 +60,21 @@ const Layout = ({ children, pageContext }) => {
       .getBoundingClientRect()
 
     document.documentElement.style.setProperty(
-      "--headerHeight",
+      "--header-height",
       headerBounding.height + "px"
+    )
+
+    const colMd2Bounding = document
+      .querySelector("header .col-md-2")
+      .getBoundingClientRect()
+    document.documentElement.style.setProperty(
+      "--col-md-2--width",
+      colMd2Bounding.width + "px"
     )
   }
 
   return (
-    <WrapperContext.Provider value={{ settings }}>
+    <WrapperContext.Provider value={{ settings, template }}>
       <FiltersWrapper>
         <div id="page">
           <Header direction={direction} />

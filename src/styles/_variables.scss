@@ -1,8 +1,8 @@
 /* BASE VARIABLES
  *******************/
 :root {
-  --appHeight: 100%;
-  --headerHeight: 50px;
+  --app-height: 100%;
+  --header-height: 50px;
   --color-primary: #fff;
   --color-black: #000;
   --color-gray: #878787;
@@ -25,6 +25,7 @@
   --space-md: 40px;
   --space-lg: 60px;
   --space-xl: 120px;
+  --space-xxl: calc(var(--col-md-2--width) + var(--space-md));
 
   --gutter: 10px;
   --border-width: 1px;

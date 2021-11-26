@@ -1,17 +1,20 @@
 import React, { useContext } from "react"
 import { Link } from "gatsby"
 import clsx from "clsx"
+import loadable from "@loadable/component"
 import { WrapperContext } from "./Layout"
 import Menu from "./Menu"
 // import Burger from "./ui/Burger"
 import LogoSvg from "./LogoSvg"
 import Social from "./ui/Social"
 import LocaleSwitcher from "./ui/LocaleSwitcher"
+// import ProjectsFilter from "./ProjectsFilters"
+const ProjectsFilters = loadable(() => import("./ProjectsFilters"))
 
 const Header = ({ direction }) => {
   const _WrapperContext = useContext(WrapperContext)
-  const { settings } = _WrapperContext
-  // console.log(settings)
+  const { settings, template } = _WrapperContext
+  // console.log(template)
   return (
     <header
       className={clsx(
@@ -38,6 +41,16 @@ const Header = ({ direction }) => {
           </div>
         </div>
       </div>
+      {template === "template-projects" && (
+        <div className="wrapper text-md py-sm">
+          <div className="row">
+            <div className="col-md-2 hidden-sm"></div>
+            <div className="col-xs">
+              <ProjectsFilters />
+            </div>
+          </div>
+        </div>
+      )}
       {/* <Burger /> */}
     </header>
   )

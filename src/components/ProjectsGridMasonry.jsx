@@ -22,7 +22,7 @@ const ProjectsGridMasonry = ({ input }) => {
     const columnWidth = gridRef.current
       .querySelector(".card-s")
       .getBoundingClientRect().width
-
+    console.log(columnWidth)
     isoRef.current = new Isotope(gridRef.current, {
       itemSelector: "article.card",
       // stagger: 30,

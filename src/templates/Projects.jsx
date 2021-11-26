@@ -89,14 +89,7 @@ const PageProjects = ({ data }) => {
       />
 
       {/* <FiltersWrapper> */}
-      <div className="header mb-lg sticky top-0">
-        <div className="row">
-          <div className="col-md-2 hidden-sm"></div>
-          <div className="col-xs">
-            <ProjectsFilter />
-          </div>
-        </div>
-      </div>
+
       {isTableView && <ProjectsTable input={projects_featured} />}
       {!isTableView && <ProjectsGridMasonry input={projects_featured} />}
       {/* </FiltersWrapper> */}
