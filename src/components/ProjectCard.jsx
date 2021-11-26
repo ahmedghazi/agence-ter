@@ -24,7 +24,7 @@ const Card = styled.article`
   }
 
   .inner {
-    padding: var(--space-md);
+    // padding: var(--space-md);
   }
   .h2,
   .location,

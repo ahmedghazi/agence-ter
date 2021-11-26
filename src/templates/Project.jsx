@@ -1,15 +1,17 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState, useContext } from "react"
 import { graphql, Link } from "gatsby"
 import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
 import { repositoryConfigs } from "../core/prismicPreviews"
+import PubSub from "pubsub-js"
+import clsx from "clsx"
 import SEO from "../components/seo"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { RichText } from "prismic-reactjs"
 import Slider from "../components/ui/slick-slider"
 import SliderPagerNum from "../components/ui/slick-slider/SliderPagerNum"
 import { linkResolver, _localizeText } from "../core/utils"
-import PubSub from "pubsub-js"
-import clsx from "clsx"
+import { LocaleContext } from "../contexts/LocaleWrapper"
+
 // import PubSub from "pubsub-js"
 
 export const pageQuery = graphql`
@@ -44,7 +46,8 @@ const PageProject = ({ data }) => {
     year,
     images,
   } = project.data
-  // console.log(related)
+
+  const { localeCtx } = useContext(LocaleContext)
 
   const scrollerRef = useRef()
   const [isFirstSlide, setIsFirstSlide] = useState(true)
@@ -63,6 +66,15 @@ const PageProject = ({ data }) => {
   }, [])
 
   const _format = () => {
+    if (
+      "ontouchstart" in window ||
+      navigator.maxTouchPoint ||
+      window.innerWidth <= 1280
+    ) {
+      scrollerRef.current.style.height = "auto"
+      return
+    }
+
     const headerHeight = document
       .querySelector("aside .header")
       .getBoundingClientRect().height
@@ -94,11 +106,11 @@ const PageProject = ({ data }) => {
         page={true}
       />
 
-      <div className="fixed left-0 top-0 w-screen h-screen">
+      <div className="md:fixed left-0 top-0 md:w-screen md:h-screen py-sm pb-0 pt-lg md:p-0 ">
         <Slider
           settingsOverride={{
             autoplaySpeed: 5000,
-            autoplay: true,
+            autoplay: false,
             speed: 600,
           }}
         >
@@ -107,7 +119,7 @@ const PageProject = ({ data }) => {
               <GatsbyImage
                 image={getImage(item.image)}
                 alt={item.image.alt || ""}
-                className="w-screen h-screen"
+                className="md:w-screen md:h-screen"
                 style={{
                   objectFit: "cover",
                 }}
@@ -116,30 +128,39 @@ const PageProject = ({ data }) => {
           ))}
         </Slider>
       </div>
-      <div className={clsx("sidebar px-md", !isFirstSlide ? "slideRight" : "")}>
+      <div
+        className={clsx(
+          "sidebar p-sm pt-0 md:px-md",
+          !isFirstSlide ? "slideRight" : ""
+        )}
+      >
         <div className="row ">
-          <div className="col-md-9"></div>
-          <div className="col-md-3 ">
-            <aside className=" h-screen">
-              <div className="header px-sm pb-xs">
+          <div className="col-md-9 hidden-sm"></div>
+          <div className="col-md-3 col-xs">
+            <aside className=" md:h-screen">
+              <div className="header md:px-sm md:pb-xs">
                 <SliderPagerNum length={images.length} />
 
                 <h1 className="text-lg md-1e">{title.text}</h1>
-                <ul className="tags font-bold ">
-                  <li>{_getTagByName("theme")}</li>
-                  <li>{_getTagByName("year")}</li>
-                  <li>{_getTagByName("localisation")}</li>
+                <ul className="tags font-bold flex py-sm md:py-0">
+                  <li className="pr-xs">{_getTagByName("theme")}</li>
+                  <li className="pr-xs">{_getTagByName("year")}</li>
+                  <li className="pr-xs">{_getTagByName("localisation")}</li>
                 </ul>
               </div>
               <div
-                className="content px-sm pb-sm scroller overflow-y-scroll"
+                className="content md:px-sm md:pb-sm scroller md:overflow-y-scroll flex flex-col"
                 ref={scrollerRef}
               >
                 <div className="texte mb-1e">
-                  <RichText render={texte_fr.raw} />
+                  <RichText
+                    render={localeCtx === "fr-fr" ? texte_fr.raw : texte_en.raw}
+                  />
                 </div>
-                <div className="texte text-gray">
-                  <RichText render={texte_en.raw} />
+                <div className="texte text-gray mb-1e">
+                  <RichText
+                    render={localeCtx === "en-gb" ? texte_en.raw : texte_fr.raw}
+                  />
                 </div>
               </div>
             </aside>
@@ -148,22 +169,30 @@ const PageProject = ({ data }) => {
       </div>
       <div
         className={clsx(
-          "footer fixed bottom-0 w-full p-md text-right flex flex-col items-end",
+          "footer md:fixed bottom-0 w-full p-sm md:p-md text-right flex flex-col items-center md:items-end",
           isFirstSlide ? "slideRight" : ""
         )}
       >
-        <SliderPagerNum length={images.length} />
+        <div className="hidden-sm">
+          <SliderPagerNum length={images.length} />
+        </div>
         <ul className="flex projects-related font-bold">
           <li>
-            <Link to={linkResolver(related.nodes[0])} className="pr-xs">
-              <span className="icon chevron-w"></span>
+            <Link
+              to={linkResolver(related.nodes[0])}
+              className="pr-xs flex items-center"
+            >
+              <span className="icon icon-chevron-w pr-xs"></span>
               <span>{_localizeText("prevProject")}</span>
             </Link>
           </li>
           <li>
-            <Link to={linkResolver(related.nodes[1])} className="pl-xs">
-              <span className="icon chevron-e"></span>
+            <Link
+              to={linkResolver(related.nodes[1])}
+              className="pl-xs flex items-center"
+            >
               <span>{_localizeText("nextProject")}</span>
+              <span className="icon icon-chevron-e pl-xs"></span>
             </Link>
           </li>
         </ul>

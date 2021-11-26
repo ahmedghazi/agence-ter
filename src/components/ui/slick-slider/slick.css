@@ -100,3 +100,8 @@
 .slick-arrow.slick-hidden {
   display: none;
 }
+@media all and (max-width: 1024px) {
+  .slick-arrow {
+    display: none !important;
+  }
+}

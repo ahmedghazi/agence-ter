@@ -55,13 +55,14 @@ const DropDownButton = styled.button`
   text-align: left;
   position: relative;
   width: 50px;
-  &:hover .chevron {
+  &:hover .icon-chevron-s {
     transform: ${(props) =>
       props.collapsed
         ? "translateY(2px) rotate(0deg)"
         : "translateY(-2px) rotate(180deg)"};
   }
-  .chevron {
+  .icon-chevron-s {
+    transform-origin: center;
     transition: transform 0.2s;
     transform: ${(props) =>
       props.collapsed ? "rotate(0deg)" : "rotate(180deg)"};
@@ -114,7 +115,7 @@ const ProjectsFilters = () => {
       color: "#6B8BC7",
     },
     {
-      title: _localizeText("year"),
+      title: _localizeText("years"),
       values: _getFixedYears(),
       color: "#F07E64",
     },
@@ -137,17 +138,7 @@ const ProjectsFilters = () => {
         collapsed={collapsed}
       >
         <span className="pr-xs">{_localizeText("filtrer")}</span>
-        <div className="chevron absolute right-0">
-          <svg
-            width="11"
-            height="7"
-            viewBox="0 0 11 7"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M1,1l4.5,5L10,1" stroke="black" strokeWidth="0.5" />
-          </svg>
-        </div>
+        <div className="icon-chevron-s absolute right-0"></div>
       </DropDownButton>
 
       <DropDownContent

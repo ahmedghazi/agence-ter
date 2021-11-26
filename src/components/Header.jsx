@@ -51,7 +51,6 @@ const Header = ({ direction }) => {
           </div>
         </div>
       )}
-      {/* <Burger /> */}
     </header>
   )
 }

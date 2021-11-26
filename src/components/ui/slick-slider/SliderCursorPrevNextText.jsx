@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react"
 // import PubSub from "pubsub-js";
-import styled from "styled-components";
+import styled from "styled-components"
 
 const Container = styled.div`
   position: absolute;
@@ -19,7 +19,7 @@ const Container = styled.div`
   * {
     pointer-events: none;
   }
-`;
+`
 const Label = styled.div`
   opacity: 0;
   position: absolute;
@@ -28,60 +28,61 @@ const Label = styled.div`
   transform-origin: center center;
   text-align: center;
   // background: red;
-`;
+`
 
 const SliderCursorPrevNextText = (props) => {
   // console.log(props);
-  const { label, left, className, style, onClick } = props;
-  const refContainer = useRef();
-  const refLabel = useRef();
+  const { label, left, className, style, onClick } = props
+  const refContainer = useRef()
+  const refLabel = useRef()
   const [positions, setPositions] = useState({
     transform: "translate(-100vw, -100vh)",
-  });
+  })
 
   useEffect(() => {
-    refContainer.current.addEventListener("mouseenter", _onEnter);
-    refContainer.current.addEventListener("mouseleave", _onLeave);
+    refContainer.current.addEventListener("mouseenter", _onEnter)
+    refContainer.current.addEventListener("mouseleave", _onLeave)
     return () => {
       if (refContainer && refContainer.current) {
-        refContainer.current.removeEventListener("mouseenter", _onEnter);
-        refContainer.current.removeEventListener("mouseleave", _onLeave);
-        refContainer.current.removeEventListener("mousemove", _update);
+        refContainer.current.removeEventListener("mouseenter", _onEnter)
+        refContainer.current.removeEventListener("mouseleave", _onLeave)
+        refContainer.current.removeEventListener("mousemove", _update)
       }
-    };
-  }, []);
+    }
+  }, [])
 
   const _onEnter = (e) => {
-    refContainer.current.addEventListener("mousemove", _update);
-  };
+    refContainer.current.addEventListener("mousemove", _update)
+  }
   const _onLeave = (e) => {
-    refContainer.current.removeEventListener("mousemove", _update);
-  };
+    refContainer.current.removeEventListener("mousemove", _update)
+  }
 
   const _update = (e) => {
     // const { offsetX, offsetY } = e;
-    const { width, height } = refLabel.current.getBoundingClientRect();
-    const left = e.offsetX - width / 2;
-    const top = e.offsetY - height / 2;
+    const { width, height } = refLabel.current.getBoundingClientRect()
+    const left = e.offsetX - width / 2
+    const top = e.offsetY - height / 2
     setPositions({
       transform: `translate(${left}px, ${top}px)`,
-    });
-  };
+    })
+  }
 
   return (
     <Container
-      className={`${className} text-md`}
+      className={`${className} text-lg hidden-sm`}
       style={{ ...style }}
       onClick={onClick}
       left={left}
-      ref={refContainer}>
+      ref={refContainer}
+    >
       <div>
-        <Label className='label' style={positions} ref={refLabel}>
+        <Label className="label" style={positions} ref={refLabel}>
           {label}
         </Label>
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default SliderCursorPrevNextText;
+export default SliderCursorPrevNextText

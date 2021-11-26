@@ -4,9 +4,9 @@ import { Reveal, Tween } from "react-gsap"
 const AnimateOnScroll = ({ children }) => {
   return (
     <div className="aos">
-      <Reveal repeat>
+      <Reveal repeat threshold={0.4}>
         <Tween
-          from={{ opacity: 0, transform: "translate3d(0, 50px, 0)" }}
+          from={{ opacity: 0, transform: "translate3d(0, 30px, 0)" }}
           duration={0.5}
         >
           {children}
