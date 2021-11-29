@@ -49,7 +49,7 @@ const Visuel = styled.div`
 
 const ProjectCard = ({ input }) => {
   const carRef = useRef()
-  const { filter } = useFilters()
+  const { filters } = useFilters()
 
   const { largeur, marge_interne, offset, item } = input
   const { uid, data } = item.document
@@ -76,6 +76,7 @@ const ProjectCard = ({ input }) => {
   // console.log(tagsClassString)
 
   const _isSelected = () => {
+    return true
     const isSelected = tags.find((elem) => elem === filter)
     return isSelected ? "is-selected" : "is-not-selected"
   }
@@ -83,16 +84,16 @@ const ProjectCard = ({ input }) => {
   const _getGridSize = () => {
     switch (largeur) {
       case "S":
-        return (1 * 100) / 12
+        return (2 * 100) / 12
         return (2 * 100) / 12
       case "M":
-        return (2 * 100) / 12
+        return (3 * 100) / 12
         return (3 * 100) / 12
       case "L":
         return (4 * 100) / 12
         return (5 * 100) / 12
       default:
-        return (1 * 100) / 12
+        return (2 * 100) / 12
         return (2 * 100) / 12
     }
   }

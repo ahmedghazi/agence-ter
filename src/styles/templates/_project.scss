@@ -1,17 +1,38 @@
 .template-project {
   @media all and (min-width: $sm) {
-    .sidebar,
-    .footer {
+    .page-project {
+      &.is-first {
+        #toggle {
+          @include slide(right, 0);
+        }
+      }
+      #toggle {
+        @include slide(none, 1);
+      }
+    }
+    aside,
+    .footer,
+    #toggle {
       transition: transform 0.4s ease, opacity 0.4s ease;
     }
     .sidebar {
       pointer-events: none;
       aside {
         pointer-events: all;
-        background: rgba(255, 255, 255, 0.55);
-        backdrop-filter: blur(25px);
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(15px);
         padding-top: 185px;
       }
+    }
+    #toggle {
+      pointer-events: all;
+      position: fixed;
+      right: 0;
+      top: 0;
+      height: 100vh;
+      // transform: translateX(-100%);
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(15px);
     }
 
     .footer {

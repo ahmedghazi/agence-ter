@@ -9,7 +9,7 @@ import { _localizeText } from "../core/utils"
 
 const query = graphql`
   query {
-    allPrismicTagTheme {
+    allPrismicTagTheme(sort: { fields: uid }) {
       nodes {
         uid
         type
@@ -20,7 +20,7 @@ const query = graphql`
         }
       }
     }
-    allPrismicTagLocalisation {
+    allPrismicTagLocalisation(sort: { fields: uid }) {
       nodes {
         uid
         type
@@ -31,7 +31,7 @@ const query = graphql`
         }
       }
     }
-    allPrismicTagYear {
+    allPrismicTagYear(sort: { fields: uid }) {
       nodes {
         uid
         type
@@ -52,7 +52,7 @@ const Wrapper = styled.div`
 const DropDownButton = styled.button`
   text-align: left;
   position: relative;
-  width: 50px;
+  // width: 50px;
   &:hover .icon-chevron-s {
     transform: ${(props) =>
       props.collapsed
@@ -85,7 +85,7 @@ const ProjectsFilters = () => {
   const { allPrismicTagTheme, allPrismicTagLocalisation, allPrismicTagYear } =
     useStaticQuery(query)
 
-  const { dispatchFilter } = useFilters()
+  const { filters, dispatchFilter } = useFilters()
 
   const [collapsed, setCollapsed] = useState(true)
 
@@ -127,17 +127,37 @@ const ProjectsFilters = () => {
     dispatchFilter("")
   }
 
+  const _renderFiltersSelected = () => {}
+
   return (
     <Wrapper>
       {/* <pre>{JSON.stringify(filter)}</pre> */}
-      <DropDownButton
-        className="drop-down--header mb-xs flex items-center"
-        onClick={_toggle}
-        collapsed={collapsed}
-      >
-        <span className="pr-xs">{_localizeText("filtrer")}</span>
-        <div className="icon-chevron-s absolute right-0 text-sm"></div>
-      </DropDownButton>
+      <div className="header mb-xs flex items-center">
+        <DropDownButton
+          className="drop-down--header pr-md"
+          onClick={_toggle}
+          collapsed={collapsed}
+        >
+          <span className="pr-xs">{_localizeText("filtrer")}</span>
+          <span className="icon-chevron-s  text-sm"></span>
+        </DropDownButton>
+        {filters && (
+          <ul className="filters flex">
+            {filters.map((item, i) => (
+              <li key={i}>
+                <button
+                  onClick={() =>
+                    dispatchFilter({ type: "REMOVE", payload: item })
+                  }
+                  className={clsx("cursor-pointer pr-xs hover:font-bold pr-xs")}
+                >
+                  {item.data.title.text}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
 
       <DropDownContent
         className={clsx("drop-down--content", collapsed ? "is-collapsed" : "")}

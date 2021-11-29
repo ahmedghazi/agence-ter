@@ -34,8 +34,8 @@ const Td = styled.td`
     // padding: 5px 0 4px;
   }
   img {
-    max-height: 46px;
-    max-width: 66px;
+    height: 46px;
+    // max-width: 66px;
   }
 
   @media all and (max-width: 768px) {

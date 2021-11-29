@@ -47,6 +47,13 @@
               "label": "Marge interne",
               "placeholder": "sous la forme marge-top,marge-right,marge-bottom,marge-left (défaut à 0)"
             }
+          },
+          "surface_bold": {
+            "type": "Boolean",
+            "config": {
+              "default_value": false,
+              "label": "Surface bold"
+            }
           }
         },
         "label": "Projects Featured"

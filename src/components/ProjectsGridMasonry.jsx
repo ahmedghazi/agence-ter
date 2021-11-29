@@ -16,10 +16,10 @@ const ProjectsGridMasonry = ({ input }) => {
   const gridRef = useRef()
   const isoRef = useRef()
   // const { filter } = useContext(FiltersContext)
-  const { filter } = useFilters()
+  const { filters } = useFilters()
 
   const [page, setPage] = useState(0)
-  const PER_PAGE = 5
+  const PER_PAGE = 25
   const MAX_PAGE = Math.floor(input.length / PER_PAGE)
   const [inputPaged, setInputPaged] = useState([])
   const [hasMore, setHasMore] = useState(true)
@@ -44,7 +44,7 @@ const ProjectsGridMasonry = ({ input }) => {
   }, [page])
 
   useEffect(() => {
-    console.log(inputPaged)
+    // console.log(inputPaged)
     if (!inputPaged.length) return
 
     if (!_isotopeRendered) {
@@ -121,10 +121,19 @@ const ProjectsGridMasonry = ({ input }) => {
 
   useEffect(() => {
     if (isoRef.current) {
-      const _filter = filter !== "" ? `.${filter}` : "*"
+      //.filtre .filtre .filtre
+      const _filter = filters.length ? _renderFilterClassNames() : "*"
+      console.log(_filter)
       isoRef.current.arrange({ filter: _filter })
     }
-  }, [filter])
+  }, [filters])
+
+  const _renderFilterClassNames = () => {
+    return filters
+      .map((el) => `.${el.uid} `)
+      .toString()
+      .replace(",", "")
+  }
 
   // console.log(inputPaged)
   return (

@@ -58,6 +58,9 @@ const PageProject = ({ data }) => {
 
     const token = PubSub.subscribe("SLIDER_CHANGE", (e, d) => {
       setIsFirstSlide(d === 0)
+      if (d > 0) {
+        PubSub.unsubscribe(token)
+      }
     })
     return () => {
       window.removeEventListener("resize", _format)
@@ -97,7 +100,12 @@ const PageProject = ({ data }) => {
   }
 
   return (
-    <div className="page-template page-project ">
+    <div
+      className={clsx(
+        "page-template page-project ",
+        isFirstSlide ? "is-first" : ""
+      )}
+    >
       <SEO
         pageTitle={meta_title.text}
         pageDescription={meta_description.text}
@@ -128,28 +136,29 @@ const PageProject = ({ data }) => {
           ))}
         </Slider>
       </div>
-      <div
-        className={clsx(
-          "sidebar p-sm pt-0 md:px-md",
-          !isFirstSlide ? "slideRight" : ""
-        )}
-      >
+      <div className={clsx("sidebar p-sm pt-0 md:px-md")}>
         <div className="row ">
           <div className="col-md-9 hidden-sm"></div>
           <div className="col-md-3 col-xs">
-            <aside className=" md:h-screen">
-              <div className="header md:px-sm md:pb-xs">
+            <aside
+              className={clsx(
+                "md:h-screen",
+                !isFirstSlide ? "slide-right" : ""
+              )}
+            >
+              <div className="header md:px-sm md:pb-sm">
                 <SliderPagerNum length={images.length} />
 
                 <h1 className="text-lg md-1e">{title.text}</h1>
-                <ul className="tags font-bold flex py-sm md:py-0">
+                <ul className="tags  flex py-sm md:py-0">
                   <li className="pr-xs">{_getTagByName("theme")}</li>
                   <li className="pr-xs">{_getTagByName("year")}</li>
                   <li className="pr-xs">{_getTagByName("localisation")}</li>
                 </ul>
               </div>
+
               <div
-                className="content md:px-sm md:pb-sm scroller md:overflow-y-scroll no-scrollbar flex flex-col"
+                className="content md:px-sm md:pb-sm scroller md:overflow-y-scroll no-scrollbar flex flex-col font-semibold"
                 ref={scrollerRef}
               >
                 <div className="texte mb-1e">
@@ -157,7 +166,7 @@ const PageProject = ({ data }) => {
                     render={localeCtx === "fr-fr" ? texte_fr.raw : texte_en.raw}
                   />
                 </div>
-                <div className="texte text-gray mb-1e">
+                <div className="texte text-gray mb-1e font-regular">
                   <RichText
                     render={localeCtx === "en-gb" ? texte_en.raw : texte_fr.raw}
                   />
@@ -167,16 +176,25 @@ const PageProject = ({ data }) => {
           </div>
         </div>
       </div>
+
+      <div
+        id="toggle"
+        className="p-xs flex flex-col justify-center items-center cursor-pointer text-lg"
+        onClick={() => setIsFirstSlide(true)}
+      >
+        <span className="icon-chevron-w"></span>
+      </div>
+
       <div
         className={clsx(
           "footer md:fixed bottom-0 w-full p-sm md:p-md text-right flex flex-col items-center md:items-end ",
-          isFirstSlide ? "slideRight" : ""
+          isFirstSlide ? "slide-right" : ""
         )}
       >
         <div className="hidden-sm">
           <SliderPagerNum length={images.length} />
         </div>
-        <ul className="flex projects-related font-bold">
+        <ul className="flex projects-related font-bold text-lg">
           <li>
             <Link
               to={linkResolver(related.nodes[0])}

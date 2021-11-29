@@ -70,7 +70,7 @@ const SliderCursorPrevNextText = (props) => {
 
   return (
     <Container
-      className={`${className} text-lg hidden-sm`}
+      className={`${className} text-lg font-bold hidden-sm`}
       style={{ ...style }}
       onClick={onClick}
       left={left}

@@ -28,18 +28,29 @@ const DropDownContent = styled.div`
 
 const ProjectsFilter = ({ input }) => {
   // const { filter, dispatch } = useContext(FiltersContext)
-  const { filter, dispatchFilter } = useFilters()
+  const { filters, dispatchFilter } = useFilters()
   // const [collapsed, setCollapsed] = useState(true)
   // const _toggle = () => setCollapsed(!collapsed)
   const { title, values, color } = input
 
   const _change = (item) => {
-    dispatchFilter(filter === item.uid ? "" : item.uid)
-    setTimeout(() => {
-      console.log(color)
-      document.querySelector(".grid-view .backdrop").style.backgroundColor =
-        color
-    }, 150)
+    // dispatchFilter(filter === item.uid ? "" : item.uid)
+    const filterExist = filters.filter((el) => el === item)
+    const filterTypeExist = filters.filter((el) => el.type === item.type)
+    console.log(filterExist, filterTypeExist)
+    if (filterExist.length) {
+      dispatchFilter({ type: "REMOVE", payload: item })
+    } else if (filterTypeExist.length) {
+      dispatchFilter({ type: "REMOVE_BY_TYPE", payload: item.type })
+      dispatchFilter({ type: "ADD", payload: item })
+    } else {
+      dispatchFilter({ type: "ADD", payload: item })
+    }
+    // setTimeout(() => {
+    //   console.log(color)
+    //   document.querySelector(".grid-view .backdrop").style.backgroundColor =
+    //     color
+    // }, 150)
 
     // const isActive = filter === item.uid
     // if (isActive) {
@@ -56,11 +67,11 @@ const ProjectsFilter = ({ input }) => {
   }
 
   useEffect(() => {
-    if (filter !== "") {
+    if (filters) {
       PubSub.publish("TABLE_HIDE")
       // PubSub.publish("GRID_VIEW_COLOR", color)
     }
-  }, [filter])
+  }, [filters])
 
   return (
     <Wrapper className="mb-xs">
@@ -71,8 +82,8 @@ const ProjectsFilter = ({ input }) => {
             <button
               onClick={() => _change(item)}
               className={clsx(
-                "cursor-pointer pr-xs hover:font-bold",
-                filter === item.uid ? "font-bold" : ""
+                "cursor-pointer pr-xs hover:font-bold"
+                // filter === item.uid ? "font-bold" : ""
               )}
             >
               {item.data.title.text}
