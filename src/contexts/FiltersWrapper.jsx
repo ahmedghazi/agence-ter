@@ -1,16 +1,17 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useContext, useState } from "react"
 
 const FiltersContext = createContext()
 const initialFiltersState = ""
 
-const FiltersWrapper = ({ children }) => {
-  const [filter, dispatch] = useState(initialFiltersState)
-  console.log(filter)
+export const FiltersWrapper = ({ children }) => {
+  const [filter, dispatchFilter] = useState(initialFiltersState)
+  // console.log("FiltersWrapper", filter)
   return (
-    <FiltersContext.Provider value={{ filter, dispatch }}>
+    <FiltersContext.Provider value={{ filter, dispatchFilter }}>
       {children}
     </FiltersContext.Provider>
   )
 }
-
-export { FiltersContext, FiltersWrapper }
+export default function useFilters() {
+  return useContext(FiltersContext)
+}

@@ -1,28 +1,104 @@
-import React, { useEffect, useRef, useContext } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import Isotope from "isotope-layout"
 import imagesLoaded from "imagesloaded"
-import PubSub from "pubsub-js"
+// import PubSub from "pubsub-js"
 import ProjectCard from "./ProjectCard"
-import { FiltersContext } from "../contexts/FiltersWrapper"
+import useFilters from "../contexts/FiltersWrapper"
+// import { FiltersContext } from "../contexts/FiltersWrapper"
 
 const ProjectsGridMasonry = ({ input }) => {
   //infinite
   // console.log(MasonryLayout)
-  const PER_PAGE = 10
+  // const inputPaged =
+  // let PAGE = -1
+  let _isotopeRendered = false
   const backDropRef = useRef()
   const gridRef = useRef()
   const isoRef = useRef()
-  const { filter } = useContext(FiltersContext)
+  // const { filter } = useContext(FiltersContext)
+  const { filter } = useFilters()
+
+  const [page, setPage] = useState(0)
+  const PER_PAGE = 5
+  const MAX_PAGE = Math.floor(input.length / PER_PAGE)
+  const [inputPaged, setInputPaged] = useState([])
+  const [hasMore, setHasMore] = useState(true)
 
   useEffect(() => {
-    _renderIsotope()
-  }, [])
+    // _addContent()
+    window.addEventListener("scroll", _onScroll)
+    // _renderIsotope()
+
+    return () => window.removeEventListener("scroll", _onScroll)
+  }, [page])
+
+  useEffect(() => {
+    console.log(page)
+    // const contentByPage = _getContentByPage()
+    const start = page * PER_PAGE
+    const end = start + PER_PAGE
+    const nextPageContent = input.slice(start, end)
+    // console.log(nextPageContent)
+    // setHasMore(data.totalPages > pageToLoad.current);
+    setInputPaged((inputPaged) => [...inputPaged, ...nextPageContent])
+  }, [page])
+
+  useEffect(() => {
+    console.log(inputPaged)
+    if (!inputPaged.length) return
+
+    if (!_isotopeRendered) {
+      _renderIsotope()
+    } else {
+      isoRef.current.layout()
+    }
+    _isAppending = false
+  }, [inputPaged])
+
+  let _prevScrollTop = 0
+  let _isAppending = false
+  const _onScroll = () => {
+    const gap = "ontouchstart" in window || navigator.maxTouchPoints ? 50 : 100
+    const distanceToBottom =
+      document.body.scrollHeight - (window.innerHeight + window.scrollY)
+
+    // console.log(distanceToBottom);
+    if (distanceToBottom <= gap) {
+      _isAppending = true
+      // _getContentByPage()
+      const nextPage = page + 1 < MAX_PAGE ? page + 1 : 0
+      setPage(nextPage)
+    }
+
+    _prevScrollTop = window.pageYOffset
+  }
+
+  // const _getContentByPage = () => {
+  //   // PAGE += 1
+  //   const start = page * PER_PAGE
+  //   const end = start + PER_PAGE
+  //   const nextPage = input.slice(start, end)
+  //   // const cards = _renderCard(nextPage)
+  //   return cards
+  //   console.log(cards)
+  //   return
+  //   gridRef.current.appendChild(cards)
+  //   isoRef.current.appended(elem)
+  //   isoRef.current.layout()
+  // }
+
+  // const _renderCard = (arr) => {
+  //   return arr.map((item, i) => <ProjectCard key={i} input={item} />)
+  // }
 
   const _renderIsotope = () => {
-    const columnWidth = gridRef.current
-      .querySelector(".card-s")
-      .getBoundingClientRect().width
-    console.log(columnWidth)
+    if (_isotopeRendered) return
+
+    const cardS = gridRef.current.querySelector(".card-s")
+
+    const columnWidth = cardS ? cardS.getBoundingClientRect().width : 150
+    // const columnWidth = 300
+    // console.log(columnWidth)
     isoRef.current = new Isotope(gridRef.current, {
       itemSelector: "article.card",
       // stagger: 30,
@@ -38,6 +114,7 @@ const ProjectsGridMasonry = ({ input }) => {
         gridRef.current
           .querySelectorAll(".card")
           .forEach((el) => el.classList.add("reveal"))
+        _isotopeRendered = true
       }, 150)
     })
   }
@@ -49,6 +126,7 @@ const ProjectsGridMasonry = ({ input }) => {
     }
   }, [filter])
 
+  // console.log(inputPaged)
   return (
     <section className="grid-view min-h-screen  ">
       <div
@@ -57,7 +135,7 @@ const ProjectsGridMasonry = ({ input }) => {
         ref={backDropRef}
       ></div>
       <div className="projects-grid-masonry" ref={gridRef}>
-        {input.map((item, i) => (
+        {inputPaged.map((item, i) => (
           <ProjectCard key={i} input={item} />
         ))}
       </div>

@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import PubSub from "pubsub-js"
 import clsx from "clsx"
 import styled from "styled-components"
 import ProjectsFilter from "./ProjectsFilter"
-import { FiltersContext } from "../contexts/FiltersWrapper"
+import useFilters from "../contexts/FiltersWrapper"
 import { _localizeText } from "../core/utils"
 
 const query = graphql`
@@ -47,8 +47,6 @@ const query = graphql`
 `
 
 const Wrapper = styled.div`
-  // width: 272px;
-  // color: red;
   z-index: 251;
 `
 const DropDownButton = styled.button`
@@ -62,6 +60,7 @@ const DropDownButton = styled.button`
         : "translateY(-2px) rotate(180deg)"};
   }
   .icon-chevron-s {
+    font-size: 6px;
     transform-origin: center;
     transition: transform 0.2s;
     transform: ${(props) =>
@@ -69,8 +68,6 @@ const DropDownButton = styled.button`
   }
 `
 const DropDownContent = styled.div`
-  // position: absolute;
-  // background: white;
   width: 100%;
   overflow: hidden;
   max-height: 0;
@@ -87,7 +84,8 @@ const DropDownContent = styled.div`
 const ProjectsFilters = () => {
   const { allPrismicTagTheme, allPrismicTagLocalisation, allPrismicTagYear } =
     useStaticQuery(query)
-  const { filter, dispatch } = useContext(FiltersContext)
+
+  const { dispatchFilter } = useFilters()
 
   const [collapsed, setCollapsed] = useState(true)
 
@@ -126,7 +124,7 @@ const ProjectsFilters = () => {
   const _handleSwitchView = () => {
     setCollapsed(true)
     PubSub.publish("TABLE_TOGGLE")
-    dispatch("")
+    dispatchFilter("")
   }
 
   return (
@@ -138,7 +136,7 @@ const ProjectsFilters = () => {
         collapsed={collapsed}
       >
         <span className="pr-xs">{_localizeText("filtrer")}</span>
-        <div className="icon-chevron-s absolute right-0"></div>
+        <div className="icon-chevron-s absolute right-0 text-sm"></div>
       </DropDownButton>
 
       <DropDownContent

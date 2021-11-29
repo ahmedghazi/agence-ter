@@ -1,16 +1,18 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useState, useContext } from "react"
 
 const CategoriesContext = createContext()
 const initialCategoriesState = ""
 
-const CategoriesWrapper = ({ children }) => {
-  const [category, dispatch] = useState(initialCategoriesState)
+export const CategoriesWrapper = ({ children }) => {
+  const [category, dispatchCategory] = useState(initialCategoriesState)
 
   return (
-    <CategoriesContext.Provider value={{ category, dispatch }}>
+    <CategoriesContext.Provider value={{ category, dispatchCategory }}>
       {children}
     </CategoriesContext.Provider>
   )
 }
-
-export { CategoriesContext, CategoriesWrapper }
+export default function useCategories() {
+  return useContext(CategoriesContext)
+}
+// export { CategoriesContext, CategoriesWrapper }

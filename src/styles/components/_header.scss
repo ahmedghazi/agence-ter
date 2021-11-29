@@ -5,9 +5,15 @@ header {
   top: 0;
   z-index: 250;
   //margin-bottom: $margeM;
+  // @include debugFiletY(73px);
+  .social {
+    font-size: 0.8em;
+  }
 
   nav {
     padding-top: 0.35em;
+  }
+  .col-right .flex {
   }
 
   @media all and (max-width: $sm) {

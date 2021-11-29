@@ -23,7 +23,7 @@ const Header = ({ direction }) => {
       )}
     >
       <div className="row middle-xs">
-        <div className="col-md-2 col-xs">
+        <div className="col-md-2 col-xs col-left">
           <Link to="/">
             <LogoSvg />
           </Link>
@@ -31,14 +31,14 @@ const Header = ({ direction }) => {
         <div className="col-xs">
           <Menu />
         </div>
-        <div className="col-md-3 hidden-sm">
-          <div className="flex justify-end items-center font-light">
+        <div className="col-md-3 hidden-sm col-right">
+          <nav className="flex justify-end items-center font-light">
             <Social input={settings.data.links} />
             <Link to="/contacts" className="btn outline mx-sm">
               Contacts
             </Link>
             <LocaleSwitcher />
-          </div>
+          </nav>
         </div>
       </div>
       {template === "template-projects" && (

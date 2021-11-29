@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 // import ExcerptToTexte from "../ui/ExcerptToTexte"
 import { RichText } from "prismic-reactjs"
 import { LocaleContext } from "../contexts/LocaleWrapper"
-import { CategoriesContext } from "../contexts/CategoriesWrapper"
+import useCategories from "../contexts/CategoriesWrapper"
 import { _localizeText } from "../core/utils"
 import clsx from "clsx"
 import AnimateOnScroll from "./ui/AnimateOnScroll"
@@ -14,7 +14,9 @@ const Post = ({ input }) => {
 
   const { localeCtx } = useContext(LocaleContext)
 
-  const { category } = useContext(CategoriesContext)
+  // const { category } = useContext(CategoriesContext)
+  const { category } = useCategories()
+
   const [active, setActive] = useState(true)
   useEffect(() => {
     setActive(category === postCategoryUID)

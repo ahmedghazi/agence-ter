@@ -149,7 +149,7 @@ const PageProject = ({ data }) => {
                 </ul>
               </div>
               <div
-                className="content md:px-sm md:pb-sm scroller md:overflow-y-scroll flex flex-col"
+                className="content md:px-sm md:pb-sm scroller md:overflow-y-scroll no-scrollbar flex flex-col"
                 ref={scrollerRef}
               >
                 <div className="texte mb-1e">
@@ -169,7 +169,7 @@ const PageProject = ({ data }) => {
       </div>
       <div
         className={clsx(
-          "footer md:fixed bottom-0 w-full p-sm md:p-md text-right flex flex-col items-center md:items-end",
+          "footer md:fixed bottom-0 w-full p-sm md:p-md text-right flex flex-col items-center md:items-end ",
           isFirstSlide ? "slideRight" : ""
         )}
       >

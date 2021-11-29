@@ -11,7 +11,12 @@ const ContactsAgence = ({ input }) => {
     <AnimateOnScroll>
       <article className="mb-lg">
         <div className="row">
-          <div className="col-md-2 col-xs">image</div>
+          <div className="col-md-2 col-xs">
+            <img
+              src="//agenceter.com/wp-content/uploads/2019/02/paris.png"
+              alt=""
+            />
+          </div>
           <div className="col-md-1 hidden-sm"></div>
           <div className="col-xs">
             <div

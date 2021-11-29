@@ -1,7 +1,7 @@
 import React from "react"
 
 const Social = ({ input }) => (
-  <ul className="social flex justify-end- text-sm">
+  <ul className="social flex justify-end- ">
     {input.map((li, i) => (
       <li key={i}>
         <a

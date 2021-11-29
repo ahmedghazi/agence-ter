@@ -6,9 +6,8 @@ import PubSub from "pubsub-js"
 import loadable from "@loadable/component"
 import SEO from "../components/seo"
 // import { FiltersWrapper } from "../contexts/FiltersWrapper"
-import ProjectsFilter from "../components/ProjectsFilters"
-// import ProjectsGridMasonry from "../components/ProjectsGridMasonry"
-// import ProjectsTable from "../components/ProjectsTable"
+// import ProjectsFilter from "../components/ProjectsFilters"
+
 const ProjectsGridMasonry = loadable(() =>
   import("../components/ProjectsGridMasonry")
 )
@@ -88,11 +87,8 @@ const PageProjects = ({ data }) => {
         page={true}
       />
 
-      {/* <FiltersWrapper> */}
-
       {isTableView && <ProjectsTable input={projects_featured} />}
       {!isTableView && <ProjectsGridMasonry input={projects_featured} />}
-      {/* </FiltersWrapper> */}
     </div>
   )
 }

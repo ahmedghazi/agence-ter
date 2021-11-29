@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from "react"
 // import Figure from "./Figure"
 import { Link } from "gatsby"
-import { FiltersContext } from "../contexts/FiltersWrapper"
+import useFilters, { FiltersContext } from "../contexts/FiltersWrapper"
 import styled from "styled-components"
 import clsx from "clsx"
 import SvgMaskImage from "./ui/SvgMaskImage"
@@ -48,10 +48,8 @@ const Visuel = styled.div`
 `
 
 const ProjectCard = ({ input }) => {
-  // console.log(input)
   const carRef = useRef()
-  const { filter } = useContext(FiltersContext)
-  const _isFiltering = filter.length > 0
+  const { filter } = useFilters()
 
   const { largeur, marge_interne, offset, item } = input
   const { uid, data } = item.document
@@ -85,12 +83,16 @@ const ProjectCard = ({ input }) => {
   const _getGridSize = () => {
     switch (largeur) {
       case "S":
+        return (1 * 100) / 12
         return (2 * 100) / 12
       case "M":
+        return (2 * 100) / 12
         return (3 * 100) / 12
       case "L":
+        return (4 * 100) / 12
         return (5 * 100) / 12
       default:
+        return (1 * 100) / 12
         return (2 * 100) / 12
     }
   }
@@ -105,7 +107,7 @@ const ProjectCard = ({ input }) => {
     <Card
       ref={carRef}
       className={clsx(
-        "card overflow-hidden",
+        "card overflow-hidden p-sm",
         `card-${largeur.toLowerCase()}`,
         tagsClassString
         // _isFiltering ? "is-filtering" : "",

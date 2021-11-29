@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from "react"
 import clsx from "clsx"
 import styled from "styled-components"
-import { FiltersContext } from "../contexts/FiltersWrapper"
+import useFilters from "../contexts/FiltersWrapper"
+// import { FiltersContext } from "../contexts/FiltersWrapper"
 
 const Wrapper = styled.div``
 
@@ -26,13 +27,14 @@ const DropDownContent = styled.div`
 `
 
 const ProjectsFilter = ({ input }) => {
-  const { filter, dispatch } = useContext(FiltersContext)
-  const [collapsed, setCollapsed] = useState(true)
+  // const { filter, dispatch } = useContext(FiltersContext)
+  const { filter, dispatchFilter } = useFilters()
+  // const [collapsed, setCollapsed] = useState(true)
   // const _toggle = () => setCollapsed(!collapsed)
   const { title, values, color } = input
 
   const _change = (item) => {
-    dispatch(filter === item.uid ? "" : item.uid)
+    dispatchFilter(filter === item.uid ? "" : item.uid)
     setTimeout(() => {
       console.log(color)
       document.querySelector(".grid-view .backdrop").style.backgroundColor =

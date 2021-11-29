@@ -1,19 +1,17 @@
 import clsx from "clsx"
-import React, { useContext, useEffect, useState } from "react"
-import { CategoriesContext } from "../contexts/CategoriesWrapper"
+import React, { useEffect, useState } from "react"
+import useCategories from "../contexts/CategoriesWrapper"
 
 const PostCategory = ({ input }) => {
-  const { category, dispatch } = useContext(CategoriesContext)
+  // const { category, dispatch } = useContext(CategoriesContext)
+  const { category, dispatchCategory } = useCategories()
   const [active, setActive] = useState()
-  // useEffect(() => {
-  //   setActive(category === input.uid)
-  // }, [category])
 
   useEffect(() => {
-    if (active) dispatch(input.uid)
-    else dispatch("")
+    if (active) dispatchCategory(input.uid)
+    else dispatchCategory("")
   }, [active])
-  //dispatch(input.uid)
+
   return (
     <li className="">
       <button

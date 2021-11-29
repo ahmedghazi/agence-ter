@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, createContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./Header"
 import Footer from "./Footer"
 import Cursor from "./ui/Cursor"
 import { FiltersWrapper } from "../contexts/FiltersWrapper"
+import { CategoriesWrapper } from "../contexts/CategoriesWrapper"
 
-const WrapperContext = React.createContext()
+const WrapperContext = createContext()
 
 const query = graphql`
   query {
@@ -76,12 +77,14 @@ const Layout = ({ children, pageContext }) => {
   return (
     <WrapperContext.Provider value={{ settings, template }}>
       <FiltersWrapper>
-        <div id="page">
-          <Header direction={direction} />
-          <main>{children}</main>
-          <Footer />
-          {/* <Cursor color="black" size="20" /> */}
-        </div>
+        <CategoriesWrapper>
+          <div id="page">
+            <Header direction={direction} />
+            <main>{children}</main>
+            <Footer />
+            {/* <Cursor color="black" size="20" /> */}
+          </div>
+        </CategoriesWrapper>
       </FiltersWrapper>
     </WrapperContext.Provider>
   )

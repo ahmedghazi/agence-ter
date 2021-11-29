@@ -5,6 +5,7 @@ import Helmet from "react-helmet"
 import { PrismicPreviewProvider } from "gatsby-plugin-prismic-previews"
 import { Layout } from "./src/components/Layout"
 import { LocaleWrapper } from "./src/contexts/LocaleWrapper"
+
 // import { withPrefix } from 'gatsby'
 // const wrapPageElement = ({ element, props }) => <Layout {...props}>{element}</Layout>
 
