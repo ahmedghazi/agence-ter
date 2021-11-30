@@ -105,7 +105,7 @@ const ProjectCard = ({ input }) => {
     return `translate(${parts[0]}%, ${parts[1]}%)`
   }
 
-  console.log(surface_bold, uid)
+  // console.log(surface_bold, uid)
   return (
     <Card
       ref={carRef}

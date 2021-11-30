@@ -7,6 +7,7 @@ import loadable from "@loadable/component"
 import SEO from "../components/seo"
 // import { FiltersWrapper } from "../contexts/FiltersWrapper"
 // import ProjectsFilter from "../components/ProjectsFilters"
+const ProjectsFilters = loadable(() => import("../components/ProjectsFilters"))
 
 const ProjectsGridMasonry = loadable(() =>
   import("../components/ProjectsGridMasonry")
@@ -59,9 +60,11 @@ const PageProjects = ({ data }) => {
   const [isTableView, setIsTableView] = useState(false)
   useEffect(() => {
     const tokenA = PubSub.subscribe("TABLE_TOGGLE", (e, d) => {
+      // console.log(e)
       setIsTableView(!isTableView)
     })
     const tokenB = PubSub.subscribe("TABLE_HIDE", (e, d) => {
+      // console.log(e)
       setIsTableView(false)
     })
 
@@ -70,10 +73,10 @@ const PageProjects = ({ data }) => {
       PubSub.unsubscribe(tokenB)
     }
   }, [isTableView, setIsTableView])
-
+  // console.log(isTableView)
   return (
     <div
-      className="page-template page-projects p-xs pt-lg md:p-md md:pt-xl"
+      className="page-template page-projects p-xs pt-lg- md:p-md md:pt-0"
       style={
         {
           // background: "#F07E64",
@@ -87,6 +90,15 @@ const PageProjects = ({ data }) => {
         template={`template-projects`}
         page={true}
       />
+
+      <div className="header-filters text-md py-md sticky top-0 mb-lg">
+        <div className="row">
+          <div className="col-md-2 hidden-sm"></div>
+          <div className="col-xs">
+            <ProjectsFilters />
+          </div>
+        </div>
+      </div>
 
       {isTableView && <ProjectsTable input={projects_featured} />}
       {!isTableView && <ProjectsGridMasonry input={projects_featured} />}

@@ -116,13 +116,10 @@ const ProjectsTable = ({ input }) => {
       case "symbole":
         return itemData.pictogramme.url
       case "localisation":
-        return itemData.localisation.document
-          ? itemData.localisation.document.data.title.text
-          : null
+        return itemData.localisation_short
       case "year":
-        return itemData.year.document
-          ? itemData.year.document.data.title.text
-          : null
+        return itemData.year_short
+
       case "theme":
         return itemData.theme.document
           ? itemData.theme.document.data.title.text
@@ -144,9 +141,9 @@ const ProjectsTable = ({ input }) => {
       case "symbole":
         return <img src={columnValue} alt={`picto `} loading="lazy" />
       case "localisation":
-        return <span>{columnValue}</span>
+        return <span>{itemData.localisation_short}</span>
       case "year":
-        return <span>{itemData.year.document.data.title.text}</span>
+        return <span>{itemData.year_short}</span>
       case "theme":
         return <span>{itemData.theme.document.data.title.text}</span>
       default:

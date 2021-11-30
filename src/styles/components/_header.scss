@@ -1,8 +1,8 @@
 header {
   //position: sticky;
-  position: sticky;
-  width: 100%;
-  top: 0;
+  // position: sticky;
+  // width: 100%;
+  // top: 0;
   z-index: 250;
   //margin-bottom: $margeM;
   // @include debugFiletY(73px);
@@ -12,6 +12,9 @@ header {
 
   nav {
     padding-top: 0.35em;
+    &#nav-primary {
+      padding-top: 0.45em;
+    }
   }
   .col-right .flex {
   }

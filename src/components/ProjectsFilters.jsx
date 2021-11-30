@@ -138,7 +138,7 @@ const ProjectsFilters = () => {
   const _handleSwitchView = () => {
     setCollapsed(true)
     PubSub.publish("TABLE_TOGGLE")
-    dispatchFilter("")
+    // dispatchFilter("REMOVE_ALL")
   }
 
   // const _renderFiltersSelected = () => {}
@@ -182,7 +182,7 @@ const ProjectsFilters = () => {
           <ProjectsFilterType key={i} input={item} />
         ))}
 
-        <button onClick={_handleSwitchView} className="font-bold">
+        <button onClick={() => _handleSwitchView()} className="font-bold">
           Liste
         </button>
       </DropDownContent>

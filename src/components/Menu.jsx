@@ -22,7 +22,7 @@ const Menu = () => {
   const { prismicMenu } = useStaticQuery(query)
   // console.log(prismicMenu);
   return (
-    <nav>
+    <nav id="nav-primary">
       {/* <i className="icon-chevron-n"></i>
       <i className="icon-chevron-e"></i>
       <i className="icon-chevron-s"></i>

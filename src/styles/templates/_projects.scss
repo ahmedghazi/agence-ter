@@ -1,6 +1,13 @@
 .template-projects {
+  header {
+    padding-bottom: 0;
+  }
   .page-template {
-    padding-top: 240px;
-    padding-top: var(--space-xxl);
+    // padding-top: 240px;
+    // padding-top: var(--space-xxl);
+    .header-filters {
+      // padding-top: calc(var(--space-md) + 1.3em);
+      top: 1.4em;
+    }
   }
 }

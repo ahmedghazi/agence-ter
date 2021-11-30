@@ -66,12 +66,12 @@ const ProjectsFilterType = ({ input }) => {
     // }
   }
 
-  useEffect(() => {
-    if (filters) {
-      PubSub.publish("TABLE_HIDE")
-      // PubSub.publish("GRID_VIEW_COLOR", color)
-    }
-  }, [filters])
+  // useEffect(() => {
+  //   if (filters.length) {
+  //     PubSub.publish("TABLE_HIDE")
+  //     // PubSub.publish("GRID_VIEW_COLOR", color)
+  //   }
+  // }, [filters])
 
   return (
     <Wrapper className="mb-xs">

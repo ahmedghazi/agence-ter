@@ -33,7 +33,7 @@ const ProjectsGridMasonry = ({ input }) => {
   }, [page])
 
   useEffect(() => {
-    console.log(page)
+    // console.log(page)
     // const contentByPage = _getContentByPage()
     const start = page * PER_PAGE
     const end = start + PER_PAGE
