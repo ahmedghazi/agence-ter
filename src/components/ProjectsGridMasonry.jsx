@@ -111,6 +111,7 @@ const ProjectsGridMasonry = ({ input }) => {
     imagesLoaded(isoRef.current, () => {
       setTimeout(() => {
         isoRef.current.layout()
+        _filterGrid()
         gridRef.current
           .querySelectorAll(".card")
           .forEach((el) => el.classList.add("reveal"))
@@ -122,11 +123,15 @@ const ProjectsGridMasonry = ({ input }) => {
   useEffect(() => {
     if (isoRef.current) {
       //.filtre .filtre .filtre
-      const _filter = filters.length ? _renderFilterClassNames() : "*"
-      console.log(_filter)
-      isoRef.current.arrange({ filter: _filter })
+      _filterGrid()
     }
   }, [filters])
+
+  const _filterGrid = () => {
+    const _filter = filters.length ? _renderFilterClassNames() : "*"
+    console.log(_filter)
+    isoRef.current.arrange({ filter: _filter })
+  }
 
   const _renderFilterClassNames = () => {
     return filters
