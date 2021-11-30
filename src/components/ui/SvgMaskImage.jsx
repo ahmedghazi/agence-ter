@@ -99,15 +99,16 @@ const SvgMaskImage = (props) => {
             width="100%"
             height="100%"
             fill={props.placeHolderColor}
-            className="transition-all"
+            className="transition-all-"
           />
-          <image
+
+          {/* <image
             xlinkHref={props.image}
             width="100%"
             height="100%"
             preserveAspectRatio="xMinYMin slice"
             className="transition-opacity--"
-          ></image>
+          ></image> */}
         </g>
       </svg>
       {props.outline && (
@@ -124,7 +125,7 @@ const SvgMaskImage = (props) => {
             d={path}
             fill="transparent"
             stroke="black"
-            strokeWidth="1"
+            strokeWidth="2"
             strokeLinecap="round"
           ></path>
         </svg>

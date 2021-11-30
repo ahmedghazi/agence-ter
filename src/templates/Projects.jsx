@@ -33,6 +33,7 @@ export const pageQuery = graphql`
           offset
           marge_interne
           largeur
+          surface_bold
           item {
             document {
               ... on PrismicProject {

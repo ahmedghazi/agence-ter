@@ -41,8 +41,10 @@ const Visuel = styled.div`
   image {
     opacity: 0;
   }
-
-  g:hover image {
+  rect {
+    opacity: 0;
+  }
+  g:hover rect {
     opacity: 1;
   }
 `
@@ -51,7 +53,7 @@ const ProjectCard = ({ input }) => {
   const carRef = useRef()
   const { filters } = useFilters()
 
-  const { largeur, marge_interne, offset, item } = input
+  const { largeur, marge_interne, offset, surface_bold, item } = input
   const { uid, data } = item.document
 
   //
@@ -103,7 +105,7 @@ const ProjectCard = ({ input }) => {
     return `translate(${parts[0]}%, ${parts[1]}%)`
   }
 
-  // console.log(data)
+  console.log(surface_bold, uid)
   return (
     <Card
       ref={carRef}
@@ -129,7 +131,8 @@ const ProjectCard = ({ input }) => {
             <SvgMaskImage
               svg={data.pictogramme.url}
               image={data.image.url}
-              placeHolderColor={_isSelected() ? "transparent" : "transparent"}
+              // placeHolderColor={_isSelected() ? "transparent" : "transparent"}
+              placeHolderColor={"#878787"}
               outline={true}
             />
           </Visuel>
@@ -146,7 +149,11 @@ const ProjectCard = ({ input }) => {
                   {data.localisation.document.data.title.text}
                 </div>
               )}
-              <div className="superficie text-lg">{data.superficie}</div>
+              <div
+                className={clsx("superficie", surface_bold ? "text-lg" : "")}
+              >
+                {data.superficie} {surface_bold}
+              </div>
             </div>
           </div>
         </div>

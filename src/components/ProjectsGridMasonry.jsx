@@ -138,11 +138,11 @@ const ProjectsGridMasonry = ({ input }) => {
   // console.log(inputPaged)
   return (
     <section className="grid-view min-h-screen  ">
-      <div
+      {/* <div
         className="backdrop  fixed top-0 left-0 w-screen h-screen transition-all"
         style={{ backgroundColor: "#CCE6C7" }}
         ref={backDropRef}
-      ></div>
+      ></div> */}
       <div className="projects-grid-masonry" ref={gridRef}>
         {inputPaged.map((item, i) => (
           <ProjectCard key={i} input={item} />
