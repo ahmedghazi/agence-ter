@@ -110,6 +110,7 @@ export const query = graphql`
         }
       }
     }
+    localisation_short
     theme {
       document {
         ... on PrismicTagTheme {
@@ -134,6 +135,7 @@ export const query = graphql`
         }
       }
     }
+    year_short
     # image {
     #   gatsbyImageData(width: 1440, placeholder: BLURRED)
     #   url

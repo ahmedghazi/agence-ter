@@ -135,7 +135,7 @@ const ProjectsGridMasonry = ({ input }) => {
 
   const _renderFilterClassNames = () => {
     return filters
-      .map((el) => `.${el.uid} `)
+      .map((el) => `.${el.uid}`)
       .toString()
       .replace(",", "")
   }

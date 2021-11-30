@@ -1,45 +1,46 @@
 .template-project {
   @media all and (min-width: $sm) {
     .page-project {
-      &.is-first {
-        #toggle {
+      &.is-aside-off {
+        aside {
           @include slide(right, 0);
+        }
+        #toggle {
+          @include slide(none, 1);
         }
       }
       #toggle {
+        @include slide(right, 0);
+      }
+      aside {
         @include slide(none, 1);
       }
     }
-    aside,
-    .footer,
-    #toggle {
+    #toggle,
+    aside {
       transition: transform 0.4s ease, opacity 0.4s ease;
     }
-    .sidebar {
-      pointer-events: none;
-      aside {
-        pointer-events: all;
-        background: rgba(255, 255, 255, 0.25);
-        backdrop-filter: blur(15px);
-        padding-top: 185px;
-      }
-    }
     #toggle {
+      transition: transform 0.4s ease, opacity 0.4s ease;
       pointer-events: all;
       position: fixed;
-      right: 0;
+      right: 0px;
       top: 0;
       height: 100vh;
-      // transform: translateX(-100%);
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.5);
       backdrop-filter: blur(15px);
     }
 
-    .footer {
-      &,
-      a {
-        color: white;
-        mix-blend-mode: difference;
+    aside {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(15px);
+      padding-top: 185px;
+      width: 320px;
+      & > .flex.col {
+        height: calc(100vh - 185px);
+      }
+      .content {
+        max-height: calc((100vh - 185px) - 153px);
       }
     }
 

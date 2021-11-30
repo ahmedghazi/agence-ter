@@ -27,7 +27,8 @@ const Label = styled.div`
   transform: translate(-100vw, -100vh);
   transform-origin: center center;
   text-align: center;
-  // background: red;
+  // color: white;
+  // mix-blend-mode: difference;
 `
 
 const SliderCursorPrevNextText = (props) => {

@@ -42,25 +42,30 @@ const PageProject = ({ data }) => {
     texte_fr,
     texte_en,
     theme,
-    localisation,
-    year,
+    // localisation,
+    // year,
+    year_short,
+    localisation_short,
     images,
   } = project.data
+  // console.log(project.data)
 
   const { localeCtx } = useContext(LocaleContext)
 
   const scrollerRef = useRef()
   const [isFirstSlide, setIsFirstSlide] = useState(true)
+  const [asideOff, setAsideOff] = useState()
 
   useEffect(() => {
     _format()
     window.addEventListener("resize", _format)
 
     const token = PubSub.subscribe("SLIDER_CHANGE", (e, d) => {
-      setIsFirstSlide(d === 0)
-      if (d > 0) {
-        PubSub.unsubscribe(token)
-      }
+      // setIsFirstSlide(d === 0)
+      setAsideOff(d > 0)
+      // if (d > 0) {
+      //   PubSub.unsubscribe(token)
+      // }
     })
     return () => {
       window.removeEventListener("resize", _format)
@@ -69,6 +74,7 @@ const PageProject = ({ data }) => {
   }, [])
 
   const _format = () => {
+    return
     if (
       "ontouchstart" in window ||
       navigator.maxTouchPoint ||
@@ -99,11 +105,15 @@ const PageProject = ({ data }) => {
     }
   }
 
+  // const _toggle = () => {
+
+  // }
+
   return (
     <div
       className={clsx(
         "page-template page-project ",
-        isFirstSlide ? "is-first" : ""
+        asideOff ? "is-aside-off" : ""
       )}
     >
       <SEO
@@ -136,84 +146,67 @@ const PageProject = ({ data }) => {
           ))}
         </Slider>
       </div>
-      <div className={clsx("sidebar p-sm pt-0 md:px-md")}>
-        <div className="row ">
-          <div className="col-md-9 hidden-sm"></div>
-          <div className="col-md-3 col-xs">
-            <aside
-              className={clsx(
-                "md:h-screen",
-                !isFirstSlide ? "slide-right" : ""
-              )}
-            >
-              <div className="header md:px-sm md:pb-sm">
-                <SliderPagerNum length={images.length} />
 
-                <h1 className="text-lg md-1e">{title.text}</h1>
-                <ul className="tags  flex py-sm md:py-0">
-                  <li className="pr-xs">{_getTagByName("theme")}</li>
-                  <li className="pr-xs">{_getTagByName("year")}</li>
-                  <li className="pr-xs">{_getTagByName("localisation")}</li>
-                </ul>
-              </div>
+      <aside className="fixed md:h-screen right-md md:py-sm">
+        <div className="flex flex-col ">
+          <div className="header md:px-sm md:pb-sm">
+            <SliderPagerNum length={images.length} />
 
-              <div
-                className="content md:px-sm md:pb-sm scroller md:overflow-y-scroll no-scrollbar flex flex-col font-semibold"
-                ref={scrollerRef}
-              >
-                <div className="texte mb-1e">
-                  <RichText
-                    render={localeCtx === "fr-fr" ? texte_fr.raw : texte_en.raw}
-                  />
-                </div>
-                <div className="texte text-gray mb-1e font-regular">
-                  <RichText
-                    render={localeCtx === "en-gb" ? texte_en.raw : texte_fr.raw}
-                  />
-                </div>
-              </div>
-            </aside>
+            <h1 className="text-lg md-1e">{title.text}</h1>
+            <ul className="tags  flex py-sm md:py-0">
+              <li className="pr-xs">{_getTagByName("theme")}</li>
+              <li className="pr-xs">{year_short}</li>
+              <li className="pr-xs">{localisation_short}</li>
+            </ul>
+          </div>
+
+          <div
+            className="content md:px-sm md:pb-sm md:mb-sm scroller md:overflow-y-scroll no-scrollbar flex flex-col font-semibold"
+            ref={scrollerRef}
+          >
+            <div className="texte mb-1e">
+              <RichText
+                render={localeCtx === "fr-fr" ? texte_fr.raw : texte_en.raw}
+              />
+            </div>
+            <div className="texte text-gray mb-1e font-regular">
+              <RichText
+                render={localeCtx === "en-gb" ? texte_en.raw : texte_fr.raw}
+              />
+            </div>
+          </div>
+
+          <div className="footer md:px-sm">
+            <ul className="flex justify-between projects-related">
+              <li>
+                <Link
+                  to={linkResolver(related.nodes[0])}
+                  className="pr-xs flex items-center hover:text-opacity-80"
+                >
+                  <span className="icon icon-chevron-w pr-xs"></span>
+                  <span>{_localizeText("prevProject")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={linkResolver(related.nodes[1])}
+                  className="pl-xs flex items-center"
+                >
+                  <span>{_localizeText("nextProject")}</span>
+                  <span className="icon icon-chevron-e pl-xs"></span>
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
+      </aside>
 
       <div
         id="toggle"
-        className="p-xs flex flex-col justify-center items-center cursor-pointer text-lg"
-        onClick={() => setIsFirstSlide(true)}
+        className="p-xs flex flex-col justify-center items-center cursor-pointer text-lg fixed right-0"
+        onClick={() => setAsideOff(false)}
       >
         <span className="icon-chevron-w"></span>
-      </div>
-
-      <div
-        className={clsx(
-          "footer md:fixed bottom-0 w-full p-sm md:p-md text-right flex flex-col items-center md:items-end ",
-          isFirstSlide ? "slide-right" : ""
-        )}
-      >
-        <div className="hidden-sm">
-          <SliderPagerNum length={images.length} />
-        </div>
-        <ul className="flex projects-related font-bold text-lg">
-          <li>
-            <Link
-              to={linkResolver(related.nodes[0])}
-              className="pr-xs flex items-center"
-            >
-              <span className="icon icon-chevron-w pr-xs"></span>
-              <span>{_localizeText("prevProject")}</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to={linkResolver(related.nodes[1])}
-              className="pl-xs flex items-center"
-            >
-              <span>{_localizeText("nextProject")}</span>
-              <span className="icon icon-chevron-e pl-xs"></span>
-            </Link>
-          </li>
-        </ul>
       </div>
     </div>
   )
