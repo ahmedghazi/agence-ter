@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import PubSub from "pubsub-js"
 import clsx from "clsx"
 import styled from "styled-components"
-import ProjectsFilter from "./ProjectsFilter"
+import ProjectsFilterType from "./ProjectsFilterType"
 import useFilters from "../contexts/FiltersWrapper"
 import { _localizeText } from "../core/utils"
 
@@ -48,6 +48,9 @@ const query = graphql`
 
 const Wrapper = styled.div`
   z-index: 251;
+  .header {
+    line-height: 1;
+  }
 `
 const DropDownButton = styled.button`
   text-align: left;
@@ -89,10 +92,21 @@ const ProjectsFilters = () => {
 
   const [collapsed, setCollapsed] = useState(true)
 
-  const _getFixedYears = () => {
-    return allPrismicTagYear.nodes.map((el) => ({
-      uid: `tag_year-${el.uid}`,
-      type: "tag_year",
+  // const _getFixedYears = () => {
+  //   return allPrismicTagYear.nodes.map((el) => ({
+  //     uid: `tag_year-${el.uid}`,
+  //     type: "tag_year",
+  //     data: {
+  //       title: {
+  //         text: el.data.title.text,
+  //       },
+  //     },
+  //   }))
+  // }
+  const _getPrefixedTags = (nodes, type) => {
+    return nodes.map((el) => ({
+      uid: `tag_${type}-${el.uid}`,
+      type: `tag_${type}`,
       data: {
         title: {
           text: el.data.title.text,
@@ -104,21 +118,21 @@ const ProjectsFilters = () => {
   const data = [
     {
       title: _localizeText("themes"),
-      values: allPrismicTagTheme.nodes,
+      values: _getPrefixedTags(allPrismicTagTheme.nodes, "theme"),
       color: "#CCE6C7",
     },
     {
       title: _localizeText("localisations"),
-      values: allPrismicTagLocalisation.nodes,
+      values: _getPrefixedTags(allPrismicTagLocalisation.nodes, "localisation"),
       color: "#6B8BC7",
     },
     {
       title: _localizeText("years"),
-      values: _getFixedYears(),
+      values: _getPrefixedTags(allPrismicTagYear.nodes, "year"),
       color: "#F07E64",
     },
   ]
-
+  // console.log(data)
   const _toggle = () => setCollapsed(!collapsed)
 
   const _handleSwitchView = () => {
@@ -127,8 +141,8 @@ const ProjectsFilters = () => {
     dispatchFilter("")
   }
 
-  const _renderFiltersSelected = () => {}
-
+  // const _renderFiltersSelected = () => {}
+  // console.log(filters)
   return (
     <Wrapper>
       {/* <pre>{JSON.stringify(filter)}</pre> */}
@@ -139,7 +153,7 @@ const ProjectsFilters = () => {
           collapsed={collapsed}
         >
           <span className="pr-xs">{_localizeText("filtrer")}</span>
-          <span className="icon-chevron-s  text-sm"></span>
+          <span className="icon-chevron-s absolute top-1/3 text-sm"></span>
         </DropDownButton>
         {filters && (
           <ul className="filters flex">
@@ -149,7 +163,9 @@ const ProjectsFilters = () => {
                   onClick={() =>
                     dispatchFilter({ type: "REMOVE", payload: item })
                   }
-                  className={clsx("cursor-pointer pr-xs hover:font-bold pr-xs")}
+                  className={clsx(
+                    "cursor-pointer pr-xs hover:font-bold button-deletable"
+                  )}
                 >
                   {item.data.title.text}
                 </button>
@@ -163,7 +179,7 @@ const ProjectsFilters = () => {
         className={clsx("drop-down--content", collapsed ? "is-collapsed" : "")}
       >
         {data.map((item, i) => (
-          <ProjectsFilter key={i} input={item} />
+          <ProjectsFilterType key={i} input={item} />
         ))}
 
         <button onClick={_handleSwitchView} className="font-bold">

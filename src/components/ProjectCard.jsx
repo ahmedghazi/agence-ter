@@ -59,9 +59,9 @@ const ProjectCard = ({ input }) => {
     // console.log(tag)
     switch (tag) {
       case "theme":
-        return data.theme?.document.uid
+        return `tag_theme-${data.theme?.document.uid}`
       case "localisation":
-        return data.localisation?.document?.uid
+        return `tag_localisation-${data.localisation?.document?.uid}`
       case "year":
         return `tag_year-${data.year?.document?.uid}`
       default:

@@ -26,7 +26,7 @@ const DropDownContent = styled.div`
   }
 `
 
-const ProjectsFilter = ({ input }) => {
+const ProjectsFilterType = ({ input }) => {
   // const { filter, dispatch } = useContext(FiltersContext)
   const { filters, dispatchFilter } = useFilters()
   // const [collapsed, setCollapsed] = useState(true)
@@ -35,10 +35,10 @@ const ProjectsFilter = ({ input }) => {
 
   const _change = (item) => {
     // dispatchFilter(filter === item.uid ? "" : item.uid)
-    const filterExist = filters.filter((el) => el === item)
+    const filterExist = filters.filter((el) => el.uid === item.uid)
     const filterTypeExist = filters.filter((el) => el.type === item.type)
-    console.log(filterExist, filterTypeExist)
-    if (filterExist.length) {
+    console.log("filterExist", filterExist.length)
+    if (filterExist.length > 0) {
       dispatchFilter({ type: "REMOVE", payload: item })
     } else if (filterTypeExist.length) {
       dispatchFilter({ type: "REMOVE_BY_TYPE", payload: item.type })
@@ -87,7 +87,6 @@ const ProjectsFilter = ({ input }) => {
               )}
             >
               {item.data.title.text}
-              {/* <pre>{JSON.stringify(item)}</pre> */}
             </button>
           </li>
         ))}
@@ -96,4 +95,4 @@ const ProjectsFilter = ({ input }) => {
   )
 }
 
-export default ProjectsFilter
+export default ProjectsFilterType

@@ -8,7 +8,7 @@ function reducer(state, action) {
     case "ADD":
       return [...state, action.payload]
     case "REMOVE":
-      return state.filter((item) => item !== action.payload)
+      return state.filter((item) => item.uid !== action.payload.uid)
     case "REMOVE_BY_TYPE":
       return state.filter((item) => item.type !== action.payload)
     case "REMOVE_ALL":
