@@ -37,20 +37,17 @@ const ProjectsFilterType = ({ input }) => {
     // dispatchFilter(filter === item.uid ? "" : item.uid)
     const filterExist = filters.filter((el) => el.uid === item.uid)
     const filterTypeExist = filters.filter((el) => el.type === item.type)
-    console.log("filterExist", filterExist.length)
+    // console.log("filterExist", filterExist.length)
     if (filterExist.length > 0) {
       dispatchFilter({ type: "REMOVE", payload: item })
     } else if (filterTypeExist.length) {
       dispatchFilter({ type: "REMOVE_BY_TYPE", payload: item.type })
       dispatchFilter({ type: "ADD", payload: item })
+      _updateBackgroundColor()
     } else {
       dispatchFilter({ type: "ADD", payload: item })
+      _updateBackgroundColor()
     }
-    // setTimeout(() => {
-    //   console.log(color)
-    //   document.querySelector(".grid-view .backdrop").style.backgroundColor =
-    //     color
-    // }, 150)
 
     // const isActive = filter === item.uid
     // if (isActive) {
@@ -65,13 +62,22 @@ const ProjectsFilterType = ({ input }) => {
     //   dispatch((f) => [...f, item.uid])
     // }
   }
-
-  // useEffect(() => {
-  //   if (filters.length) {
-  //     PubSub.publish("TABLE_HIDE")
-  //     // PubSub.publish("GRID_VIEW_COLOR", color)
-  //   }
-  // }, [filters])
+  const _updateBackgroundColor = () => {
+    setTimeout(() => {
+      console.log(color)
+      document.querySelector(".grid-view .backdrop").style.backgroundColor =
+        color
+    }, 150)
+  }
+  useEffect(() => {
+    if (filters.length) {
+      // PubSub.publish("TABLE_HIDE")
+      // PubSub.publish("GRID_VIEW_COLOR", color)
+      // console.log(color)
+      // document.querySelector(".grid-view .backdrop").style.backgroundColor =
+      //   color
+    }
+  }, [filters])
 
   return (
     <Wrapper className="mb-xs">

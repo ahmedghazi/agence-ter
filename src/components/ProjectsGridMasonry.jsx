@@ -5,42 +5,37 @@ import imagesLoaded from "imagesloaded"
 import ProjectCard from "./ProjectCard"
 import useFilters from "../contexts/FiltersWrapper"
 // import { FiltersContext } from "../contexts/FiltersWrapper"
+import { useScroll } from "../hooks/useScroll"
 
 const ProjectsGridMasonry = ({ input }) => {
-  //infinite
-  // console.log(MasonryLayout)
-  // const inputPaged =
-  // let PAGE = -1
   let _isotopeRendered = false
   const backDropRef = useRef()
   const gridRef = useRef()
   const isoRef = useRef()
-  // const { filter } = useContext(FiltersContext)
   const { filters } = useFilters()
-
+  // console.log(input.length)
   const [page, setPage] = useState(0)
-  const PER_PAGE = 25
+  const PER_PAGE = 4
   const MAX_PAGE = Math.floor(input.length / PER_PAGE)
   const [inputPaged, setInputPaged] = useState([])
-  const [hasMore, setHasMore] = useState(true)
+  const [hasMore, setHasMore] = useState()
+  const { isBottom } = useScroll()
+  // console.log(isBottom)
+  let _isAppending = false
+  useEffect(() => {
+    // console.log("isBottom", isBottom, "hasMore", hasMore)
+    if (isBottom && hasMore) setPage(page + 1)
+  }, [isBottom, hasMore])
 
   useEffect(() => {
-    // _addContent()
-    window.addEventListener("scroll", _onScroll)
-    // _renderIsotope()
-
-    return () => window.removeEventListener("scroll", _onScroll)
-  }, [page])
-
-  useEffect(() => {
-    // console.log(page)
     // const contentByPage = _getContentByPage()
     const start = page * PER_PAGE
     const end = start + PER_PAGE
+    // console.log("hasMore", page < MAX_PAGE)
     const nextPageContent = input.slice(start, end)
     // console.log(nextPageContent)
-    // setHasMore(data.totalPages > pageToLoad.current);
     setInputPaged((inputPaged) => [...inputPaged, ...nextPageContent])
+    setHasMore(page < MAX_PAGE)
   }, [page])
 
   useEffect(() => {
@@ -55,50 +50,12 @@ const ProjectsGridMasonry = ({ input }) => {
     _isAppending = false
   }, [inputPaged])
 
-  let _prevScrollTop = 0
-  let _isAppending = false
-  const _onScroll = () => {
-    const gap = "ontouchstart" in window || navigator.maxTouchPoints ? 50 : 100
-    const distanceToBottom =
-      document.body.scrollHeight - (window.innerHeight + window.scrollY)
-
-    // console.log(distanceToBottom);
-    if (distanceToBottom <= gap) {
-      _isAppending = true
-      // _getContentByPage()
-      const nextPage = page + 1 < MAX_PAGE ? page + 1 : 0
-      setPage(nextPage)
-    }
-
-    _prevScrollTop = window.pageYOffset
-  }
-
-  // const _getContentByPage = () => {
-  //   // PAGE += 1
-  //   const start = page * PER_PAGE
-  //   const end = start + PER_PAGE
-  //   const nextPage = input.slice(start, end)
-  //   // const cards = _renderCard(nextPage)
-  //   return cards
-  //   console.log(cards)
-  //   return
-  //   gridRef.current.appendChild(cards)
-  //   isoRef.current.appended(elem)
-  //   isoRef.current.layout()
-  // }
-
-  // const _renderCard = (arr) => {
-  //   return arr.map((item, i) => <ProjectCard key={i} input={item} />)
-  // }
-
   const _renderIsotope = () => {
     if (_isotopeRendered) return
 
     const cardS = gridRef.current.querySelector(".card-s")
-
     const columnWidth = cardS ? cardS.getBoundingClientRect().width : 150
-    // const columnWidth = 300
-    // console.log(columnWidth)
+
     isoRef.current = new Isotope(gridRef.current, {
       itemSelector: "article.card",
       // stagger: 30,
@@ -122,32 +79,30 @@ const ProjectsGridMasonry = ({ input }) => {
 
   useEffect(() => {
     if (isoRef.current) {
-      //.filtre .filtre .filtre
-      _filterGrid()
+      inputPaged = _filterGrid()
     }
   }, [filters])
 
   const _filterGrid = () => {
     const _filter = filters.length ? _renderFilterClassNames() : "*"
-    console.log(_filter)
+    // console.log(_filter)
     isoRef.current.arrange({ filter: _filter })
   }
 
-  const _renderFilterClassNames = () => {
-    return filters
+  const _renderFilterClassNames = () =>
+    filters
       .map((el) => `.${el.uid}`)
       .toString()
       .replace(",", "")
-  }
 
   // console.log(inputPaged)
   return (
     <section className="grid-view min-h-screen  ">
-      {/* <div
-        className="backdrop  fixed top-0 left-0 w-screen h-screen transition-all"
+      <div
+        className="backdrop fixed top-0 left-0 w-screen h-screen transition-all z-0"
         style={{ backgroundColor: "#CCE6C7" }}
         ref={backDropRef}
-      ></div> */}
+      ></div>
       <div className="projects-grid-masonry" ref={gridRef}>
         {inputPaged.map((item, i) => (
           <ProjectCard key={i} input={item} />

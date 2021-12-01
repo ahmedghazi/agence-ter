@@ -110,7 +110,7 @@ const ProjectCard = ({ input }) => {
     <Card
       ref={carRef}
       className={clsx(
-        "card overflow-hidden p-sm",
+        "card p-sm",
         `card-${largeur.toLowerCase()}`,
         tagsClassString
         // _isFiltering ? "is-filtering" : "",

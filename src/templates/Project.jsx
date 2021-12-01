@@ -147,7 +147,7 @@ const PageProject = ({ data }) => {
         </Slider>
       </div>
 
-      <aside className="fixed md:h-screen right-md md:py-sm">
+      <aside className="md:fixed md:h-screen right-md p-xs md:px-0 md:py-sm">
         <div className="flex flex-col ">
           <div className="header md:px-sm md:pb-sm">
             <SliderPagerNum length={images.length} />
@@ -203,7 +203,7 @@ const PageProject = ({ data }) => {
 
       <div
         id="toggle"
-        className="p-xs flex flex-col justify-center items-center cursor-pointer text-lg fixed right-0"
+        className="p-xs flex flex-col justify-center items-center cursor-pointer text-lg fixed right-0 hidden-sm"
         onClick={() => setAsideOff(false)}
       >
         <span className="icon-chevron-w"></span>

@@ -91,7 +91,7 @@ const PageProjects = ({ data }) => {
         page={true}
       />
 
-      <div className="header-filters text-md py-md sticky top-0 mb-lg">
+      <div className="header-filters text-md py-md sticky top-0 mb-lg z-10">
         <div className="row">
           <div className="col-md-2 hidden-sm"></div>
           <div className="col-xs">
