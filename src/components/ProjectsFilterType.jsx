@@ -82,13 +82,13 @@ const ProjectsFilterType = ({ input }) => {
   return (
     <Wrapper className="mb-xs">
       <div className="label font-bold">{title}</div>
-      <ul className="flex">
+      <ul className="flex flex-wrap">
         {values.map((item, i) => (
           <li key={i}>
             <button
               onClick={() => _change(item)}
               className={clsx(
-                "cursor-pointer pr-xs hover:font-bold"
+                "cursor-pointer pr-xs hover:font-bold whitespace-nowrap"
                 // filter === item.uid ? "font-bold" : ""
               )}
             >

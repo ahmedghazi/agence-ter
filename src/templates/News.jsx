@@ -69,7 +69,7 @@ const News = ({ data }) => {
   // const { categories } = useContext(CategoriesContext)
 
   return (
-    <div className="page-template page-news px-xs md:px-md p-xs- pt-lg- md:p-md- md:pt-xl- ">
+    <div className="page-template page-news px-xs md:px-md ">
       <SEO
         pageTitle={meta_title.text}
         pageDescription={meta_description.text}
@@ -78,7 +78,7 @@ const News = ({ data }) => {
         page={true}
       />
 
-      <div className="header-filters text-md py-md sticky top-0 mb-lg z-10">
+      <div className="header-filters text-md py-sm md:py-md sticky top-0 md:mb-lg z-10">
         <div className="row">
           <div className="col-md-2 hidden-sm"></div>
           <div className="col-xs">

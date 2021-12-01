@@ -20,24 +20,25 @@ const ProjectsGridMasonry = ({ input }) => {
   const [inputPaged, setInputPaged] = useState([])
   const [hasMore, setHasMore] = useState()
   const { isBottom } = useScroll()
-  // console.log(isBottom)
   let _isAppending = false
+  console.log("isBottom", isBottom)
+  //if is at bottom and has more content, set next page
   useEffect(() => {
-    // console.log("isBottom", isBottom, "hasMore", hasMore)
     if (isBottom && hasMore) setPage(page + 1)
   }, [isBottom, hasMore])
 
+  //on page change pull new content
   useEffect(() => {
-    // const contentByPage = _getContentByPage()
     const start = page * PER_PAGE
     const end = start + PER_PAGE
-    // console.log("hasMore", page < MAX_PAGE)
     const nextPageContent = input.slice(start, end)
-    // console.log(nextPageContent)
+
     setInputPaged((inputPaged) => [...inputPaged, ...nextPageContent])
+
     setHasMore(page < MAX_PAGE)
   }, [page])
 
+  //new content added, render it
   useEffect(() => {
     // console.log(inputPaged)
     if (!inputPaged.length) return
@@ -99,7 +100,7 @@ const ProjectsGridMasonry = ({ input }) => {
   return (
     <section className="grid-view min-h-screen  ">
       <div
-        className="backdrop fixed top-0 left-0 w-screen h-screen transition-all z-0"
+        className="backdrop fixed top-0 left-0 right-0 bottom-0 w-screen h-screen h-app transition-all z-0"
         style={{ backgroundColor: "#CCE6C7" }}
         ref={backDropRef}
       ></div>

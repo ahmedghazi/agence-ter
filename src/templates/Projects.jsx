@@ -76,7 +76,7 @@ const PageProjects = ({ data }) => {
   // console.log(isTableView)
   return (
     <div
-      className="page-template page-projects p-xs pt-lg- md:p-md md:pt-0"
+      className="page-template page-projects px-xs md:p-md md:pt-0"
       style={
         {
           // background: "#F07E64",
@@ -91,7 +91,7 @@ const PageProjects = ({ data }) => {
         page={true}
       />
 
-      <div className="header-filters text-md py-md sticky top-0 mb-lg z-10">
+      <div className="header-filters text-md py-sm md:py-md sticky top-0 md:mb-lg z-10">
         <div className="row">
           <div className="col-md-2 hidden-sm"></div>
           <div className="col-xs">

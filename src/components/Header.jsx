@@ -10,15 +10,14 @@ import Social from "./ui/Social"
 import LocaleSwitcher from "./ui/LocaleSwitcher"
 // import ProjectsFilter from "./ProjectsFilters"
 
-const Header = ({ direction }) => {
+const Header = () => {
   const _WrapperContext = useContext(WrapperContext)
   const { settings, template } = _WrapperContext
   // console.log(template)
   return (
     <header
       className={clsx(
-        "p-xs md:p-md fixed- w-full font-bold text-sm md:text-lg",
-        direction
+        "p-xs md:p-md fixed- w-full font-bold text-sm md:text-lg"
       )}
     >
       <div className="row middle-xs">

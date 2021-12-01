@@ -33,7 +33,7 @@ const Card = styled.article`
   }
 
   @media all and (max-width: 768px) {
-    min-width: 50%;
+    // min-width: 35vw;
   }
 `
 
@@ -110,7 +110,7 @@ const ProjectCard = ({ input }) => {
     <Card
       ref={carRef}
       className={clsx(
-        "card p-sm",
+        "card p-xs md:p-sm",
         `card-${largeur.toLowerCase()}`,
         tagsClassString
         // _isFiltering ? "is-filtering" : "",

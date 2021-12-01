@@ -41,6 +41,9 @@ header {
   }
   .header-filters {
     top: 1.4em;
+    @media all and (max-width: $sm) {
+      top: calc(var(--space-xs) * -1);
+    }
   }
 }
 

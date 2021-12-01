@@ -22,7 +22,7 @@ const PostCategories = () => {
 
   // console.log(allPrismicCategory)
   return (
-    <ul className="flex mb-lg">
+    <ul className="flex md:mb-lg">
       {allPrismicCategory.nodes.map((li, i) => (
         <PostCategory key={i} input={li} />
       ))}

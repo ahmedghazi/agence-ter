@@ -20,12 +20,12 @@ const Layout = ({ children, pageContext }) => {
   const { settings } = useStaticQuery(query)
   const { template } = pageContext
   // console.log(pageContext)
-  const [direction, setDirection] = useState()
+  // const [direction, setDirection] = useState()
 
   useEffect(() => {
-    _onScroll()
+    // _onScroll()
     _format()
-    window.addEventListener("scroll", _onScroll)
+    // window.addEventListener("scroll", _onScroll)
     window.addEventListener("resize", _format)
     const token = PubSub.subscribe("ROUTE_UPDATE", () => {
       _format()
@@ -33,24 +33,24 @@ const Layout = ({ children, pageContext }) => {
     // if (window.innerWidth < 1080 && "ontouchstart" in window) setIsMobile(true)
 
     return () => {
-      window.removeEventListener("scroll", _onScroll)
+      // window.removeEventListener("scroll", _onScroll)
       window.removeEventListener("resize", _format)
       PubSub.unsubscribe(token)
     }
   }, [])
 
-  let _prevScrollTop = 0
-  const _onScroll = () => {
-    window.pageYOffset > _prevScrollTop
-      ? setDirection("down")
-      : setDirection("up")
+  // let _prevScrollTop = 0
+  // const _onScroll = () => {
+  //   window.pageYOffset > _prevScrollTop
+  //     ? setDirection("down")
+  //     : setDirection("up")
 
-    if (window.pageYOffset === 0) {
-      setDirection("")
-    }
+  //   if (window.pageYOffset === 0) {
+  //     setDirection("")
+  //   }
 
-    _prevScrollTop = window.pageYOffset
-  }
+  //   _prevScrollTop = window.pageYOffset
+  // }
   const _format = () => {
     // console.log("format");
     // const ww = window.innerWidth;
@@ -83,7 +83,7 @@ const Layout = ({ children, pageContext }) => {
       <FiltersWrapper>
         <CategoriesWrapper>
           <div id="page">
-            <Header direction={direction} />
+            <Header />
             <main>{children}</main>
             <Footer />
             {/* <Cursor color="black" size="20" /> */}
