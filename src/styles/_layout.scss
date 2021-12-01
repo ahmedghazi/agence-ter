@@ -17,7 +17,7 @@ main {
   position: relative;
 }
 .h-main {
-  height: calc(100vh - var(--headerHeight));
+  height: calc(100vh - var(--header-height));
 }
 
 .bg-gray {
@@ -25,6 +25,9 @@ main {
 }
 .mb-1e {
   margin-bottom: 1em;
+}
+.pt-header-height {
+  padding-top: var(--header-height);
 }
 @media all and (min-width: $md) {
 }

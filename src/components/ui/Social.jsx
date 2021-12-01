@@ -8,7 +8,7 @@ const Social = ({ input }) => (
           href={li.url.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="pl-sm"
+          className={i < input.length - 1 ? "pr-sm" : ""}
         >
           <span
             className={`icon-${li.label.text}`}

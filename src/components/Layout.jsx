@@ -27,11 +27,15 @@ const Layout = ({ children, pageContext }) => {
     _format()
     window.addEventListener("scroll", _onScroll)
     window.addEventListener("resize", _format)
+    const token = PubSub.subscribe("ROUTE_UPDATE", () => {
+      _format()
+    })
     // if (window.innerWidth < 1080 && "ontouchstart" in window) setIsMobile(true)
 
     return () => {
       window.removeEventListener("scroll", _onScroll)
       window.removeEventListener("resize", _format)
+      PubSub.unsubscribe(token)
     }
   }, [])
 

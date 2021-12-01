@@ -3,6 +3,7 @@ import React from "react"
 import Helmet from "react-helmet"
 // import { PreviewStoreProvider } from "gatsby-source-prismic";
 import { PrismicPreviewProvider } from "gatsby-plugin-prismic-previews"
+import PubSub from "pubsub-js"
 import { Layout } from "./src/components/Layout"
 import { LocaleWrapper } from "./src/contexts/LocaleWrapper"
 
@@ -44,4 +45,9 @@ const _onClientEntry = () => {
   }
 }
 
-export { _wrapRootElement, _wrapPageElement, _onClientEntry }
+const _onRouteUpdate = ({ location }) => {
+  //console.log('new pathname', location.pathname)
+  PubSub.publish("ROUTE_UPDATE")
+}
+
+export { _wrapRootElement, _wrapPageElement, _onClientEntry, _onRouteUpdate }

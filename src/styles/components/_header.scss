@@ -33,6 +33,17 @@ header {
   }
 }
 
+.template-projects,
+.template-news {
+  header {
+    padding-bottom: 0;
+    position: relative;
+  }
+  .header-filters {
+    top: 1.4em;
+  }
+}
+
 // .downscroll {
 //   header {
 //     .inner {

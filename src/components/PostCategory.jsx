@@ -1,6 +1,7 @@
 import clsx from "clsx"
 import React, { useEffect, useState } from "react"
 import useCategories from "../contexts/CategoriesWrapper"
+import { _localizeText } from "../core/utils"
 
 const PostCategory = ({ input }) => {
   // const { category, dispatch } = useContext(CategoriesContext)
@@ -15,10 +16,10 @@ const PostCategory = ({ input }) => {
   return (
     <li className="">
       <button
-        className={clsx("outline pr-xs", active ? "is-active" : "")}
+        className={clsx("outline pr-xs capitalize", active ? "is-active" : "")}
         onClick={() => setActive(!active)}
       >
-        {input.data.title.text}
+        {_localizeText(input.uid)}
       </button>
     </li>
   )
