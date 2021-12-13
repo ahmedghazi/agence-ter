@@ -113,7 +113,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {
-        // printRejected: true,
+        printRejected: true,
         develop: true,
         tailwind: true,
         // printSummary: true,
@@ -122,6 +122,7 @@ module.exports = {
           `index.scss`,
           `flexboxgrid/`,
           `src/components/ui/slick-slider/slick.css`,
+          `gatsby-plugin-prismic-previews/dist/styles.css`,
         ],
         // purgeCSSOptions: {
         //   content: [path.join(process.cwd(), `src/**/*.{js,jsx}`)]
