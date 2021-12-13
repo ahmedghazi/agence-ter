@@ -138,7 +138,9 @@ const ProjectsFilters = () => {
   const _handleSwitchView = () => {
     setCollapsed(true)
     PubSub.publish("TABLE_TOGGLE")
-    // dispatchFilter("REMOVE_ALL")
+    setTimeout(() => {
+      dispatchFilter({ type: "REMOVE_ALL" })
+    }, 150)
   }
 
   // const _renderFiltersSelected = () => {}

@@ -4,6 +4,7 @@ const FiltersContext = createContext([{}, () => {}])
 const initialFiltersState = []
 
 function reducer(state, action) {
+  console.log(action)
   switch (action.type) {
     case "ADD":
       return [...state, action.payload]

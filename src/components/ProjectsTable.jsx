@@ -33,9 +33,12 @@ const Td = styled.td`
     display: block;
     // padding: 5px 0 4px;
   }
+  &.col-symbole {
+    width: 120px;
+  }
   img {
     height: 46px;
-    // max-width: 66px;
+    max-width: 100px;
   }
 
   @media all and (max-width: 768px) {

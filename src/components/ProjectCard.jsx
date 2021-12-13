@@ -153,7 +153,10 @@ const ProjectCard = ({ input }) => {
                 </div>
               )}
               <div
-                className={clsx("superficie", surface_bold ? "text-lg" : "")}
+                className={clsx(
+                  "superficie",
+                  surface_bold ? "text-lg font-bold" : ""
+                )}
               >
                 {data.superficie} {surface_bold}
               </div>
