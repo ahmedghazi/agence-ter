@@ -152,7 +152,7 @@ const ProjectsFilters = () => {
           onClick={_toggle}
           collapsed={collapsed}
         >
-          <span className="pr-xs">{_localizeText("filtrer")}</span>
+          <span className="pr-xs font-bold">{_localizeText("filtre")}</span>
           <span className="icon-chevron-s absolute top-1/3 text-sm"></span>
         </DropDownButton>
         {filters && (
