@@ -48,13 +48,13 @@ const Post = ({ input }) => {
             >
               <div className="col-xs">
                 <div className="mb-sm">
-                  <h2 className="font-bold">{title.text}</h2>
+                  <h2 className="font-bold lowercase">{title.text}</h2>
                   <RichText render={texte_fr.raw} />
                 </div>
               </div>
               <div className="col-xs">
                 <div className="mb-sm">
-                  <h2 className="font-bold">{title.text}</h2>
+                  <h2 className="font-bold lowercase">{title.text}</h2>
                   <RichText render={texte_en.raw} />
                 </div>
               </div>
