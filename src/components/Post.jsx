@@ -40,7 +40,7 @@ const Post = ({ input }) => {
           </div>
           <div className="col-md-1 hidden-sm"></div>
           <div className="col-xs">
-            <div className="category capitalize">
+            <div className="category capitalize italic">
               {_localizeText(postCategoryUID)}
             </div>
             <div
