@@ -23,10 +23,6 @@ const Menu = () => {
   // console.log(prismicMenu);
   return (
     <nav id="nav-primary">
-      {/* <i className="icon-chevron-n"></i>
-      <i className="icon-chevron-e"></i>
-      <i className="icon-chevron-s"></i>
-      <i className="icon-chevron-w"></i> */}
       <ul className="flex  uppercase">
         {prismicMenu.data.menu_items.map((li, i) => (
           <li key={i} className="menu-item">

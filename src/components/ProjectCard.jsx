@@ -8,11 +8,11 @@ import SvgMaskImage from "./ui/SvgMaskImage"
 // import { _fixYears } from "../core/utils"
 
 const Card = styled.article`
-  transition: opacity 0.2s ease;
-  opacity: 0;
-  &.reveal {
-    opacity: 1;
-  }
+  // transition: opacity 0.2s ease;
+  // opacity: 0;
+  // &.reveal {
+  //   opacity: 1;
+  // }
   &.is-filtering {
     &.is-selected {
       // color: red;
@@ -23,9 +23,6 @@ const Card = styled.article`
     }
   }
 
-  .inner {
-    // padding: var(--space-md);
-  }
   .h2,
   .location,
   .superficie {
@@ -38,15 +35,24 @@ const Card = styled.article`
 `
 
 const Visuel = styled.div`
-  image {
-    opacity: 0;
+  &:hover {
+    .outline {
+      opacity: 0;
+    }
+    rect {
+      opacity: 0.5;
+    }
   }
+
+  // image {
+  //   opacity: 0;
+  // }
   rect {
     opacity: 0;
   }
-  g:hover rect {
-    opacity: 1;
-  }
+  // g:hover rect {
+  //   // opacity: 0.5;
+  // }
 `
 
 const ProjectCard = ({ input }) => {
@@ -77,25 +83,21 @@ const ProjectCard = ({ input }) => {
   const tagsClassString = tags.toString().replace(new RegExp(",", "g"), " ")
   // console.log(tagsClassString)
 
-  const _isSelected = () => {
-    return true
-    const isSelected = tags.find((elem) => elem === filter)
-    return isSelected ? "is-selected" : "is-not-selected"
-  }
+  // const _isSelected = () => {
+  //   return true
+  //   const isSelected = tags.find((elem) => elem === filter)
+  //   return isSelected ? "is-selected" : "is-not-selected"
+  // }
 
   const _getGridSize = () => {
     switch (largeur) {
       case "S":
         return (2 * 100) / 12
-        return (2 * 100) / 12
       case "M":
-        return (3 * 100) / 12
         return (3 * 100) / 12
       case "L":
         return (4 * 100) / 12
-        return (5 * 100) / 12
       default:
-        return (2 * 100) / 12
         return (2 * 100) / 12
     }
   }
@@ -132,7 +134,8 @@ const ProjectCard = ({ input }) => {
               svg={data.pictogramme.url}
               image={data.image.url}
               // placeHolderColor={_isSelected() ? "transparent" : "transparent"}
-              placeHolderColor={"#878787"}
+              // placeHolderColor={"#878787"}
+              placeHolderColor={"#ffffff"}
               outline={true}
             />
           </Visuel>

@@ -15,13 +15,14 @@ const ProjectsGridMasonry = ({ input }) => {
   const { filters } = useFilters()
   // console.log(input.length)
   const [page, setPage] = useState(0)
-  const PER_PAGE = 4
+  const PER_PAGE = 104
   const MAX_PAGE = Math.floor(input.length / PER_PAGE)
   const [inputPaged, setInputPaged] = useState([])
   const [hasMore, setHasMore] = useState()
   const { isBottom } = useScroll()
   let _isAppending = false
-  console.log("isBottom", isBottom)
+  // console.log("isBottom", isBottom)
+
   //if is at bottom and has more content, set next page
   useEffect(() => {
     if (isBottom && hasMore) setPage(page + 1)
@@ -32,7 +33,7 @@ const ProjectsGridMasonry = ({ input }) => {
     const start = page * PER_PAGE
     const end = start + PER_PAGE
     const nextPageContent = input.slice(start, end)
-
+    console.log(filters)
     setInputPaged((inputPaged) => [...inputPaged, ...nextPageContent])
 
     setHasMore(page < MAX_PAGE)
@@ -80,7 +81,8 @@ const ProjectsGridMasonry = ({ input }) => {
 
   useEffect(() => {
     if (isoRef.current) {
-      inputPaged = _filterGrid()
+      // inputPaged = _filterGrid()
+      _filterGrid()
     }
   }, [filters])
 

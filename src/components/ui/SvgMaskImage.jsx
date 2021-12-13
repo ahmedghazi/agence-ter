@@ -99,7 +99,7 @@ const SvgMaskImage = (props) => {
             width="100%"
             height="100%"
             fill={props.placeHolderColor}
-            className="transition-all-"
+            fillOpacity="50%"
           />
 
           {/* <image
