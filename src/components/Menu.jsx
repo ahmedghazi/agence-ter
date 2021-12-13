@@ -28,7 +28,7 @@ const Menu = () => {
           <li key={i} className="menu-item">
             <Link
               to={`/${li.item.uid}`}
-              className="pr-xxs md:pr-sm hover:text-gray"
+              className="pr-xxs md:pr-sm hover:text-white"
             >
               {li.title.text}
             </Link>

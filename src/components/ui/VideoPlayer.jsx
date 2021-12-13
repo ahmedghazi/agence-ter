@@ -1,12 +1,13 @@
-import React, {useState, useRef} from 'react';
-import ReactPlayer from 'react-player'
+import React, { useState, useRef } from "react"
+import ReactPlayer from "react-player"
 
-const VideoPlayer = ({input}) => {
+const VideoPlayer = ({ input }) => {
+  const { url, poster } = input
   const [status, setStatus] = useState({
     mute: true,
-    playing: true
+    playing: true,
   })
-// console.log(input)
+  // console.log(input)
   const player = useRef()
 
   const config = {
@@ -22,24 +23,24 @@ const VideoPlayer = ({input}) => {
         modestbranding: 1,
         showinfo: 0,
         rel: 0,
-        origin: 'https://tara-polar.netlify.app/'
-      }
+        origin: "https://agence-ter.netlify.app",
+      },
     },
     vimeo: {
       title: false,
       background: true,
-      controls: false
-    }
+      controls: false,
+    },
   }
 
   const _onReady = () => {}
   const _onEnded = () => {}
-  
+
   return (
     <div className="video-player " ref={player}>
       <ReactPlayer
-        className={`player w100 `}
-        url={input}
+        className={`player w-full h-full`}
+        url={url}
         // url="https://vimeo.com/78429727"
         // playing={status.playing}
         playing={status.playing}
@@ -53,7 +54,7 @@ const VideoPlayer = ({input}) => {
         onEnded={_onEnded}
       />
     </div>
-  );
-};
+  )
+}
 
-export default VideoPlayer;
+export default VideoPlayer

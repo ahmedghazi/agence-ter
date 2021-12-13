@@ -1,4 +1,8 @@
 .template-home {
+  video {
+    min-height: 100vh;
+    object-fit: cover;
+  }
 }
 
 @media all and (max-width: $sm) {

@@ -4,8 +4,9 @@ import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
 import { repositoryConfigs } from "../core/prismicPreviews"
 import SEO from "../components/seo"
 import Hero from "../components/ui/Hero"
-import NewsSlider from "../components/slices/NewsSlider"
+import NewsMarquee from "../components/slices/NewsMarquee"
 import Philosophie from "../components/slices/Philosophie"
+import VideoPlayer from "../components/ui/VideoPlayer"
 
 export const query = graphql`
   query {
@@ -23,45 +24,15 @@ export const query = graphql`
         }
 
         image {
-          gatsbyImageData(width: 1500, placeholder: BLURRED)
+          # gatsbyImageData(width: 1500, placeholder: BLURRED)
           url
-          alt
+          # alt
         }
-
+        video {
+          url
+        }
         body {
-          # ... on PrismicHomeDataBodyNews {
-          #   slice_type
-          #   primary {
-          #     title {
-          #       text
-          #     }
-          #   }
-          #   items {
-          #     item {
-          #       document {
-          #         ... on PrismicNews {
-          #           id
-          #           data {
-          #             title {
-          #               text
-          #             }
-          #             texte_fr {
-          #               raw
-          #             }
-          #             texte_en {
-          #               raw
-          #             }
-          #             image {
-          #               gatsbyImageData(width: 1500, placeholder: BLURRED)
-          #               alt
-          #             }
-          #           }
-          #         }
-          #       }
-          #     }
-          #   }
-          # }
-          ... on PrismicHomeDataBodyPhilosophie {
+          ... on PrismicHomeDataBodyNews {
             slice_type
             primary {
               title {
@@ -69,21 +40,51 @@ export const query = graphql`
               }
             }
             items {
-              title {
-                text
-              }
-              texte_fr {
-                raw
-              }
-              texte_en {
-                raw
-              }
-              image {
-                gatsbyImageData(width: 1500, placeholder: BLURRED)
-                alt
+              item {
+                document {
+                  ... on PrismicPost {
+                    uid
+                    type
+                    data {
+                      title {
+                        text
+                      }
+                      texte_fr {
+                        text
+                      }
+                      texte_en {
+                        text
+                      }
+                    }
+                  }
+                }
               }
             }
           }
+          # ... on PrismicHomeDataBodyPhilosophie {
+          #   slice_type
+          #   primary {
+          #     title {
+          #       text
+          #     }
+          #   }
+          #   items {
+          #     title {
+          #       text
+          #     }
+          #     texte_fr {
+          #       raw
+          #     }
+          #     texte_en {
+          #       raw
+          #     }
+          #     image {
+          #       gatsbyImageData(width: 1500, placeholder: BLURRED)
+          #       alt
+          #     }
+
+          #   }
+          # }
         }
       }
     }
@@ -91,16 +92,16 @@ export const query = graphql`
 `
 
 const Home = ({ data }) => {
-  const { meta_title, meta_description, meta_image, image, body } =
+  const { meta_title, meta_description, meta_image, video, image, body } =
     data.prismicHome.data
 
   const slices = body.map((slice, i) => {
     // console.log(slice.slice_type);
     switch (slice.slice_type) {
       case "news":
-        return <NewsSlider key={i} input={slice} />
-      case "philosophie":
-        return <Philosophie key={i} input={slice} />
+        return <NewsMarquee key={i} input={slice} />
+      // case "philosophie":
+      //   return <Philosophie key={i} input={slice} />
 
       default:
         return null
@@ -116,7 +117,10 @@ const Home = ({ data }) => {
         template={`template-home`}
         page={false}
       />
-      <Hero input={image} />
+      {/* <Hero input={image} /> */}
+      <div className="w-screen h-screen">
+        <VideoPlayer input={{ url: video.url, poster: image.url }} />
+      </div>
       {slices}
     </div>
   )

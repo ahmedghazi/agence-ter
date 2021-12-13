@@ -21,6 +21,13 @@
         "label": "Image"
       }
     },
+    "video": {
+      "type": "Link",
+      "config": {
+        "select": "media",
+        "label": "Video"
+      }
+    },
     "body": {
       "type": "Slices",
       "fieldset": "Slice zone",
@@ -47,7 +54,7 @@
                 "type": "Link",
                 "config": {
                   "select": "document",
-                  "customtypes": ["news"],
+                  "customtypes": ["post"],
                   "label": "Item"
                 }
               }

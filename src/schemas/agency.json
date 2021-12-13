@@ -16,14 +16,14 @@
     "texte_fr": {
       "type": "StructuredText",
       "config": {
-        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
         "label": "Texte FR"
       }
     },
     "texte_en": {
       "type": "StructuredText",
       "config": {
-        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
         "label": "Texte EN"
       }
     },
@@ -106,6 +106,20 @@
                   "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
                   "allowTargetBlank": true,
                   "label": "Bio en"
+                }
+              },
+              "bureau": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Paris",
+                    "Shanghai",
+                    "Karlsruhe",
+                    "Los Angeles",
+                    "Barcelone"
+                  ],
+                  "default_value": "Paris",
+                  "label": "Bureau"
                 }
               }
             }
