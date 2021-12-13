@@ -5,6 +5,7 @@ header {
   z-index: 250;
 
   // @include debugFiletY(73px);
+  // @include debugFiletX(calc(100vw - (320px + var(--space-md))));
   .md\:fixed {
     pointer-events: none;
     a,
@@ -22,7 +23,17 @@ header {
   .social {
     font-size: 0.8em;
   }
-
+  @media all and (min-width: $sm) {
+    .col-right {
+      width: calc(320px + (var(--gutter) * 2));
+      padding: 0 var(--gutter);
+      nav.flex {
+        padding: 0 var(--space-sm);
+        padding-top: 0.35em;
+        justify-content: space-between;
+      }
+    }
+  }
   @media all and (max-width: $sm) {
     img {
       max-width: 106px;

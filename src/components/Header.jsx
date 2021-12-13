@@ -49,7 +49,7 @@ const Header = () => {
               <LogoSvg />
             </Link>
           </div>
-          <div className="col-md-3 hidden-sm col-right">
+          <div className="col-md-3- col hidden-sm col-right">
             <nav className="flex justify-end items-center font-light">
               <Social input={settings.data.links} />
               <Link to="/contacts" className="btn outline mx-sm">
