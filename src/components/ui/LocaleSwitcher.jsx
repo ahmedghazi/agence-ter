@@ -12,8 +12,10 @@ const LocaleSwitcher = () => {
       (item) => item.locale !== localeCtx
     )
     return alternateLang.map((item, i) => (
-      <li key={`locale-${i.toString()}`} className={``}>
-        <button onClick={() => dispatch(item.locale)}>{item.label}</button>
+      <li key={`locale-${i.toString()}`}>
+        <button onClick={() => dispatch(item.locale)} className={`lowercase`}>
+          {item.label}
+        </button>
       </li>
     ))
   }
