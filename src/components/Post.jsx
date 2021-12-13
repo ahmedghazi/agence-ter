@@ -34,7 +34,13 @@ const Post = ({ input }) => {
           <div className="col-md-2 col-xs">
             {image && image.url && (
               <figure className="">
-                <GatsbyImage image={getImage(image)} alt={image.alt || ""} />
+                <GatsbyImage
+                  image={getImage(image)}
+                  alt={image.alt || ""}
+                  style={{
+                    aspectRatio: "1/1",
+                  }}
+                />
               </figure>
             )}
           </div>
