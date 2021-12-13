@@ -10,7 +10,7 @@
         }
       }
       #toggle {
-        @include slide(right, 0);
+        // @include slide(right, 0);
       }
       aside {
         @include slide(none, 1);

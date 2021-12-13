@@ -79,7 +79,9 @@ const SliderCursorPrevNextText = (props) => {
     >
       <div>
         <Label className="label" style={positions} ref={refLabel}>
-          {label}
+          {/* {label} */}
+          {label === "prev" && <i className="icon-chevron-w"></i>}
+          {label === "next" && <i className="icon-chevron-e"></i>}
         </Label>
       </div>
     </Container>

@@ -203,10 +203,11 @@ const PageProject = ({ data }) => {
 
       <div
         id="toggle"
-        className="p-xs flex flex-col justify-center items-center cursor-pointer text-lg fixed right-0 hidden-sm"
-        onClick={() => setAsideOff(false)}
+        className="p-xs flex flex-col justify-center items-center cursor-pointer text-lg fixed right-0 hidden-sm w-md "
+        onClick={() => setAsideOff(!asideOff)}
       >
-        <span className="icon-chevron-w"></span>
+        {asideOff && <span className="icon-chevron-w"></span>}
+        {!asideOff && <span className="icon-chevron-e"></span>}
       </div>
     </div>
   )
