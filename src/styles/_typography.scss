@@ -66,6 +66,9 @@ p {
   &:empty {
     display: none;
   }
+  .text-light {
+    font-weight: 300;
+  }
 }
 // .texte {
 //   p {

@@ -18,7 +18,14 @@
       "config": {
         "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item",
         "allowTargetBlank": true,
-        "label": "Texte FR"
+        "label": "Texte FR",
+        "labels": [
+          "text-light",
+          "text-normal",
+          "text-medium",
+          "text-semibold",
+          "text-bold"
+        ]
       }
     },
     "texte_en": {
@@ -26,7 +33,14 @@
       "config": {
         "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
         "allowTargetBlank": true,
-        "label": "Texte EN"
+        "label": "Texte EN",
+        "labels": [
+          "text-light",
+          "text-normal",
+          "text-medium",
+          "text-semibold",
+          "text-bold"
+        ]
       }
     },
     "image": {
