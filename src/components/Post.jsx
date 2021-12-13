@@ -46,15 +46,27 @@ const Post = ({ input }) => {
             <div
               className={clsx("row", localeCtx === "en-gb" ? "reverse" : "")}
             >
-              <div className="col-xs">
+              <div
+                className={clsx(
+                  "col-xs",
+                  localeCtx !== "fr-fr" ? "text-gray hidden-sm" : ""
+                )}
+              >
                 <div className="mb-sm">
                   <h2 className="font-bold lowercase">{title.text}</h2>
                   <RichText render={texte_fr.raw} />
                 </div>
               </div>
-              <div className="col-xs">
+              <div
+                className={clsx(
+                  "col-xs",
+                  localeCtx !== "en-gb" ? "text-gray" : ""
+                )}
+              >
                 <div className="mb-sm">
-                  <h2 className="font-bold lowercase">{title.text}</h2>
+                  <h2 className="font-bold lowercase text-black">
+                    {title.text}
+                  </h2>
                   <RichText render={texte_en.raw} />
                 </div>
               </div>
