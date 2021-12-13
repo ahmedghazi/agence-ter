@@ -120,6 +120,9 @@ const Home = ({ data }) => {
       {/* <Hero input={image} /> */}
       <div className="w-screen h-screen">
         <VideoPlayer input={{ url: video.url, poster: image.url }} />
+        <div className="absolute text-center bottom-0 left-0 w-screen p-md">
+          <i className="icon-chevron-s animate-bounce inline-block"></i>
+        </div>
       </div>
       {slices}
     </div>
