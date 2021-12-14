@@ -155,7 +155,7 @@ const Agency = ({ data }) => {
             <CallToScroll />
           </div>
 
-          <div className="px-xs md:px-md">
+          <div className="px-xs md:px-md font-semibold">
             <div
               className={clsx("row", localeCtx === "en-gb" ? "reverse" : "")}
             >
