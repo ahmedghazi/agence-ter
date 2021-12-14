@@ -4,6 +4,7 @@ html {
 body {
   // @include debugFiletY(154px);
   // @include debugSquare(273px);
+  scroll-behavior: smooth;
   &.is-transiting {
     main {
       opacity: 0;

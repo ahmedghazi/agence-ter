@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import { WrapperContext } from "./Layout"
+import ScrollToTop from "./ui/ScrollToTop"
 import Social from "./ui/Social"
 
 const Footer = () => {
@@ -7,7 +8,10 @@ const Footer = () => {
   const { settings } = _WrapperContext
   return (
     <footer className="p-xs md:p-md">
-      <Social input={settings.data.links} />
+      <div className="flex justify-between">
+        <Social input={settings.data.links} />
+        <ScrollToTop />
+      </div>
       {/* <div className='flex'>
       <div className='col'>
         <div className='copyright'>© {new Date().getFullYear()} </div>

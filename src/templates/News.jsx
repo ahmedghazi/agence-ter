@@ -4,7 +4,7 @@ import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
 import { repositoryConfigs } from "../core/prismicPreviews"
 import SEO from "../components/seo"
 import Post from "../components/Post"
-import { CategoriesWrapper } from "../contexts/CategoriesWrapper"
+// import { CategoriesWrapper } from "../contexts/CategoriesWrapper"
 import PostCategories from "../components/PostCategories"
 import SummaryDetail from "../components/ui/SummaryDetail"
 
