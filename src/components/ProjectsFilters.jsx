@@ -9,7 +9,7 @@ import { _localizeText } from "../core/utils"
 
 const query = graphql`
   query {
-    allPrismicTagTheme(sort: { fields: uid }) {
+    allPrismicTagTheme(sort: { fields: data___ordre }) {
       nodes {
         uid
         type
