@@ -6,11 +6,9 @@ import PubSub from "pubsub-js"
 import loadable from "@loadable/component"
 import SEO from "../components/seo"
 import { useRef } from "react"
-import { useScroll } from "../hooks/useScroll"
 import { useInView } from "react-intersection-observer"
 // import { FiltersWrapper } from "../contexts/FiltersWrapper"
 // import ProjectsFilter from "../components/ProjectsFilters"
-const ProjectsFilters = loadable(() => import("../components/ProjectsFilters"))
 
 const ProjectsGridMasonry = loadable(() =>
   import("../components/ProjectsGridMasonry")
@@ -77,16 +75,6 @@ const PageProjects = ({ data }) => {
     }
   }, [isTableView, setIsTableView])
 
-  const headerFiltersRef = useRef()
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0,
-  })
-  useEffect(() => {
-    if (inView) headerFiltersRef.current.classList.add("slide-top")
-    else headerFiltersRef.current.classList.remove("slide-top")
-  }, [inView])
-
   return (
     <div className="page-template page-projects px-xs md:p-md md:pt-0">
       <SEO
@@ -96,29 +84,6 @@ const PageProjects = ({ data }) => {
         template={`template-projects`}
         page={true}
       />
-
-      <div
-        className="header-filters text-md py-sm md:py-md sticky- top-0 md:mb-lg z-10"
-        ref={ref}
-      >
-        <div className="row">
-          <div className="col-md-2 hidden-sm"></div>
-          <div className="col-xs">
-            <ProjectsFilters />
-          </div>
-        </div>
-      </div>
-      <div
-        className="header-filters--fixed text-md py-sm md:p-md fixed top-0 left-0 w-full transition-transform z-10"
-        ref={headerFiltersRef}
-      >
-        <div className="row">
-          <div className="col-md-2 hidden-sm"></div>
-          <div className="col-xs">
-            <ProjectsFilters />
-          </div>
-        </div>
-      </div>
 
       {isTableView && <ProjectsTable input={projects_featured} />}
       {!isTableView && <ProjectsGridMasonry input={projects_featured} />}

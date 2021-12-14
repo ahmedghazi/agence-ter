@@ -25,6 +25,7 @@ module.exports = {
     filtre: "Filtre",
     prevProject: "Projet précédent",
     nextProject: "Projet suivant",
+    back: "Retour",
   },
   "en-gb": {
     default: false,
@@ -50,5 +51,6 @@ module.exports = {
     filtre: "Filter",
     prevProject: "Previous projet",
     nextProject: "Next projet",
+    back: "Back",
   },
 }

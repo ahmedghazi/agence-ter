@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import { linkResolver } from "../core/utils"
+import PubSub from "pubsub-js"
 import styled from "styled-components"
-import { _localizeText } from "../core/utils"
+import { linkResolver, _localizeText } from "../core/utils"
 
 const Table = styled.table`
   width: 100%;
@@ -156,9 +156,28 @@ const ProjectsTable = ({ input }) => {
 
   const projets = sorted ? data : input
 
+  const _handleSwitchView = () => {
+    PubSub.publish("TABLE_TOGGLE")
+  }
+
   return (
     <section className="table-view ">
       <div className="backdrop bg-white fixed top-0 left-0 w-screen h-screen"></div>
+      <div className="header text-md py-sm md:py-md sticky- top-0 md:mb-lg z-10">
+        <div className="row">
+          <div className="col-md-2 hidden-sm"></div>
+          <div className="col-xs">
+            <button
+              onClick={() => _handleSwitchView()}
+              className="font-bold flex items-center"
+            >
+              <i className="icon-chevron-w  absolute -left-xs"></i>{" "}
+              <span>{_localizeText("back")}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       <Table>
         <thead>
           <tr>

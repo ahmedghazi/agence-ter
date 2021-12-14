@@ -6,6 +6,9 @@ import ProjectCard from "./ProjectCard"
 import useFilters from "../contexts/FiltersWrapper"
 // import { FiltersContext } from "../contexts/FiltersWrapper"
 import { useScroll } from "../hooks/useScroll"
+import { useInView } from "react-intersection-observer"
+import loadable from "@loadable/component"
+const ProjectsFilters = loadable(() => import("./ProjectsFilters"))
 
 const ProjectsGridMasonry = ({ input }) => {
   let _isotopeRendered = false
@@ -98,6 +101,17 @@ const ProjectsGridMasonry = ({ input }) => {
       .toString()
       .replace(",", "")
 
+  const headerFiltersRef = useRef()
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  })
+  useEffect(() => {
+    if (!headerFiltersRef.current) return
+    if (inView) headerFiltersRef.current.classList.add("slide-top")
+    else headerFiltersRef.current.classList.remove("slide-top")
+  }, [inView])
+
   // console.log(inputPaged)
   return (
     <section className="grid-view min-h-screen  ">
@@ -106,6 +120,32 @@ const ProjectsGridMasonry = ({ input }) => {
         style={{ backgroundColor: "#CCE6C7" }}
         ref={backDropRef}
       ></div>
+
+      <>
+        <div
+          className="header-filters text-md py-sm md:py-md sticky- top-0 md:mb-lg z-10"
+          ref={ref}
+        >
+          <div className="row">
+            <div className="col-md-2 hidden-sm"></div>
+            <div className="col-xs">
+              <ProjectsFilters />
+            </div>
+          </div>
+        </div>
+        <div
+          className="header-filters--fixed text-md py-sm md:p-md fixed top-0 left-0 w-full transition-transform z-10"
+          ref={headerFiltersRef}
+        >
+          <div className="row">
+            <div className="col-md-2 hidden-sm"></div>
+            <div className="col-xs">
+              <ProjectsFilters />
+            </div>
+          </div>
+        </div>
+      </>
+
       <div className="projects-grid-masonry" ref={gridRef}>
         {inputPaged.map((item, i) => (
           <ProjectCard key={i} input={item} />
