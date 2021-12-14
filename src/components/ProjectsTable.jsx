@@ -162,7 +162,7 @@ const ProjectsTable = ({ input }) => {
 
   return (
     <section className="table-view ">
-      <div className="backdrop bg-white fixed top-0 left-0 w-screen h-screen"></div>
+      <div className="backdrop bg-whitesmoke fixed top-0 left-0 w-screen h-screen"></div>
       <div className="header text-md py-sm md:py-md sticky- top-0 md:mb-lg z-10">
         <div className="row">
           <div className="col-md-2 hidden-sm"></div>

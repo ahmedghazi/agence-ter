@@ -28,7 +28,7 @@ header {
       width: calc(320px + (var(--gutter) * 2));
       padding: 0 var(--gutter);
       nav.flex {
-        padding: 0 var(--space-sm);
+        padding: 0 var(--space-md);
         padding-top: 0.35em;
         justify-content: space-between;
       }

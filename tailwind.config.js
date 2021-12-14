@@ -23,6 +23,7 @@ module.exports = {
       // gray: "#c4c4c4",
       gray: "var(--color-gray)",
       yellow: "var(--color-yellow)",
+      whitesmoke: "var(--color-whitesmoke)",
     },
     fontSize: {
       sm: ["var(--text-sm)", "1.1"],

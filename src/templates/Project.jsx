@@ -149,7 +149,7 @@ const PageProject = ({ data }) => {
 
       <aside className="md:fixed md:h-screen right-md p-xs md:px-0 md:py-sm">
         <div className="flex flex-col ">
-          <div className="header md:px-sm md:pb-sm">
+          <div className="header md:px-md md:pb-sm">
             <SliderPagerNum length={images.length} />
 
             <h1 className="text-lg md-1e">{title.text}</h1>
@@ -161,7 +161,7 @@ const PageProject = ({ data }) => {
           </div>
 
           <div
-            className="content md:px-sm md:pb-sm md:mb-sm scroller md:overflow-y-scroll no-scrollbar flex flex-col font-semibold"
+            className="content md:px-md md:pb-sm md:mb-sm scroller md:overflow-y-scroll no-scrollbar flex flex-col font-semibold"
             ref={scrollerRef}
           >
             <div className="texte mb-1e">
@@ -176,7 +176,7 @@ const PageProject = ({ data }) => {
             </div>
           </div>
 
-          <div className="footer md:px-sm">
+          <div className="footer md:px-md">
             <ul className="flex justify-between projects-related">
               <li>
                 <Link
