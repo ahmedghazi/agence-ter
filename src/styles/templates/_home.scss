@@ -1,6 +1,6 @@
 .template-home {
   video {
-    min-height: 100vh;
+    height: 100vh !important;
     object-fit: cover;
   }
 }
