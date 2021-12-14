@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 import Post from "../components/Post"
 import { CategoriesWrapper } from "../contexts/CategoriesWrapper"
 import PostCategories from "../components/PostCategories"
+import SummaryDetail from "../components/ui/SummaryDetail"
 
 export const pageQuery = graphql`
   query {
@@ -82,7 +83,11 @@ const News = ({ data }) => {
         <div className="row">
           <div className="col-md-2 hidden-sm"></div>
           <div className="col-xs">
-            <PostCategories />
+            {/* <PostCategories /> */}
+            <SummaryDetail
+              summary={"Filtre"}
+              detail={<PostCategories />}
+            ></SummaryDetail>
           </div>
         </div>
       </div>
