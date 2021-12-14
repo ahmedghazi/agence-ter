@@ -91,7 +91,7 @@ const ProjectsGridMasonry = ({ input }) => {
 
   const _filterGrid = () => {
     const _filter = filters.length ? _renderFilterClassNames() : "*"
-    // console.log(_filter)
+    console.log(_filter)
     isoRef.current.arrange({ filter: _filter })
   }
 
@@ -99,7 +99,7 @@ const ProjectsGridMasonry = ({ input }) => {
     filters
       .map((el) => `.${el.uid}`)
       .toString()
-      .replace(",", "")
+      .replace(new RegExp(",", "g"), "")
 
   const headerFiltersRef = useRef()
   const { ref, inView, entry } = useInView({
