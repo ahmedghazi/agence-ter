@@ -1,4 +1,7 @@
 .template-project {
+  footer {
+    display: none;
+  }
   @media all and (min-width: $sm) {
     .page-project {
       &.is-aside-off {

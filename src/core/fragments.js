@@ -143,7 +143,7 @@ export const query = graphql`
     # }
     images {
       image {
-        gatsbyImageData(width: 1440, placeholder: BLURRED)
+        gatsbyImageData(width: 2500, placeholder: BLURRED)
         url
         alt
       }
