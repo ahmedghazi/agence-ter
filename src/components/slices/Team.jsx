@@ -4,13 +4,48 @@ import ExcerptToTexte from "../ui/ExcerptToTexte"
 import { LocaleContext } from "../../contexts/LocaleWrapper"
 import clsx from "clsx"
 import AnimateOnScroll from "../ui/AnimateOnScroll"
+import SummaryDetail from "../ui/SummaryDetail"
+import { useState } from "react"
 
 const Team = ({ input }) => {
   const { localeCtx } = useContext(LocaleContext)
+  const [filtre, setFiltre] = useState()
+
+  const bureaux = input.items.map((el) => el.bureau)
+  const bureauxUniq = bureaux.filter((value, index, self) => {
+    return self.indexOf(value) === index
+  })
+  console.log(filtre)
+
+  const _getFiltres = () => (
+    <ul className="team-filtres flex">
+      {bureauxUniq.map((item, i) => (
+        <li key={i}>
+          <button
+            onClick={() => setFiltre(filtre ? "" : item)}
+            className={clsx("cursor-pointer pr-xs hover:font-bold ")}
+          >
+            {item}
+          </button>
+        </li>
+      ))}
+    </ul>
+  )
+
+  const getDataByFiltre = () => input.items.filter((el) => el.bureau === filtre)
+  // console.log(input.items)
+  const data = filtre ? getDataByFiltre() : input.items
 
   return (
     <section className="slice-team ">
-      {input.items.map((item, i) => (
+      <div className="header-filters py-sm md:py-md sticky top-header-height z-10">
+        <SummaryDetail
+          summary={"filtrer"}
+          detail={_getFiltres()}
+        ></SummaryDetail>
+      </div>
+
+      {data.map((item, i) => (
         <AnimateOnScroll key={i}>
           <div className="mb-xl">
             <div className="row">
@@ -54,36 +89,6 @@ const Team = ({ input }) => {
                 />
               </div>
             </div>
-            {/* {item.bio_fr && (
-              <div
-                className={clsx("row", localeCtx === "en-gb" ? "reverse" : "")}
-              >
-                <div
-                  className={clsx(
-                    "col-xs",
-                    localeCtx !== "fr-fr" ? "text-gray hidden-sm" : ""
-                  )}
-                >
-                  <ExcerptToTexte
-                    excerpt={item.bio_fr.text}
-                    content={item.bio_fr.raw}
-                    maxWords={50}
-                  />
-                </div>
-                <div
-                  className={clsx(
-                    "col-xs",
-                    localeCtx !== "en-gb" ? "text-gray hidden-sm" : ""
-                  )}
-                >
-                  <ExcerptToTexte
-                    excerpt={item.bio_en.text}
-                    content={item.bio_en.raw}
-                    maxWords={50}
-                  />
-                </div>
-              </div>
-            )} */}
           </div>
         </AnimateOnScroll>
       ))}

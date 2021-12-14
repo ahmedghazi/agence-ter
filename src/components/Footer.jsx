@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import { Link } from "gatsby"
 import { WrapperContext } from "./Layout"
 import ScrollToTop from "./ui/ScrollToTop"
 import Social from "./ui/Social"
@@ -9,7 +10,12 @@ const Footer = () => {
   return (
     <footer className="p-xs md:p-md">
       <div className="flex justify-between">
-        <Social input={settings.data.links} />
+        <div className="left flex">
+          <Social input={settings.data.links} />
+          <Link to="/contacts" className="btn outline mx-sm">
+            Contacts
+          </Link>
+        </div>
         <ScrollToTop />
       </div>
       {/* <div className='flex'>

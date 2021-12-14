@@ -33,6 +33,9 @@ main {
 .pt-header-height {
   padding-top: var(--header-height);
 }
+.top-header-height {
+  top: var(--header-height);
+}
 @media all and (min-width: $md) {
 }
 

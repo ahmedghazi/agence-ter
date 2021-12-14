@@ -66,16 +66,17 @@ header {
   }
 }
 
-// .template-agency header {
-//   mix-blend-mode: difference;
-//   .site-name svg path.pleins {
-//     fill: var(--color-white);
-//   }
-//   a,
-//   button {
-//     color: white;
-//   }
-// }
+.template-agency header {
+  position: fixed;
+  //   mix-blend-mode: difference;
+  //   .site-name svg path.pleins {
+  //     fill: var(--color-white);
+  //   }
+  //   a,
+  //   button {
+  //     color: white;
+  //   }
+}
 
 // .downscroll {
 //   header {
