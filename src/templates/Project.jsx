@@ -201,6 +201,29 @@ const PageProject = ({ data }) => {
         </div>
       </aside>
 
+      <div className="footer md:px-md fixed bottom-md right-md bg-yellow">
+        <ul className="flex justify-between projects-related">
+          <li>
+            <Link
+              to={linkResolver(related.nodes[0])}
+              className="pr-xs flex items-center hover:text-opacity-80"
+            >
+              <span className="icon icon-chevron-w pr-xs"></span>
+              <span>{_localizeText("prevProject")}</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={linkResolver(related.nodes[1])}
+              className="pl-xs flex items-center"
+            >
+              <span>{_localizeText("nextProject")}</span>
+              <span className="icon icon-chevron-e pl-xs"></span>
+            </Link>
+          </li>
+        </ul>
+      </div>
+
       <div
         id="toggle"
         className="p-xs flex flex-col justify-center items-center cursor-pointer text-lg fixed right-0 hidden-sm w-md "

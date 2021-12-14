@@ -90,6 +90,7 @@ const ProjectCard = ({ input }) => {
   // }
 
   const _getGridSize = () => {
+    console.log(largeur)
     switch (largeur) {
       case "S":
         return (2 * 100) / 12
