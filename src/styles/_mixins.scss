@@ -358,15 +358,15 @@ $sass-burger-add-vendor-prefixes: true !default;
   }
 }
 
-@mixin slide($direction, $opacity: 0) {
+@mixin slide($direction, $opacity: 0, $distance: 10%) {
   @if $direction== "top" {
-    transform: translateY(-10%);
+    transform: translateY(-$distance);
   } @else if $direction== "right" {
-    transform: translateX(10%);
+    transform: translateX($distance);
   } @else if $direction== "bottom" {
-    transform: translateY(10%);
+    transform: translateY($distance);
   } @else if $direction== "left" {
-    transform: translateX(-10%);
+    transform: translateX(-$distance);
   } @else if $direction== "none" {
     transform: translateX(0) translateY(0);
   }

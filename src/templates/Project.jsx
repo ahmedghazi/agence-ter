@@ -201,7 +201,8 @@ const PageProject = ({ data }) => {
         </div>
       </aside>
 
-      <div className="footer md:px-md fixed bottom-md right-md bg-yellow">
+      <div className="aside-mini md:px-md fixed bottom-sm right-md ">
+        <SliderPagerNum length={images.length} />
         <ul className="flex justify-between projects-related">
           <li>
             <Link

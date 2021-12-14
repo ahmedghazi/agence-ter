@@ -6,9 +6,11 @@
     .page-project {
       &.is-aside-off {
         aside {
-          @include slide(right, 0);
+          @include slide(right, 1, 130%);
+          pointer-events: none;
         }
-        #toggle {
+        #toggle,
+        .aside-mini {
           @include slide(none, 1);
         }
       }
@@ -20,11 +22,13 @@
       }
     }
     #toggle,
-    aside {
-      transition: transform 0.4s ease, opacity 0.4s ease;
+    aside,
+    .aside-mini {
+      transition: transform 0.4s cubic-bezier(0.37, 0.01, 0, 0.98),
+        opacity 0.4s ease;
     }
     #toggle {
-      transition: transform 0.4s ease, opacity 0.4s ease;
+      // transition: transform 0.4s ease, opacity 0.4s ease;
       pointer-events: all;
       position: fixed;
       right: 0px;
@@ -44,6 +48,17 @@
       }
       .content {
         max-height: calc((100vh - 185px) - 153px);
+      }
+    }
+    .aside-mini {
+      width: 320px;
+      pointer-events: all;
+      @include slide(right, 0);
+      .slider-pager {
+        justify-content: end;
+        li:last-child button {
+          padding-right: 0;
+        }
       }
     }
 
