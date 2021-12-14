@@ -147,12 +147,12 @@ const Agency = ({ data }) => {
       />
 
       <AnimateOnScroll>
-        <IntroContainer className="slice-image-textes mb-lg">
-          <div>
-            <figure className="mb-sm">
+        <IntroContainer className="slice-image-textes mb-xl">
+          <div className="mb-md-alt h-screen overflow-hidden">
+            <figure>
               <GatsbyImage image={getImage(image)} alt={image.alt || ""} />
             </figure>
-            <CallToScroll />
+            <CallToScroll color="white" />
           </div>
 
           <div className="px-xs md:px-md font-semibold">

@@ -9,10 +9,10 @@ const Team = ({ input }) => {
   const { localeCtx } = useContext(LocaleContext)
 
   return (
-    <section className="slice-team mb-lg">
+    <section className="slice-team ">
       {input.items.map((item, i) => (
         <AnimateOnScroll key={i}>
-          <div className="mb-lg">
+          <div className="mb-xl">
             <div className="row">
               <div className="col-md-2 col-xs">
                 <figure className="mb-sm">

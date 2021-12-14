@@ -30,8 +30,8 @@ const ImageTextes = ({ input }) => {
 
   return (
     <AnimateOnScroll>
-      <Container className="slice-image-textes mb-lg">
-        <figure className="mb-sm">
+      <Container className="slice-image-textes mb-xl">
+        <figure className="mb-md-alt">
           <GatsbyImage
             image={getImage(input.primary.image)}
             alt={input.primary.image.alt || ""}
