@@ -22,8 +22,8 @@ const Header = () => {
     >
       <div className="row middle-xs">
         <div className="col-md-2 col-xs col-left ">
-          <div className="sm-only">
-            <Link to="/">
+          <div className="sm-only ">
+            <Link to="/" className="site-name">
               <LogoSvg />
             </Link>
           </div>
@@ -45,7 +45,7 @@ const Header = () => {
       <div className="md:fixed w-full p-xs md:p-md top-0 left-0 hidden-sm">
         <div className="row justify-between">
           <div className="col-md-2 col-xs col-left">
-            <Link to="/">
+            <Link to="/" className="site-name">
               <LogoSvg />
             </Link>
           </div>

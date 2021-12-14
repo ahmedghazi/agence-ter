@@ -12,6 +12,7 @@ import AnimateOnScroll from "../components/ui/AnimateOnScroll"
 
 import ImageTextes from "../components/slices/ImageTextes"
 import Team from "../components/slices/Team"
+import CallToScroll from "../components/ui/CallToScroll"
 
 export const pageQuery = graphql`
   query AgencyQ {
@@ -136,7 +137,7 @@ const Agency = ({ data }) => {
   })
 
   return (
-    <div className="page-template page-agency pt-header-height ">
+    <div className="page-template page-agency pt-header-height- ">
       <SEO
         pageTitle={meta_title.text}
         pageDescription={meta_description.text}
@@ -147,9 +148,12 @@ const Agency = ({ data }) => {
 
       <AnimateOnScroll>
         <IntroContainer className="slice-image-textes mb-lg">
-          <figure className="mb-sm">
-            <GatsbyImage image={getImage(image)} alt={image.alt || ""} />
-          </figure>
+          <div>
+            <figure className="mb-sm">
+              <GatsbyImage image={getImage(image)} alt={image.alt || ""} />
+            </figure>
+            <CallToScroll />
+          </div>
 
           <div className="px-xs md:px-md">
             <div

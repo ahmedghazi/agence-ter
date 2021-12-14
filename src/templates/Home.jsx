@@ -7,6 +7,7 @@ import Hero from "../components/ui/Hero"
 import NewsMarquee from "../components/slices/NewsMarquee"
 import Philosophie from "../components/slices/Philosophie"
 import VideoPlayer from "../components/ui/VideoPlayer"
+import CallToScroll from "../components/ui/CallToScroll"
 
 export const query = graphql`
   query {
@@ -120,9 +121,7 @@ const Home = ({ data }) => {
       {/* <Hero input={image} /> */}
       <div className="w-screen h-screen">
         <VideoPlayer input={{ url: video.url, poster: image.url }} />
-        <div className="absolute text-center bottom-0 left-0 w-screen p-md">
-          <i className="icon-chevron-s animate-bounce inline-block"></i>
-        </div>
+        <CallToScroll />
       </div>
       {slices}
     </div>
