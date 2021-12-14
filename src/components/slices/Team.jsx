@@ -26,23 +26,35 @@ const Team = ({ input }) => {
               <div
                 className={clsx(
                   "col-md-3 col-xs",
-                  localeCtx === "en-gb" ? "last-xs hidden-sm" : ""
+                  localeCtx === "en-gb" ? "last-xs hidden-sm" : "",
+                  localeCtx !== "fr-fr" ? "text-gray " : ""
                 )}
               >
                 <h3 className="font-bold">{item.name.text}</h3>
-                <div className="position">{item.position_fr}</div>
+                <div className="position mb-1e">{item.position_fr}</div>
+                <ExcerptToTexte
+                  excerpt={item.bio_fr.text}
+                  content={item.bio_fr.raw}
+                  maxWords={50}
+                />
               </div>
               <div
                 className={clsx(
                   "col-md-3 col-xs",
-                  localeCtx === "fr-fr" ? "last-xs hidden-sm" : ""
+                  localeCtx === "fr-fr" ? "last-xs hidden-sm" : "",
+                  localeCtx !== "en-gb" ? "text-gray " : ""
                 )}
               >
-                <h3 className="font-bold">{item.name.text}</h3>
-                <div className="position">{item.position_en}</div>
+                <h3 className="font-bold text-black">{item.name.text}</h3>
+                <div className="position mb-1e">{item.position_en}</div>
+                <ExcerptToTexte
+                  excerpt={item.bio_en.text}
+                  content={item.bio_en.raw}
+                  maxWords={50}
+                />
               </div>
             </div>
-            {item.bio_fr && (
+            {/* {item.bio_fr && (
               <div
                 className={clsx("row", localeCtx === "en-gb" ? "reverse" : "")}
               >
@@ -71,7 +83,7 @@ const Team = ({ input }) => {
                   />
                 </div>
               </div>
-            )}
+            )} */}
           </div>
         </AnimateOnScroll>
       ))}
