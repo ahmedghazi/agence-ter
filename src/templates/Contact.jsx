@@ -34,6 +34,11 @@ export const pageQuery = graphql`
           infos_en {
             raw
           }
+          image {
+            gatsbyImageData(width: 750, placeholder: BLURRED)
+            url
+            alt
+          }
         }
       }
     }

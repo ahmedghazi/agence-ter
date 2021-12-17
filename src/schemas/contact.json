@@ -17,6 +17,14 @@
       "type": "Group",
       "config": {
         "fields": {
+          "image": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Image"
+            }
+          },
           "nom": {
             "type": "StructuredText",
             "config": {
@@ -28,7 +36,7 @@
           "infos_fr": {
             "type": "StructuredText",
             "config": {
-              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+              "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
               "allowTargetBlank": true,
               "label": "Infos fr"
             }
@@ -36,7 +44,7 @@
           "infos_en": {
             "type": "StructuredText",
             "config": {
-              "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+              "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
               "allowTargetBlank": true,
               "label": "Infos en"
             }

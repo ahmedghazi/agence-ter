@@ -3,19 +3,27 @@ import { LocaleContext } from "../contexts/LocaleWrapper"
 import { RichText } from "prismic-reactjs"
 import clsx from "clsx"
 import AnimateOnScroll from "./ui/AnimateOnScroll"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const ContactsAgence = ({ input }) => {
   const { localeCtx } = useContext(LocaleContext)
-
+  const { nom, image, infos_fr, infos_en } = input
   return (
     <AnimateOnScroll>
       <article className="mb-lg">
         <div className="row">
           <div className="col-md-2 col-xs">
-            <img
-              src="//agenceter.com/wp-content/uploads/2019/02/paris.png"
-              alt=""
-            />
+            {image && image.url && (
+              <figure className="">
+                <GatsbyImage
+                  image={getImage(image)}
+                  alt={image.alt || ""}
+                  style={{
+                    aspectRatio: "1/1",
+                  }}
+                />
+              </figure>
+            )}
           </div>
           <div className="col-md-1 hidden-sm"></div>
           <div className="col-xs">
@@ -23,12 +31,12 @@ const ContactsAgence = ({ input }) => {
               className={clsx("row", localeCtx === "en-gb" ? "reverse" : "")}
             >
               <div className="col-xs">
-                <h2 className="font-bold">{input.nom.text}</h2>
-                <RichText render={input.infos_fr.raw} />
+                <h2 className="font-bold">{nom.text}</h2>
+                <RichText render={infos_fr.raw} />
               </div>
               <div className="col-xs">
-                <h2 className="font-bold">{input.nom.text}</h2>
-                <RichText render={input.infos_en.raw} />
+                <h2 className="font-bold">{nom.text}</h2>
+                <RichText render={infos_en.raw} />
               </div>
             </div>
           </div>
