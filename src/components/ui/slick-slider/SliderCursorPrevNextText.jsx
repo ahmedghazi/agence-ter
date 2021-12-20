@@ -27,6 +27,7 @@ const Label = styled.div`
   transform: translate(-100vw, -100vh);
   transform-origin: center center;
   text-align: center;
+  font-size: 2em;
   // color: white;
   // mix-blend-mode: difference;
 `
@@ -71,7 +72,7 @@ const SliderCursorPrevNextText = (props) => {
 
   return (
     <Container
-      className={`${className} text-lg font-bold hidden-sm`}
+      className={`${className}  hidden-sm`}
       style={{ ...style }}
       onClick={onClick}
       left={left}
@@ -80,8 +81,8 @@ const SliderCursorPrevNextText = (props) => {
       <div>
         <Label className="label" style={positions} ref={refLabel}>
           {/* {label} */}
-          {label === "prev" && <i className="icon-chevron-w"></i>}
-          {label === "next" && <i className="icon-chevron-e"></i>}
+          {label === "prev" && <i className="icon-chevron-w  font-black"></i>}
+          {label === "next" && <i className="icon-chevron-e  font-black"></i>}
         </Label>
       </div>
     </Container>

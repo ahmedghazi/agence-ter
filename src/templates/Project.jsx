@@ -171,19 +171,19 @@ const PageProject = ({ data }) => {
             </div>
             <div className="texte text-gray mb-1e font-regular">
               <RichText
-                render={localeCtx === "en-gb" ? texte_en.raw : texte_fr.raw}
+                render={localeCtx === "en-gb" ? texte_fr.raw : texte_en.raw}
               />
             </div>
           </div>
 
-          <div className="footer md:px-md">
-            <ul className="flex justify-between projects-related">
+          <div className="footer md:px-md ">
+            <ul className="flex justify-between projects-related font-semibold">
               <li>
                 <Link
                   to={linkResolver(related.nodes[0])}
                   className="pr-xs flex items-center hover:text-opacity-80"
                 >
-                  <span className="icon icon-chevron-w pr-xs"></span>
+                  <span className="icon icon-chevron-w pr-xs font-black"></span>
                   <span>{_localizeText("prevProject")}</span>
                 </Link>
               </li>
@@ -193,7 +193,7 @@ const PageProject = ({ data }) => {
                   className="pl-xs flex items-center"
                 >
                   <span>{_localizeText("nextProject")}</span>
-                  <span className="icon icon-chevron-e pl-xs"></span>
+                  <span className="icon icon-chevron-e pl-xs font-black"></span>
                 </Link>
               </li>
             </ul>
@@ -201,15 +201,15 @@ const PageProject = ({ data }) => {
         </div>
       </aside>
 
-      <div className="aside-mini md:px-md fixed bottom-sm right-md ">
+      <div className="aside-mini md:px-md fixed bottom-sm right-md hidden-sm">
         <SliderPagerNum length={images.length} />
-        <ul className="flex justify-between projects-related">
+        <ul className="flex justify-between projects-related font-semibold">
           <li>
             <Link
               to={linkResolver(related.nodes[0])}
               className="pr-xs flex items-center hover:text-opacity-80"
             >
-              <span className="icon icon-chevron-w pr-xs"></span>
+              <span className="icon icon-chevron-w pr-xs font-black"></span>
               <span>{_localizeText("prevProject")}</span>
             </Link>
           </li>
@@ -219,7 +219,7 @@ const PageProject = ({ data }) => {
               className="pl-xs flex items-center"
             >
               <span>{_localizeText("nextProject")}</span>
-              <span className="icon icon-chevron-e pl-xs"></span>
+              <span className="icon icon-chevron-e pl-xs font-black"></span>
             </Link>
           </li>
         </ul>
@@ -227,11 +227,15 @@ const PageProject = ({ data }) => {
 
       <div
         id="toggle"
-        className="p-xs flex flex-col justify-center items-center cursor-pointer text-lg fixed right-0 hidden-sm w-md "
+        className="p-xs flex flex-col justify-center items-center cursor-pointer  fixed right-0 hidden-sm w-md "
         onClick={() => setAsideOff(!asideOff)}
       >
-        {asideOff && <span className="icon-chevron-w"></span>}
-        {!asideOff && <span className="icon-chevron-e"></span>}
+        {asideOff && (
+          <span className="icon-chevron-w text-lg font-black"></span>
+        )}
+        {!asideOff && (
+          <span className="icon-chevron-e text-lg font-black"></span>
+        )}
       </div>
     </div>
   )
