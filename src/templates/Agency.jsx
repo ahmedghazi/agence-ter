@@ -156,7 +156,7 @@ const Agency = ({ data }) => {
             <CallToScroll color="white" />
           </div>
 
-          <div className="px-xs md:px-md font-semibold">
+          {/* <div className="px-xs md:px-md font-semibold">
             <div
               className={clsx("row", localeCtx === "en-gb" ? "reverse" : "")}
             >
@@ -169,7 +169,7 @@ const Agency = ({ data }) => {
               </div>
               <div className="col-md-2"></div>
             </div>
-          </div>
+          </div> */}
         </IntroContainer>
       </AnimateOnScroll>
 
