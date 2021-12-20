@@ -7,6 +7,22 @@ import { linkResolver, _localizeText } from "../core/utils"
 const Table = styled.table`
   width: 100%;
   border-collapse: initial;
+  &:before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    left: 0;
+    height: var(--header-height);
+    background: white;
+    z-index: 1;
+    top: 0;
+  }
+`
+const Thead = styled.thead`
+  position: sticky;
+  top: var(--header-height);
+  background: white;
+  z-index: 1;
 `
 const Td = styled.td`
   position: relative;
@@ -179,7 +195,7 @@ const ProjectsTable = ({ input }) => {
       </div>
 
       <Table>
-        <thead>
+        <Thead>
           <tr>
             {columns.map((column, i) => (
               <Td
@@ -191,7 +207,7 @@ const ProjectsTable = ({ input }) => {
               </Td>
             ))}
           </tr>
-        </thead>
+        </Thead>
         <tbody>
           {projets.map((el, i) => (
             <tr key={i}>

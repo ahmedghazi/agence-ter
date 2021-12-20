@@ -11,13 +11,13 @@ const CallToScroll = ({ color = "black" }) => {
   return (
     <div
       className={clsx(
-        "absolute text-center bottom-0 left-0 w-screen p-md cursor-pointer"
+        "absolute text-center bottom-0 left-0 w-screen p-md cursor-pointer text-lg"
       )}
       onClick={_onClick}
     >
       <i
         className={clsx(
-          "icon-chevron-s animate-bounce inline-block",
+          "icon-chevron-s animate-bounce inline-block font-bold",
           `text-${color}`
         )}
         // style={{

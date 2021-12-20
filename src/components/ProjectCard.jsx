@@ -31,6 +31,15 @@ const Card = styled.article`
 
   @media all and (max-width: 768px) {
     // min-width: 35vw;
+    &.card-s {
+      width: 75px !important;
+    }
+    &.card-m {
+      width: 100px !important;
+    }
+    &.card-m {
+      width: 175px !important;
+    }
   }
 `
 
@@ -93,13 +102,13 @@ const ProjectCard = ({ input }) => {
     // console.log(largeur)
     switch (largeur) {
       case "S":
-        return (2 * 100) / 12
+        return (153 * 100) / 1440
       case "M":
-        return (3 * 100) / 12
+        return (267 * 100) / 1440
       case "L":
-        return (4 * 100) / 12
+        return (382 * 100) / 1440
       default:
-        return (2 * 100) / 12
+        return (153 * 100) / 1440
     }
   }
 
@@ -113,7 +122,7 @@ const ProjectCard = ({ input }) => {
     <Card
       ref={carRef}
       className={clsx(
-        "card p-xs md:p-sm",
+        "card p-xs px-sm md:p-sm",
         `card-${largeur.toLowerCase()}`,
         tagsClassString
         // _isFiltering ? "is-filtering" : "",
