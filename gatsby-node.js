@@ -9,6 +9,7 @@ const templateProjects = path.resolve("src/templates/Projects.jsx")
 const templateProject = path.resolve("src/templates/Project.jsx")
 const templateNews = path.resolve("src/templates/News.jsx")
 const templateContact = path.resolve("src/templates/Contact.jsx")
+const templatePageDefault = path.resolve("src/templates/PageDefault.jsx")
 
 // const getLocalizedPath = (node, path) => {
 //   // console.log(path, node.locale)
@@ -97,8 +98,40 @@ async function createProject(graphql, actions) {
   })
 }
 
+/// /////////////////////////////////////////////////////////////
+/// /////////////////////////////////////////////////////////////
+async function createPagesDefault(graphql, actions) {
+  const { createPage } = actions
+
+  const pages = await graphql(`
+    {
+      allPrismicPage {
+        nodes {
+          uid
+          type
+        }
+      }
+    }
+  `)
+
+  pages.data.allPrismicPage.nodes.forEach((node) => {
+    const path = `/${node.uid}`
+    console.log("path", path)
+    createPage({
+      path: path,
+      component: templatePageDefault,
+      context: {
+        uid: node.uid,
+        slug: node.uid,
+        template: "template-page",
+      },
+    })
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   await createPages(graphql, actions)
   await createProjects(graphql, actions)
   await createProject(graphql, actions)
+  await createPagesDefault(graphql, actions)
 }

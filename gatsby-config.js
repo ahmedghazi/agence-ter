@@ -47,11 +47,12 @@ module.exports = {
           award: require(`./src/schemas/award.json`),
           publication: require(`./src/schemas/publication.json`),
           contact: require(`./src/schemas/contact.json`),
+          page: require(`./src/schemas/page.json`),
         },
         imageImgixParams: {
           auto: "compress,format",
           fit: "max",
-          q: 20,
+          q: 70,
         },
         imagePlaceholderImgixParams: {
           w: 100,
