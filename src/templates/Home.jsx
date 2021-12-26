@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
 import { repositoryConfigs } from "../core/prismicPreviews"
 import SEO from "../components/seo"
-import Hero from "../components/ui/Hero"
+// import Hero from "../components/ui/Hero"
 import NewsMarquee from "../components/slices/NewsMarquee"
 import Philosophie from "../components/slices/Philosophie"
 import VideoPlayer from "../components/ui/VideoPlayer"
@@ -95,6 +95,36 @@ export const query = graphql`
 const Home = ({ data }) => {
   const { meta_title, meta_description, meta_image, video, image, body } =
     data.prismicHome.data
+
+  const [visible, setVisible] = useState()
+  // const _WrapperContext = useContext(WrapperContext)
+  // const { settings, template } = _WrapperContext
+  // console.log(template)
+  useEffect(() => {
+    document.addEventListener("mousemove", _reveal)
+    document.addEventListener("click", _reveal)
+
+    const timer = setTimeout(() => {
+      _reveal()
+    }, 2000)
+
+    return () => {
+      document.removeEventListener("mousemove", _reveal)
+      document.removeEventListener("click", _reveal)
+      clearTimeout(timer)
+    }
+  }, [])
+
+  const _reveal = () => {
+    setVisible(true)
+  }
+
+  useEffect(() => {
+    if (visible) {
+      document.querySelector("header").classList.add("is-visible")
+      document.querySelector(".call-to-scroll").classList.add("is-visible")
+    }
+  }, [visible])
 
   const slices = body.map((slice, i) => {
     // console.log(slice.slice_type);

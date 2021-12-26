@@ -5,6 +5,7 @@ import Footer from "./Footer"
 import Cursor from "./ui/Cursor"
 import { FiltersWrapper } from "../contexts/FiltersWrapper"
 import { CategoriesWrapper } from "../contexts/CategoriesWrapper"
+import HeaderHome from "./HeaderHome"
 
 const WrapperContext = createContext()
 
@@ -19,7 +20,7 @@ const query = graphql`
 const Layout = ({ children, pageContext }) => {
   const { settings } = useStaticQuery(query)
   const { template } = pageContext
-  // console.log(pageContext)
+  console.log(template)
   // const [direction, setDirection] = useState()
 
   useEffect(() => {
@@ -83,7 +84,9 @@ const Layout = ({ children, pageContext }) => {
       <FiltersWrapper>
         <CategoriesWrapper>
           <div id="page">
-            <Header />
+            {/* <Header /> */}
+            {template === "template-home" && <HeaderHome />}
+            {template !== "template-home" && <Header />}
             <main>{children}</main>
             <Footer />
             {/* <Cursor color="black" size="20" /> */}

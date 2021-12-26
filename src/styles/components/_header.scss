@@ -52,7 +52,22 @@ header {
     }
   }
 }
-
+.template-home header {
+  .text-center {
+    width: 358px;
+    max-width: 60%;
+  }
+  .site-name {
+    margin-bottom: 1em;
+  }
+  nav#nav-primary {
+    padding-top: 0;
+    ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
 .template-projects,
 .template-news {
   header {

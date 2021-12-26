@@ -11,7 +11,7 @@ const CallToScroll = ({ color = "black" }) => {
   return (
     <div
       className={clsx(
-        "absolute text-center bottom-0 left-0 w-screen p-md cursor-pointer text-lg"
+        "call-to-scroll absolute text-center bottom-0 left-0 w-screen p-md cursor-pointer text-lg"
       )}
       onClick={_onClick}
     >
