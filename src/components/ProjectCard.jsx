@@ -68,7 +68,7 @@ const ProjectCard = ({ input }) => {
   const carRef = useRef()
   const { filters } = useFilters()
 
-  const { largeur, marge_interne, offset, surface_bold, item } = input
+  const { largeur, marge_interne, title_offset, surface_bold, item } = input
   const { uid, data } = item.document
 
   //
@@ -113,7 +113,7 @@ const ProjectCard = ({ input }) => {
   }
 
   const _getOffset = () => {
-    const parts = offset ? offset.split(",") : [0, 0]
+    const parts = title_offset ? title_offset.split(",") : [0, 0]
     return `translate(${parts[0]}%, ${parts[1]}%)`
   }
 

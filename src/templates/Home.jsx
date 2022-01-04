@@ -8,6 +8,7 @@ import NewsMarquee from "../components/slices/NewsMarquee"
 import Philosophie from "../components/slices/Philosophie"
 import VideoPlayer from "../components/ui/VideoPlayer"
 import CallToScroll from "../components/ui/CallToScroll"
+import useDeviceDetect from "../hooks/useDeviceDetect"
 
 export const query = graphql`
   query {
@@ -29,7 +30,10 @@ export const query = graphql`
           url
           # alt
         }
-        video {
+        video_desktop {
+          url
+        }
+        video_mobile {
           url
         }
         body {
@@ -62,30 +66,29 @@ export const query = graphql`
               }
             }
           }
-          # ... on PrismicHomeDataBodyPhilosophie {
-          #   slice_type
-          #   primary {
-          #     title {
-          #       text
-          #     }
-          #   }
-          #   items {
-          #     title {
-          #       text
-          #     }
-          #     texte_fr {
-          #       raw
-          #     }
-          #     texte_en {
-          #       raw
-          #     }
-          #     image {
-          #       gatsbyImageData(width: 1500, placeholder: BLURRED)
-          #       alt
-          #     }
-
-          #   }
-          # }
+          ... on PrismicHomeDataBodyPhilosophie {
+            slice_type
+            primary {
+              title {
+                text
+              }
+            }
+            items {
+              title {
+                text
+              }
+              texte_fr {
+                raw
+              }
+              texte_en {
+                raw
+              }
+              image {
+                gatsbyImageData(width: 1500, placeholder: BLURRED)
+                alt
+              }
+            }
+          }
         }
       }
     }
@@ -93,10 +96,18 @@ export const query = graphql`
 `
 
 const Home = ({ data }) => {
-  const { meta_title, meta_description, meta_image, video, image, body } =
-    data.prismicHome.data
+  const {
+    meta_title,
+    meta_description,
+    meta_image,
+    video_desktop,
+    video_mobile,
+    image,
+    body,
+  } = data.prismicHome.data
 
   const [visible, setVisible] = useState()
+  const { isMobile } = useDeviceDetect()
   // const _WrapperContext = useContext(WrapperContext)
   // const { settings, template } = _WrapperContext
   // console.log(template)
@@ -131,8 +142,8 @@ const Home = ({ data }) => {
     switch (slice.slice_type) {
       case "news":
         return <NewsMarquee key={i} input={slice} />
-      // case "philosophie":
-      //   return <Philosophie key={i} input={slice} />
+      case "philosophie":
+        return <Philosophie key={i} input={slice} />
 
       default:
         return null
@@ -150,7 +161,12 @@ const Home = ({ data }) => {
       />
       {/* <Hero input={image} /> */}
       <div className="w-screen h-screen">
-        <VideoPlayer input={{ url: video.url, poster: image.url }} />
+        <VideoPlayer
+          input={{
+            url: isMobile ? video_mobile.url : video_desktop.url,
+            poster: image.url,
+          }}
+        />
         <CallToScroll />
       </div>
       {slices}

@@ -76,30 +76,7 @@
       }
     }
   },
-  "SEO": {
-    "meta_title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "paragraph",
-        "label": "Meta title"
-      }
-    },
-    "meta_description": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph",
-        "label": "Meta description"
-      }
-    },
-    "meta_image": {
-      "type": "Image",
-      "config": {
-        "constraint": {},
-        "thumbnails": [],
-        "label": "Meta image"
-      }
-    }
-  },
+
   "Metas": {
     "archive": {
       "type": "Boolean",
@@ -163,6 +140,30 @@
       "type": "Text",
       "config": {
         "label": "Phase"
+      }
+    }
+  },
+  "SEO": {
+    "meta_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Meta title"
+      }
+    },
+    "meta_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Meta description"
+      }
+    },
+    "meta_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Meta image"
       }
     }
   }

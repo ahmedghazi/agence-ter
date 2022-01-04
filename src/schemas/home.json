@@ -21,11 +21,18 @@
         "label": "Image"
       }
     },
-    "video": {
+    "video_desktop": {
       "type": "Link",
       "config": {
         "select": "media",
-        "label": "Video"
+        "label": "Video Desktop"
+      }
+    },
+    "video_mobile": {
+      "type": "Link",
+      "config": {
+        "select": "media",
+        "label": "Video Mobile"
       }
     },
     "body": {

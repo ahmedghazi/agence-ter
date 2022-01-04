@@ -32,7 +32,7 @@ export const pageQuery = graphql`
           text
         }
         projects_featured {
-          offset
+          title_offset
           marge_interne
           largeur
           surface_bold

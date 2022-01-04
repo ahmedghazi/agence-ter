@@ -34,18 +34,19 @@
               "placeholder": "Largeur dans la grille"
             }
           },
-          "offset": {
-            "type": "Text",
-            "config": {
-              "label": "Offset",
-              "placeholder": "décalage du titre x%,y% : -50%,-90%"
-            }
-          },
+
           "marge_interne": {
             "type": "Text",
             "config": {
               "label": "Marge interne",
               "placeholder": "sous la forme marge-top,marge-right,marge-bottom,marge-left (défaut à 0)"
+            }
+          },
+          "title_offset": {
+            "type": "Text",
+            "config": {
+              "label": "Title Offset",
+              "placeholder": "décalage du titre x%,y% : -50%,-90%"
             }
           },
           "surface_bold": {

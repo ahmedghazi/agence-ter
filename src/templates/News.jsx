@@ -24,36 +24,32 @@ export const pageQuery = graphql`
         title {
           text
         }
-        posts {
-          item {
+      }
+    }
+    allPrismicPost(sort: { fields: first_publication_date }) {
+      nodes {
+        data {
+          title {
+            text
+          }
+          texte_fr {
+            raw
+          }
+          texte_en {
+            raw
+          }
+          image {
+            gatsbyImageData(width: 1500, placeholder: BLURRED)
+            url
+            alt
+          }
+          category {
             document {
-              ... on PrismicPost {
+              ... on PrismicCategory {
+                uid
                 data {
                   title {
                     text
-                  }
-                  texte_fr {
-                    raw
-                  }
-                  texte_en {
-                    raw
-                  }
-                  image {
-                    gatsbyImageData(width: 1500, placeholder: BLURRED)
-                    url
-                    alt
-                  }
-                  category {
-                    document {
-                      ... on PrismicCategory {
-                        uid
-                        data {
-                          title {
-                            text
-                          }
-                        }
-                      }
-                    }
                   }
                 }
               }
@@ -65,8 +61,8 @@ export const pageQuery = graphql`
   }
 `
 const News = ({ data }) => {
-  const { meta_title, meta_description, meta_image, posts } =
-    data.prismicNews.data
+  const { meta_title, meta_description, meta_image } = data.prismicNews.data
+  const posts = data.allPrismicPost.nodes
   // const { categories } = useContext(CategoriesContext)
 
   return (
@@ -83,7 +79,6 @@ const News = ({ data }) => {
         <div className="row">
           <div className="col-md-2 hidden-sm"></div>
           <div className="col-xs">
-            {/* <PostCategories /> */}
             <SummaryDetail
               summary={"Filtre"}
               detail={<PostCategories />}
@@ -95,8 +90,8 @@ const News = ({ data }) => {
       <div className="row ">
         <div className="col-md-2 hidden-sm"></div>
         <div className="col-md-8 col-xs-12">
-          {posts.map(({ item }, i) => (
-            <Post key={i} input={item.document} />
+          {posts.map((post, i) => (
+            <Post key={i} input={post} />
           ))}
         </div>
         <div className="col-md-2 hidden-sm"></div>

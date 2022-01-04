@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useContext } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import { LocaleContext } from "../contexts/LocaleWrapper"
 
 const query = graphql`
   query {
@@ -9,7 +10,10 @@ const query = graphql`
           item {
             uid
           }
-          title {
+          title_fr {
+            text
+          }
+          title_en {
             text
           }
         }
@@ -20,6 +24,7 @@ const query = graphql`
 
 const Menu = () => {
   const { prismicMenu } = useStaticQuery(query)
+  const { localeCtx } = useContext(LocaleContext)
   // console.log(prismicMenu);
   return (
     <nav id="nav-primary">
@@ -30,7 +35,7 @@ const Menu = () => {
               to={`/${li.item.uid}`}
               className="pr-xxs md:pr-sm hover:text-white"
             >
-              {li.title.text}
+              {localeCtx === "fr-fr" ? li.title_fr.text : li.title_en.text}
             </Link>
           </li>
         ))}

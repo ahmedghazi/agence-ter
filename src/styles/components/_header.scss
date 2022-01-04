@@ -81,7 +81,11 @@ header {
     }
   }
 }
-
+.template-home header a {
+  &:hover {
+    color: var(--color-gray);
+  }
+}
 .template-agency header {
   position: fixed;
   //   mix-blend-mode: difference;
