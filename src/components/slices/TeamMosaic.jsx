@@ -36,7 +36,7 @@ const TeamMosaic = ({ input }) => {
 
   return (
     <section className="slice-team ">
-      <div className="header-filters py-sm md:pb-md sticky top-header-height z-10 text-lg">
+      <div className="header-filters py-sm md:pb-md sticky top-header-height z-10 md:text-lg">
         <SummaryDetail
           summary={"filtrer"}
           detail={_getFiltres()}
