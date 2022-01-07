@@ -5,6 +5,7 @@ import { LocaleContext } from "../../contexts/LocaleWrapper"
 import clsx from "clsx"
 import styled from "styled-components"
 import AnimateOnScroll from "../ui/AnimateOnScroll"
+import { linkResolver } from "../../core/utils"
 
 const Container = styled.section`
   .row {
@@ -37,10 +38,16 @@ const ImageTextes = ({ input }) => {
             alt={input.primary.image.alt || ""}
           />
         </figure>
-        <div className={clsx("row", localeCtx === "en-gb" ? "reverse" : "")}>
+        <div
+          className={clsx(
+            "ttttttttttttttttt",
+            "row"
+            // localeCtx === "en-gb" ? "reverse" : ""
+          )}
+        >
           {input.items.map((el, i) => (
-            <div key={i} className={clsx("col-xs", `col-${i}`)}>
-              <RichText render={el.texte.raw} />
+            <div key={i} className={clsx("col-xs text-center", `col-${i}`)}>
+              <RichText render={el.texte.raw} linkResolver={linkResolver} />
             </div>
           ))}
         </div>

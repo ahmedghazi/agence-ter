@@ -42,6 +42,8 @@ export const linkResolver = (doc) => {
   switch (doc.type) {
     case "project":
       return `/project/${doc.uid}`
+    case "associate":
+      return `/associate/${doc.uid}`
 
     default:
       return `/${doc.uid}`

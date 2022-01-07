@@ -43,7 +43,7 @@ const TeamMosaic = ({ input }) => {
         ></SummaryDetail>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-sm">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-xs md:gap-sm">
         {data.map((item, i) => (
           <AnimateOnScroll key={i} delay={i * 0.2}>
             <article>

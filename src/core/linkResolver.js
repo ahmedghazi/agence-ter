@@ -28,7 +28,8 @@ exports.linkResolver = (doc) => {
       return `/`
     case "project":
       return `/project/${doc.uid}`
-
+    case "associate":
+      return `/associate/${doc.uid}`
     default:
       return `/${doc.uid}`
   }

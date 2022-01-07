@@ -5,6 +5,7 @@ const linkResolver = require("./src/core/linkResolver").linkResolver
 // const templateHome = path.resolve("src/templates/home.jsx");
 const templateHome = path.resolve("src/templates/Home.jsx")
 const templateAgency = path.resolve("src/templates/Agency.jsx")
+const templateAssociate = path.resolve("src/templates/Associate.jsx")
 const templateProjects = path.resolve("src/templates/Projects.jsx")
 const templateProject = path.resolve("src/templates/Project.jsx")
 const templateNews = path.resolve("src/templates/News.jsx")
@@ -129,9 +130,41 @@ async function createPagesDefault(graphql, actions) {
   })
 }
 
+/// /////////////////////////////////////////////////////////////
+/// /////////////////////////////////////////////////////////////
+async function createAssociates(graphql, actions) {
+  const { createPage } = actions
+
+  const pages = await graphql(`
+    {
+      allPrismicAssociate {
+        nodes {
+          uid
+          type
+        }
+      }
+    }
+  `)
+
+  pages.data.allPrismicAssociate.nodes.forEach((node) => {
+    const path = `/associate/${node.uid}`
+    console.log("path", path)
+    createPage({
+      path: path,
+      component: templateAssociate,
+      context: {
+        uid: node.uid,
+        slug: node.uid,
+        template: "template-associate",
+      },
+    })
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   await createPages(graphql, actions)
   await createProjects(graphql, actions)
   await createProject(graphql, actions)
   await createPagesDefault(graphql, actions)
+  await createAssociates(graphql, actions)
 }

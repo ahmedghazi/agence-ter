@@ -41,6 +41,7 @@ module.exports = {
           tag_theme: require(`./src/schemas/tag_theme.json`),
           tag_year: require(`./src/schemas/tag_year.json`),
           agency: require(`./src/schemas/agency.json`),
+          associate: require(`./src/schemas/associate.json`),
           news: require(`./src/schemas/news.json`),
           category: require(`./src/schemas/category.json`),
           post: require(`./src/schemas/post.json`),
