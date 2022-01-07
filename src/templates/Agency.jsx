@@ -11,7 +11,7 @@ import styled from "styled-components"
 import AnimateOnScroll from "../components/ui/AnimateOnScroll"
 
 import ImageTextes from "../components/slices/ImageTextes"
-import Team from "../components/slices/Team"
+import TeamMosaic from "../components/slices/TeamMosaic"
 import CallToScroll from "../components/ui/CallToScroll"
 
 export const pageQuery = graphql`
@@ -131,7 +131,7 @@ const Agency = ({ data }) => {
       case "image_textes":
         return <ImageTextes key={i} input={slice} />
       case "team":
-        return <Team key={i} input={slice} />
+        return <TeamMosaic key={i} input={slice} />
       default:
         return null
     }
