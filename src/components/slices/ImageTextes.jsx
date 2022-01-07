@@ -40,7 +40,7 @@ const ImageTextes = ({ input }) => {
         </figure>
         <div
           className={clsx(
-            "ttttttttttttttttt",
+            // "ttttttttttttttttt",
             "row"
             // localeCtx === "en-gb" ? "reverse" : ""
           )}

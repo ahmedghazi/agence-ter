@@ -1,0 +1,9 @@
+.template-associate {
+  main {
+    .bg {
+      @media all and (max-width: $sm) {
+        aspect-ratio: 4 / 3;
+      }
+    }
+  }
+}

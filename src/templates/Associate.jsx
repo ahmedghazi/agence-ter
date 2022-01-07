@@ -81,7 +81,7 @@ const Associate = ({ data }) => {
       />
 
       <div
-        className="w-screen h-screen bg fixed top-0 left-0"
+        className="bg p-sm md:p-0 md:w-screen md:h-screen md:fixed top-0 left-0 mb-xs md:mb-0"
         style={{
           backgroundImage: `url(${image.url})`,
           backgroundRepeat: "no-repeat",
@@ -95,11 +95,11 @@ const Associate = ({ data }) => {
         <div className="col-md-4 col-xs-12">
           <div className="header mb-md">
             <ul className="flex items-baseline">
-              <li className="mr-md">
+              <li className="mr-sm md:mr-md">
                 <h1 className="font-bold">{title.text}</h1>
               </li>
               {associates.map((li, i) => (
-                <li className="mr-md font-bold" key={i}>
+                <li key={i} className="mr-sm md:mr-md font-bold text-md">
                   <Link to={linkResolver(li)}>{li.data.title.text}</Link>
                 </li>
               ))}
@@ -114,7 +114,6 @@ const Associate = ({ data }) => {
           <div className={clsx("texte", "text-gray")}>
             <RichText
               render={localeCtx === "en-gb" ? texte_en.raw : texte_fr.raw}
-              className="ttttt"
             />
           </div>
         </div>
