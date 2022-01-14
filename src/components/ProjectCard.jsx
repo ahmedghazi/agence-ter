@@ -51,11 +51,14 @@ const Visuel = styled.div`
     rect {
       opacity: 0.5;
     }
+    image {
+      opacity: 1;
+    }
   }
 
-  // image {
-  //   opacity: 0;
-  // }
+  image {
+    opacity: 0;
+  }
   rect {
     opacity: 0;
   }

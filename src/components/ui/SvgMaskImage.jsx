@@ -102,13 +102,13 @@ const SvgMaskImage = (props) => {
             fillOpacity="50%"
           />
 
-          {/* <image
+          <image
             xlinkHref={props.image}
             width="100%"
             height="100%"
             preserveAspectRatio="xMinYMin slice"
             className="transition-opacity--"
-          ></image> */}
+          ></image>
         </g>
       </svg>
       {props.outline && (
