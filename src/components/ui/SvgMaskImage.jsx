@@ -116,6 +116,7 @@ const SvgMaskImage = (props) => {
           style={{
             position: "absolute",
             top: 0,
+            // border: "1px solid red",
           }}
           className="outline pointer-events-none"
           xmlns="http://www.w3.org/2000/svg"
@@ -125,8 +126,9 @@ const SvgMaskImage = (props) => {
             d={path}
             fill="transparent"
             stroke="black"
-            strokeWidth="2"
-            strokeLinecap="round"
+            strokeWidth="1"
+            vectorEffect="non-scaling-stroke"
+            // strokeLinecap="round"
           ></path>
         </svg>
       )}

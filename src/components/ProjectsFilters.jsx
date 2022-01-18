@@ -89,7 +89,7 @@ const ProjectsFilters = () => {
     useStaticQuery(query)
 
   const { filters, dispatchFilter } = useFilters()
-  console.log(filters)
+  // console.log(filters)
   const [collapsed, setCollapsed] = useState(true)
 
   // const _getFixedYears = () => {
