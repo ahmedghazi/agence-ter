@@ -45,10 +45,10 @@ const TeamMosaic = ({ input }) => {
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-xs md:gap-sm">
         {data.map((item, i) => (
-          <AnimateOnScroll key={i} delay={i * 0.2}>
+          <AnimateOnScroll key={i} delay={i * 0.1}>
             <article>
               {/* <pre>{JSON.stringify(item)}</pre> */}
-              <figure className="mb-sm">
+              <figure className="mb-sm bg-white" style={{ aspectRatio: "1/1" }}>
                 <GatsbyImage
                   image={getImage(item.image)}
                   alt={item.image.alt || ""}

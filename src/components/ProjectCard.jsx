@@ -33,12 +33,16 @@ const Card = styled.article`
     // min-width: 35vw;
     &.card-s {
       width: 75px !important;
+      width: 100px !important;
     }
     &.card-m {
       width: 100px !important;
     }
     &.card-m {
       width: 175px !important;
+    }
+    .project-header {
+      min-width: 100px;
     }
   }
 `
@@ -153,7 +157,7 @@ const ProjectCard = ({ input }) => {
             />
           </Visuel>
           <div
-            className="project-header flex justify-end"
+            className="project-header flex justify-end-"
             style={{
               transform: _getOffset(),
             }}
@@ -168,7 +172,7 @@ const ProjectCard = ({ input }) => {
               <div
                 className={clsx(
                   "superficie",
-                  surface_bold ? "text-lg font-bold" : ""
+                  surface_bold ? "md:text-lg font-bold" : ""
                 )}
               >
                 {data.superficie} {surface_bold}

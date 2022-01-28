@@ -134,7 +134,7 @@ const ProjectsGridMasonry = ({ input }) => {
           </div>
         </div>
         <div
-          className="header-filters--fixed text-md py-sm md:p-md fixed top-0 left-0 w-full transition-transform z-10"
+          className="header-filters--fixed text-md px-xs py-sm md:p-md fixed top-0 left-0 w-full transition-transform z-10"
           ref={headerFiltersRef}
         >
           <div className="row">
