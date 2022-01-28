@@ -2,7 +2,7 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 body {
-  // @include debugFiletY(154px);
+  @include debugFiletY(74px);
   // @include debugSquare(273px);
   scroll-behavior: smooth;
   &.is-transiting {
