@@ -8,19 +8,21 @@ import AnimateOnScroll from "../ui/AnimateOnScroll"
 import { linkResolver } from "../../core/utils"
 
 const Container = styled.section`
-  .row {
-    .col-O {
-      // color: var(--color-black);
-    }
-    .col-1 {
-      color: var(--color-gray);
-    }
-    &.reverse {
-      .col-1 {
-        color: var(--color-black);
+  &.is-translatable {
+    .row {
+      .col-O {
+        // color: var(--color-black);
       }
-      .col-0 {
+      .col-1 {
         color: var(--color-gray);
+      }
+      &.reverse {
+        .col-1 {
+          color: var(--color-black);
+        }
+        .col-0 {
+          color: var(--color-gray);
+        }
       }
     }
   }
@@ -28,10 +30,15 @@ const Container = styled.section`
 
 const ImageTextes = ({ input }) => {
   const { localeCtx } = useContext(LocaleContext)
-
+  const isTranslatable = input.items.length === 2
   return (
     <AnimateOnScroll>
-      <Container className="slice-image-textes mb-xl">
+      <Container
+        className={clsx(
+          "slice-image-textes mb-xl",
+          isTranslatable ? "is-translatable" : ""
+        )}
+      >
         <figure className="mb-md-alt">
           <GatsbyImage
             image={getImage(input.primary.image)}

@@ -124,6 +124,7 @@ module.exports = {
           `index.scss`,
           `flexboxgrid/`,
           `src/components/ui/slick-slider/slick.css`,
+          `src/templates/*.scss`,
           `gatsby-plugin-prismic-previews/dist/styles.css`,
         ],
         // purgeCSSOptions: {

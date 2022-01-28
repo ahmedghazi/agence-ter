@@ -147,7 +147,7 @@ const Agency = ({ data }) => {
         page={true}
       />
 
-      <AnimateOnScroll>
+      {/* <AnimateOnScroll>
         <IntroContainer className="slice-image-textes mb-xl min-h-main">
           <div className="row ">
             <div className="col-md-2 hidden-sm"></div>
@@ -162,7 +162,7 @@ const Agency = ({ data }) => {
           </div>
           <CallToScroll color="white" />
         </IntroContainer>
-      </AnimateOnScroll>
+      </AnimateOnScroll> */}
 
       <div className="">
         <div className="row ">
