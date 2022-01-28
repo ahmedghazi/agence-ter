@@ -19,7 +19,7 @@ const ProjectsGridMasonry = ({ input }) => {
   const { filters } = useFilters()
   // console.log(input.length)
   const [page, setPage] = useState(0)
-  const PER_PAGE = 104
+  const PER_PAGE = 20
   const MAX_PAGE = Math.floor(input.length / PER_PAGE)
   const [inputPaged, setInputPaged] = useState([])
   const [hasMore, setHasMore] = useState()
