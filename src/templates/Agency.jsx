@@ -143,7 +143,7 @@ const Agency = ({ data }) => {
         pageTitle={meta_title.text}
         pageDescription={meta_description.text}
         pageImage={meta_image.url}
-        template={`template-agency bg-yellow`}
+        template={`template-agency bg-yellow-`}
         page={true}
       />
 

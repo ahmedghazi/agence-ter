@@ -6,3 +6,11 @@
     // margin-bottom: var(--space-xl);
   }
 }
+
+@media all and (max-width: $md) {
+  .template-agency {
+    .min-h-main {
+      min-height: unset;
+    }
+  }
+}
