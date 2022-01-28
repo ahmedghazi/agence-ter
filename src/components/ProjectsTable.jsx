@@ -19,18 +19,27 @@ const query = graphql`
   }
 `
 
+const TableWrapper = styled.div`
+  @media all and (max-width: 768px) {
+    width: calc(100vw - var(--space-sm));
+    overflow-x: auto;
+  }
+`
+
 const Table = styled.table`
   width: 100%;
   border-collapse: initial;
-  &:before {
-    content: "";
-    position: fixed;
-    width: 100%;
-    left: 0;
-    height: var(--header-height);
-    background: white;
-    z-index: 1;
-    top: 0;
+  @media all and (min-width: 768px) {
+    &:before {
+      content: "";
+      position: fixed;
+      width: 100%;
+      left: 0;
+      height: var(--header-height);
+      background: white;
+      z-index: 1;
+      top: 0;
+    }
   }
 `
 const Thead = styled.thead`
@@ -38,6 +47,9 @@ const Thead = styled.thead`
   top: var(--header-height);
   background: white;
   z-index: 1;
+  @media all and (max-width: 768px) {
+    top: 0;
+  }
 `
 const Td = styled.td`
   position: relative;
@@ -76,11 +88,12 @@ const Td = styled.td`
     &.col-symbole,
     &.col-theme,
     &.col-status {
-      display: none;
+      // display: none;
+      padding-right: var(--space-md);
     }
-    &.col-year {
-      text-align: right;
-      padding-right: 0;
+    &.col-status {
+      // text-align: right;
+      // padding-right: 0;
     }
   }
 `
@@ -211,38 +224,42 @@ const ProjectsTable = () => {
         </div>
       </div>
 
-      <Table>
-        <Thead>
-          <tr>
-            {columns.map((column, i) => (
-              <Td
-                key={i}
-                className={`col-${column} capitalize font-bold py-xs cursor-pointer `}
-                onClick={() => _sortBy(column === "projet" ? "title" : column)}
-              >
-                {_localizeText(column)}
-              </Td>
-            ))}
-          </tr>
-        </Thead>
-        <tbody>
-          {projets.map((el, i) => (
-            <tr key={i}>
-              {columns.map((column, j) => (
-                <Td key={j} className={`col-${column} `}>
-                  {el.archive ? (
-                    <div>{_getHmlByColumn(column, el.data)}</div>
-                  ) : (
-                    <Link to={linkResolver(el)} className="py-xs">
-                      <div>{_getHmlByColumn(column, el.data)}</div>
-                    </Link>
-                  )}
+      <TableWrapper>
+        <Table>
+          <Thead>
+            <tr>
+              {columns.map((column, i) => (
+                <Td
+                  key={i}
+                  className={`col-${column} capitalize font-bold py-xs cursor-pointer `}
+                  onClick={() =>
+                    _sortBy(column === "projet" ? "title" : column)
+                  }
+                >
+                  {_localizeText(column)}
                 </Td>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </Thead>
+          <tbody>
+            {projets.map((el, i) => (
+              <tr key={i}>
+                {columns.map((column, j) => (
+                  <Td key={j} className={`col-${column} `}>
+                    {el.archive ? (
+                      <div>{_getHmlByColumn(column, el.data)}</div>
+                    ) : (
+                      <Link to={linkResolver(el)} className="py-xs">
+                        <div>{_getHmlByColumn(column, el.data)}</div>
+                      </Link>
+                    )}
+                  </Td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </TableWrapper>
     </section>
   )
 }
