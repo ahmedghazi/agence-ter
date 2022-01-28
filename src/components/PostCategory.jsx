@@ -16,7 +16,10 @@ const PostCategory = ({ input }) => {
   return (
     <li className="">
       <button
-        className={clsx("outline pr-xs capitalize", active ? "is-active" : "")}
+        className={clsx(
+          "outline pr-xs capitalize",
+          active ? "is-active button-deletable" : ""
+        )}
         onClick={() => setActive(!active)}
       >
         {_localizeText(input.uid)}

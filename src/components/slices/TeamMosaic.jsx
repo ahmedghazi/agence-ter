@@ -5,42 +5,47 @@ import AnimateOnScroll from "../ui/AnimateOnScroll"
 import SummaryDetail from "../ui/SummaryDetail"
 import { LocaleContext } from "../../contexts/LocaleWrapper"
 import { _localizeText } from "../../core/utils"
+import TeamFilters from "./TeamFilters"
+import useTeam from "../../contexts/TeamWrapper"
 
 const TeamMosaic = ({ input }) => {
   const { localeCtx } = useContext(LocaleContext)
-  const [filtre, setFiltre] = useState()
+  // const [filtre, setFiltre] = useState()
+  const { location, dispatchLocation } = useTeam()
 
-  const bureaux = input.items.map((el) => el.bureau)
-  const bureauxUniq = bureaux.filter((value, index, self) => {
-    return self.indexOf(value) === index
-  })
-  // console.log(filtre)
+  // const bureaux = input.items.map((el) => el.bureau)
+  // const bureauxUniq = bureaux.filter((value, index, self) => {
+  //   return self.indexOf(value) === index
+  // })
+  // // console.log(filtre)
 
-  const _getFiltres = () => (
-    <ul className="team-filtres flex">
-      {bureauxUniq.map((item, i) => (
-        <li key={i}>
-          <button
-            onClick={() => setFiltre(filtre ? "" : item)}
-            className={clsx("cursor-pointer pr-xs hover:font-bold ")}
-          >
-            {item}
-          </button>
-        </li>
-      ))}
-    </ul>
-  )
+  // const _getFiltres = () => (
+  //   <ul className="team-filtres flex">
+  //     {bureauxUniq.map((item, i) => (
+  //       <li key={i}>
+  //         <button
+  //           onClick={() => setFiltre(filtre ? "" : item)}
+  //           className={clsx("cursor-pointer pr-xs hover:font-bold ")}
+  //         >
+  //           {item}
+  //         </button>
+  //       </li>
+  //     ))}
+  //   </ul>
+  // )
 
-  const getDataByFiltre = () => input.items.filter((el) => el.bureau === filtre)
+  const getDataByFiltre = () =>
+    input.items.filter((el) => el.bureau === location)
   // console.log(input.items)
-  const data = filtre ? getDataByFiltre() : input.items
+  const data = location ? getDataByFiltre() : input.items
 
   return (
     <section className="slice-team ">
       <div className="header-filters py-sm md:pb-md sticky top-header-height z-10 md:text-lg">
         <SummaryDetail
           summary={_localizeText("filtre")}
-          detail={_getFiltres()}
+          // detail={_getFiltres()}
+          detail={<TeamFilters input={input} />}
         ></SummaryDetail>
       </div>
 
@@ -53,10 +58,12 @@ const TeamMosaic = ({ input }) => {
                 className="md:mb-sm bg-gray"
                 style={{ aspectRatio: "1/1" }}
               >
-                <GatsbyImage
-                  image={getImage(item.image)}
-                  alt={item.image.alt || ""}
-                />
+                {item.image && item.image.url && (
+                  <GatsbyImage
+                    image={getImage(item.image)}
+                    alt={item.image.alt || ""}
+                  />
+                )}
               </figure>
               <div className="overlay md:w-full md:h-full md:absolute md:top-0 md:left-0 pt-xs md:p-sm md:opacity-0 hover:opacity-100 transition-opacity">
                 <h3 className="font-bold">{item.name.text}</h3>

@@ -5,6 +5,7 @@ import Footer from "./Footer"
 import Cursor from "./ui/Cursor"
 import { FiltersWrapper } from "../contexts/FiltersWrapper"
 import { CategoriesWrapper } from "../contexts/CategoriesWrapper"
+import { TeamWrapper } from "../contexts/TeamWrapper"
 import HeaderHome from "./HeaderHome"
 
 const WrapperContext = createContext()
@@ -83,14 +84,16 @@ const Layout = ({ children, pageContext }) => {
     <WrapperContext.Provider value={{ settings, template }}>
       <FiltersWrapper>
         <CategoriesWrapper>
-          <div id="page">
-            {/* <Header /> */}
-            {template === "template-home" && <HeaderHome />}
-            {template !== "template-home" && <Header />}
-            <main>{children}</main>
-            <Footer />
-            {/* <Cursor color="black" size="20" /> */}
-          </div>
+          <TeamWrapper>
+            <div id="page">
+              {/* <Header /> */}
+              {template === "template-home" && <HeaderHome />}
+              {template !== "template-home" && <Header />}
+              <main>{children}</main>
+              <Footer />
+              {/* <Cursor color="black" size="20" /> */}
+            </div>
+          </TeamWrapper>
         </CategoriesWrapper>
       </FiltersWrapper>
     </WrapperContext.Provider>

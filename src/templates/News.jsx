@@ -78,7 +78,7 @@ const News = ({ data }) => {
       <div className="header-filters text-md py-sm md:py-md sticky top-0 md:mb-lg z-10">
         <div className="row">
           <div className="col-md-2 hidden-sm"></div>
-          <div className="col-xs">
+          <div className="col-xs md:text-lg">
             <SummaryDetail
               summary={"Filtre"}
               detail={<PostCategories />}
