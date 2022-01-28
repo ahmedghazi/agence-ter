@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import AnimateOnScroll from "../ui/AnimateOnScroll"
 import SummaryDetail from "../ui/SummaryDetail"
 import { LocaleContext } from "../../contexts/LocaleWrapper"
+import { _localizeText } from "../../core/utils"
 
 const TeamMosaic = ({ input }) => {
   const { localeCtx } = useContext(LocaleContext)
@@ -38,12 +39,12 @@ const TeamMosaic = ({ input }) => {
     <section className="slice-team ">
       <div className="header-filters py-sm md:pb-md sticky top-header-height z-10 md:text-lg">
         <SummaryDetail
-          summary={"filtrer"}
+          summary={_localizeText("filtre")}
           detail={_getFiltres()}
         ></SummaryDetail>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-xs md:gap-sm">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-xs md:gap-sm">
         {data.map((item, i) => (
           <AnimateOnScroll key={i} delay={i * 0.1}>
             <article>

@@ -35,7 +35,7 @@ const DropDownContent = styled.div`
   }
 `
 
-const SummaryDetail = ({ summary, detail }) => {
+const SummaryDetail = ({ summary, detail, summary_extra }) => {
   // const [active, setActive] = useState()
   const [collapsed, setCollapsed] = useState(true)
 
@@ -51,6 +51,7 @@ const SummaryDetail = ({ summary, detail }) => {
         <span className="pr-xs font-bold">{_localizeText(summary)}</span>
         <span className="icon-chevron-s absolute top-1/3 text-sm"></span>
       </DropDownButton>
+
       <DropDownContent
         className={clsx("detail", collapsed ? "is-collapsed" : "")}
       >

@@ -20,6 +20,9 @@ main {
 .h-main {
   height: calc(100vh - var(--header-height));
 }
+.min-h-main {
+  min-height: calc(100vh - var(--header-height));
+}
 .h-app {
   height: var(--app-height);
 }

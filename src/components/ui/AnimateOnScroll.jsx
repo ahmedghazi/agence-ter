@@ -7,7 +7,7 @@ const AnimateOnScroll = ({ children, delay = 0 }) => {
       <Reveal repeat threshold={0.4}>
         <Tween
           from={{ opacity: 0, transform: "translate3d(0, 30px, 0)" }}
-          duration={0.5}
+          duration={0.2}
           delay={delay}
         >
           {children}

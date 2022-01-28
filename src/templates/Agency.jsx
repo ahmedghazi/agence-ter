@@ -138,7 +138,7 @@ const Agency = ({ data }) => {
   })
 
   return (
-    <div className="page-template page-agency pt-header-height- ">
+    <div className="page-template page-agency p-xs pt-lg md:p-md md:pt-xl">
       <SEO
         pageTitle={meta_title.text}
         pageDescription={meta_description.text}
@@ -148,32 +148,23 @@ const Agency = ({ data }) => {
       />
 
       <AnimateOnScroll>
-        <IntroContainer className="slice-image-textes mb-xl">
-          <div className="mb-md-alt h-screen overflow-hidden">
-            <figure>
-              <GatsbyImage image={getImage(image)} alt={image.alt || ""} />
-            </figure>
-            <CallToScroll color="white" />
-          </div>
-
-          {/* <div className="px-xs md:px-md font-semibold">
-            <div
-              className={clsx("row", localeCtx === "en-gb" ? "reverse" : "")}
-            >
-              <div className="col-md-2"></div>
-              <div className="col-xs-6 col-md-4 col-0 ">
-                <RichText render={texte_fr.raw} />
+        <IntroContainer className="slice-image-textes mb-xl min-h-main">
+          <div className="row ">
+            <div className="col-md-2 hidden-sm"></div>
+            <div className="col-md-8 col-xs-12">
+              <div className="mb-md-alt ">
+                <figure>
+                  <GatsbyImage image={getImage(image)} alt={image.alt || ""} />
+                </figure>
               </div>
-              <div className="col-xs-6 col-md-4 col-1">
-                <RichText render={texte_en.raw} />
-              </div>
-              <div className="col-md-2"></div>
             </div>
-          </div> */}
+            <div className="col-md-2 hidden-sm"></div>
+          </div>
+          <CallToScroll color="white" />
         </IntroContainer>
       </AnimateOnScroll>
 
-      <div className="px-xs md:px-md">
+      <div className="">
         <div className="row ">
           <div className="col-md-2 hidden-sm"></div>
           <div className="col-md-8 col-xs-12">{slices}</div>

@@ -157,7 +157,7 @@ const ProjectsFilters = () => {
           <span className="pr-xs font-bold md:text-lg">
             {_localizeText("filtre")}
           </span>
-          <span className="icon-chevron-s absolute top-1/3 text-sm"></span>
+          <span className="icon-chevron-s absolute top-1/3 text-lg"></span>
         </DropDownButton>
         {filters && (
           <ul className="filters flex">

@@ -88,8 +88,8 @@ const Td = styled.td`
     &.col-symbole,
     &.col-theme,
     &.col-status {
-      // display: none;
-      padding-right: var(--space-md);
+      display: none;
+      // padding-right: var(--space-md);
     }
     &.col-status {
       // text-align: right;

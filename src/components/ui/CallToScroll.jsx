@@ -1,17 +1,34 @@
 import clsx from "clsx"
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 const CallToScroll = ({ color = "black" }) => {
+  const [hide, setHide] = useState()
   const _onClick = () => {
     const windowHeight = window.innerHeight
     // window.scrollBy(0, windowHeight)
     window.scrollTo({ top: windowHeight, behavior: "smooth" })
   }
 
+  useEffect(() => {
+    _onScroll()
+    window.addEventListener("scroll", _onScroll)
+
+    return () => window.removeEventListener("scroll", _onScroll)
+  }, [])
+
+  const _onScroll = () => {
+    if (window.pageYOffset > 0) {
+      setHide(true)
+    } else {
+      setHide(false)
+    }
+  }
+
   return (
     <div
       className={clsx(
-        "call-to-scroll absolute text-center bottom-0 left-0 w-screen p-md cursor-pointer text-lg"
+        "call-to-scroll fixed text-center bottom-0 left-0 w-full pb-md cursor-pointer text-lg",
+        hide ? "slideDown" : ""
       )}
       onClick={_onClick}
     >
