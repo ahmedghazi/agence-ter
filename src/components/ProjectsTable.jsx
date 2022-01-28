@@ -1,8 +1,23 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
+
 import PubSub from "pubsub-js"
 import styled from "styled-components"
 import { linkResolver, _localizeText } from "../core/utils"
+
+const query = graphql`
+  query {
+    allPrismicProject {
+      nodes {
+        uid
+        type
+        data {
+          ...projetCard
+        }
+      }
+    }
+  }
+`
 
 const Table = styled.table`
   width: 100%;
@@ -70,8 +85,10 @@ const Td = styled.td`
   }
 `
 
-const ProjectsTable = ({ input }) => {
-  // console.log(input);
+const ProjectsTable = () => {
+  const { allPrismicProject } = useStaticQuery(query)
+  // console.log(allPrismicProject)
+
   const [data, setData] = useState()
   const [sorted, setSorted] = useState(false)
   const [order, setOrder] = useState("ASC")
@@ -87,7 +104,7 @@ const ProjectsTable = ({ input }) => {
   ]
 
   const _sortBy = (key) => {
-    let arrayCopy = [...input]
+    let arrayCopy = [...allPrismicProject.nodes]
     arrayCopy.sort(_compareBy(key))
     // console.table(arrayCopy[0].data.title.text);
     setData(arrayCopy)
@@ -99,11 +116,11 @@ const ProjectsTable = ({ input }) => {
     console.log(order, key)
     if (order == "ASC") {
       return function (a, b) {
-        const _a = _getValueByColumn(key, a.item.document.data)
-          ? _getValueByColumn(key, a.item.document.data)
+        const _a = _getValueByColumn(key, a.data)
+          ? _getValueByColumn(key, a.data)
           : ""
-        const _b = _getValueByColumn(key, b.item.document.data)
-          ? _getValueByColumn(key, b.item.document.data)
+        const _b = _getValueByColumn(key, b.data)
+          ? _getValueByColumn(key, b.data)
           : ""
         if (_a.toLowerCase() < _b.toLowerCase()) return -1
         if (_a.toLowerCase() > _b.toLowerCase()) return 1
@@ -111,11 +128,11 @@ const ProjectsTable = ({ input }) => {
       }
     } else {
       return function (a, b) {
-        const _a = _getValueByColumn(key, a.item.document.data)
-          ? _getValueByColumn(key, a.item.document.data)
+        const _a = _getValueByColumn(key, a.data)
+          ? _getValueByColumn(key, a.data)
           : ""
-        const _b = _getValueByColumn(key, b.item.document.data)
-          ? _getValueByColumn(key, b.item.document.data)
+        const _b = _getValueByColumn(key, b.data)
+          ? _getValueByColumn(key, b.data)
           : ""
         if (_a.toLowerCase() < _b.toLowerCase()) return 1
         if (_a.toLowerCase() > _b.toLowerCase()) return -1
@@ -170,7 +187,7 @@ const ProjectsTable = ({ input }) => {
     }
   }
 
-  const projets = sorted ? data : input
+  const projets = sorted ? data : allPrismicProject.nodes
 
   const _handleSwitchView = () => {
     PubSub.publish("TABLE_TOGGLE")
@@ -213,9 +230,13 @@ const ProjectsTable = ({ input }) => {
             <tr key={i}>
               {columns.map((column, j) => (
                 <Td key={j} className={`col-${column} `}>
-                  <Link to={linkResolver(el.item.document)} className="py-xs">
-                    <div>{_getHmlByColumn(column, el.item.document.data)}</div>
-                  </Link>
+                  {el.archive ? (
+                    <div>{_getHmlByColumn(column, el.data)}</div>
+                  ) : (
+                    <Link to={linkResolver(el)} className="py-xs">
+                      <div>{_getHmlByColumn(column, el.data)}</div>
+                    </Link>
+                  )}
                 </Td>
               ))}
             </tr>

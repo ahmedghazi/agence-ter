@@ -11,6 +11,7 @@ import loadable from "@loadable/component"
 const ProjectsFilters = loadable(() => import("./ProjectsFilters"))
 
 const ProjectsGridMasonry = ({ input }) => {
+  // console.log(input)
   let _isotopeRendered = false
   const backDropRef = useRef()
   const gridRef = useRef()

@@ -26,6 +26,7 @@ export const query = graphql`
   }
 
   fragment projetCard on PrismicProjectDataType {
+    archive
     title {
       text
     }
