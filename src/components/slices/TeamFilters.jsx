@@ -28,7 +28,7 @@ const TeamFilter = ({ input }) => {
 }
 
 const TeamFilters = ({ input }) => {
-  const [filtre, setFiltre] = useState()
+  // const [filtre, setFiltre] = useState()
 
   const bureaux = input.items.map((el) => el.bureau)
   const bureauxUniq = bureaux.filter((value, index, self) => {
@@ -38,14 +38,6 @@ const TeamFilters = ({ input }) => {
   return (
     <ul className="team-filtres flex">
       {bureauxUniq.map((item, i) => (
-        // <li key={i}>
-        //   <button
-        //     onClick={() => setFiltre(filtre ? "" : item)}
-        //     className={clsx("cursor-pointer pr-xs hover:font-bold ")}
-        //   >
-        //     {item}
-        //   </button>
-        // </li>
         <TeamFilter input={item} key={i} />
       ))}
     </ul>

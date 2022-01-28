@@ -39,7 +39,7 @@ export const pageQuery = graphql`
             raw
           }
           image {
-            gatsbyImageData(width: 1500, placeholder: BLURRED)
+            gatsbyImageData(width: 500, placeholder: BLURRED)
             url
             alt
           }

@@ -33,7 +33,7 @@ const Post = ({ input }) => {
         <div className="row">
           <div className="col-md-2 col-xs">
             {image && image.url && (
-              <figure className="">
+              <figure className="sm:aspectio-ratio-1-1">
                 <GatsbyImage
                   image={getImage(image)}
                   alt={image.alt || ""}
@@ -65,7 +65,7 @@ const Post = ({ input }) => {
               </div>
               <div
                 className={clsx(
-                  "col-xs",
+                  "col-xs hidden-sm",
                   localeCtx !== "en-gb" ? "text-gray" : ""
                 )}
               >
