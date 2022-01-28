@@ -32,14 +32,14 @@ const Card = styled.article`
   @media all and (max-width: 768px) {
     // min-width: 35vw;
     &.card-s {
-      width: 75px !important;
-      width: 100px !important;
+      // width: 75px !important;
+      width: 104px !important;
     }
     &.card-m {
-      width: 100px !important;
+      width: 154px !important;
     }
-    &.card-m {
-      width: 175px !important;
+    &.card-l {
+      width: 228px !important;
     }
     .project-header {
       min-width: 100px;

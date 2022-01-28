@@ -14,7 +14,7 @@ const TeamMosaic = ({ input }) => {
   const bureauxUniq = bureaux.filter((value, index, self) => {
     return self.indexOf(value) === index
   })
-  console.log(filtre)
+  // console.log(filtre)
 
   const _getFiltres = () => (
     <ul className="team-filtres flex">
