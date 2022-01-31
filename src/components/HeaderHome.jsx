@@ -39,7 +39,7 @@ const HeaderHome = () => {
   return (
     <header
       className={clsx(
-        "p-xs md:p-md absolute w-full h-screen font-bold text-sm md:text-lg"
+        "p-xs md:p-md absolute w-full h-screen font-bold text-sm md:text-lg z-40"
         // visible ? "is-visible" : ""
       )}
     >

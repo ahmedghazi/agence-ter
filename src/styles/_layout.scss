@@ -13,9 +13,10 @@ body {
 }
 
 main {
-  padding: var(--space-1);
+  // padding: var(--space-1);
   transition: opacity 0.4s ease-in-out;
   position: relative;
+  z-index: 0;
 }
 .h-main {
   height: calc(100vh - var(--header-height));

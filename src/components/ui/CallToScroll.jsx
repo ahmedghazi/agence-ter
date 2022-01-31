@@ -17,6 +17,7 @@ const CallToScroll = ({ color = "black" }) => {
   }, [])
 
   const _onScroll = () => {
+    console.log(window.pageYOffset)
     if (window.pageYOffset > 0) {
       setHide(true)
     } else {
@@ -27,7 +28,7 @@ const CallToScroll = ({ color = "black" }) => {
   return (
     <div
       className={clsx(
-        "call-to-scroll fixed text-center bottom-0 left-0 w-full pb-md cursor-pointer text-lg",
+        "call-to-scroll fixed text-center bottom-0 left-0 w-full pb-md cursor-pointer text-lg z-50",
         hide ? "slideDown" : ""
       )}
       onClick={_onClick}

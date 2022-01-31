@@ -12,6 +12,13 @@
       opacity: 1;
     }
   }
+  header {
+    pointer-events: none;
+    a {
+      pointer-events: all;
+      color: white;
+    }
+  }
 }
 
 @media all and (max-width: $sm) {
