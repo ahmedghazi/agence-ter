@@ -16,7 +16,10 @@
     pointer-events: none;
     a {
       pointer-events: all;
-      color: white;
+      // color: white;
+      &:hover {
+        color: var(--color-gray);
+      }
     }
   }
 }
