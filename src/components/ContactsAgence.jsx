@@ -41,7 +41,7 @@ const ContactsAgence = ({ input }) => {
               </div>
               <div
                 className={clsx(
-                  "col-xs ",
+                  "col-xs hidden-sm",
                   localeCtx !== "en-gb" ? "text-gray" : "text-black"
                 )}
               >
