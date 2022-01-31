@@ -46,6 +46,8 @@ header {
     img,
     svg {
       max-width: 106px;
+      margin: 0 auto;
+      margin-bottom: 1em;
     }
     .col-xs {
       // flex-grow: 0;
