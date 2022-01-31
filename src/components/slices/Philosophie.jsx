@@ -5,7 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { LocaleContext } from "../../contexts/LocaleWrapper"
 
 const Philosophie = ({ input }) => {
-  console.log(input)
+  // console.log(input)
   const { localeCtx } = useContext(LocaleContext)
 
   return (

@@ -29,7 +29,10 @@ const NewsMarquee = ({ input }) => {
         <marquee>
           <div className="flex">
             {input.items.map(({ item }, i) => (
-              <div className="slide pr-lg flex items-baseline text-lg" key={i}>
+              <div
+                className="slide pr-lg flex items-baseline md:text-lg"
+                key={i}
+              >
                 <h3 className="font-strong pr-xs text-lg">
                   {item.document.data.title.text} :
                 </h3>

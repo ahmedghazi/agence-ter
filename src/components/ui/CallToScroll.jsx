@@ -17,7 +17,7 @@ const CallToScroll = ({ color = "black" }) => {
   }, [])
 
   const _onScroll = () => {
-    console.log(window.pageYOffset)
+    // console.log(window.pageYOffset)
     if (window.pageYOffset > 0) {
       setHide(true)
     } else {
