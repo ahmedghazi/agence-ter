@@ -13,6 +13,22 @@
         "single": "heading1,heading2,heading3,heading4,heading5,heading6",
         "label": "Title"
       }
+    },
+    "items": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "item": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": ["post"],
+              "label": "Item"
+            }
+          }
+        },
+        "label": "Items"
+      }
     }
   },
   "SEO": {

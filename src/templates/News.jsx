@@ -24,6 +24,43 @@ export const pageQuery = graphql`
         title {
           text
         }
+        items {
+          item {
+            document {
+              ... on PrismicPost {
+                id
+                data {
+                  title {
+                    text
+                  }
+                  texte_fr {
+                    raw
+                  }
+                  texte_en {
+                    raw
+                  }
+                  image {
+                    gatsbyImageData(width: 500, placeholder: BLURRED)
+                    url
+                    alt
+                  }
+                  category {
+                    document {
+                      ... on PrismicCategory {
+                        uid
+                        data {
+                          title {
+                            text
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
     allPrismicPost(sort: { fields: first_publication_date }) {
@@ -61,8 +98,10 @@ export const pageQuery = graphql`
   }
 `
 const News = ({ data }) => {
-  const { meta_title, meta_description, meta_image } = data.prismicNews.data
+  const { meta_title, meta_description, meta_image, items } =
+    data.prismicNews.data
   const posts = data.allPrismicPost.nodes
+  console.log(items)
   // const { categories } = useContext(CategoriesContext)
 
   return (
@@ -90,8 +129,9 @@ const News = ({ data }) => {
       <div className="row ">
         <div className="col-md-2 hidden-sm"></div>
         <div className="col-md-8 col-xs-12">
-          {posts.map((post, i) => (
-            <Post key={i} input={post} />
+          {items.map(({ item }, i) => (
+            <Post key={i} input={item.document} />
+            // <pre key={i}>{JSON.stringify(item)}</pre>
           ))}
         </div>
         <div className="col-md-2 hidden-sm"></div>
