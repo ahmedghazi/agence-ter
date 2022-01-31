@@ -100,8 +100,8 @@ export const pageQuery = graphql`
 const News = ({ data }) => {
   const { meta_title, meta_description, meta_image, items } =
     data.prismicNews.data
-  const posts = data.allPrismicPost.nodes
-  console.log(items)
+  // const posts = data.allPrismicPost.nodes
+  // console.log(items)
   // const { categories } = useContext(CategoriesContext)
 
   return (
