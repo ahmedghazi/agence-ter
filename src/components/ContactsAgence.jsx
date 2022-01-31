@@ -30,11 +30,21 @@ const ContactsAgence = ({ input }) => {
             <div
               className={clsx("row", localeCtx === "en-gb" ? "reverse" : "")}
             >
-              <div className="col-xs">
+              <div
+                className={clsx(
+                  "col-xs ",
+                  localeCtx !== "en-gb" ? "text-black" : "text-gray"
+                )}
+              >
                 <h2 className="font-bold">{nom.text}</h2>
                 <RichText render={infos_fr.raw} />
               </div>
-              <div className="col-xs">
+              <div
+                className={clsx(
+                  "col-xs ",
+                  localeCtx !== "en-gb" ? "text-gray" : "text-black"
+                )}
+              >
                 <h2 className="font-bold">{nom.text}</h2>
                 <RichText render={infos_en.raw} />
               </div>
