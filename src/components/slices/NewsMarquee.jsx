@@ -30,10 +30,10 @@ const NewsMarquee = ({ input }) => {
           <div className="flex">
             {input.items.map(({ item }, i) => (
               <div
-                className="slide pr-lg flex items-baseline md:text-lg"
+                className="slide pr-lg flex items-baseline text-md md:text-lg"
                 key={i}
               >
-                <h3 className="font-strong pr-xs text-lg">
+                <h3 className="font-strong pr-xs text-md md:text-lg">
                   {item.document.data.title.text} :
                 </h3>
                 <p>{_truncate(item.document.data.texte_fr.text, 10)}</p>
