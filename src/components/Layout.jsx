@@ -21,7 +21,7 @@ const query = graphql`
 const Layout = ({ children, pageContext }) => {
   const { settings } = useStaticQuery(query)
   const { template } = pageContext
-  console.log(template)
+  // console.log(template)
   // const [direction, setDirection] = useState()
 
   useEffect(() => {

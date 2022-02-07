@@ -138,37 +138,50 @@ const ProjectsTable = () => {
     console.log(order, key)
     if (order == "ASC") {
       return function (a, b) {
-        const _a = _getValueByColumn(key, a.data)
-          ? _getValueByColumn(key, a.data)
+        const _a = _getValueByColumn(key, a.data, true)
+          ? _getValueByColumn(key, a.data, true)
           : ""
-        const _b = _getValueByColumn(key, b.data)
-          ? _getValueByColumn(key, b.data)
+        const _b = _getValueByColumn(key, b.data, true)
+          ? _getValueByColumn(key, b.data, true)
           : ""
-        if (_a.toLowerCase() < _b.toLowerCase()) return -1
-        if (_a.toLowerCase() > _b.toLowerCase()) return 1
+        console.log(_a, _b)
+        if (key === "superficie") {
+          if (_a < _b) return -1
+          if (_a > _b) return 1
+        } else {
+          if (_a.toLowerCase() < _b.toLowerCase()) return -1
+          if (_a.toLowerCase() > _b.toLowerCase()) return 1
+        }
         return 0
       }
     } else {
       return function (a, b) {
-        const _a = _getValueByColumn(key, a.data)
-          ? _getValueByColumn(key, a.data)
+        const _a = _getValueByColumn(key, a.data, true)
+          ? _getValueByColumn(key, a.data, true)
           : ""
-        const _b = _getValueByColumn(key, b.data)
-          ? _getValueByColumn(key, b.data)
+        const _b = _getValueByColumn(key, b.data, true)
+          ? _getValueByColumn(key, b.data, true)
           : ""
-        if (_a.toLowerCase() < _b.toLowerCase()) return 1
-        if (_a.toLowerCase() > _b.toLowerCase()) return -1
+        if (key === "superficie") {
+          if (_a < _b) return 1
+          if (_a > _b) return -1
+        } else {
+          if (_a.toLowerCase() < _b.toLowerCase()) return 1
+          if (_a.toLowerCase() > _b.toLowerCase()) return -1
+        }
         return 0
       }
     }
   }
 
-  const _getValueByColumn = (col, itemData) => {
+  const _getValueByColumn = (col, itemData, raw) => {
     switch (col) {
       case "title":
         return itemData.title.text
       case "superficie":
-        return itemData.superficie
+        return raw
+          ? _valueToNumberToString(itemData.superficie)
+          : itemData.superficie
       case "status":
         return itemData.phase
       case "symbole":
@@ -186,9 +199,12 @@ const ProjectsTable = () => {
         return itemData[col]
     }
   }
+  const _valueToNumberToString = (val) => {
+    return parseFloat(val)
+  }
   const _getHmlByColumn = (col, itemData) => {
     const isArchive = itemData.archive
-    const columnValue = _getValueByColumn(col, itemData)
+    const columnValue = _getValueByColumn(col, itemData, false)
     // console.log(columnValue)
     switch (col) {
       case "title":
