@@ -4,10 +4,12 @@ import { RichText } from "prismic-reactjs"
 import clsx from "clsx"
 import AnimateOnScroll from "./ui/AnimateOnScroll"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
 
 const ContactsAgence = ({ input }) => {
   const { localeCtx } = useContext(LocaleContext)
-  const { nom, image, infos_fr, infos_en } = input
+  const { nom, image, infos_fr, infos_en, liens } = input
+  console.log(liens)
   return (
     <AnimateOnScroll>
       <article className="mb-lg">
@@ -15,13 +17,15 @@ const ContactsAgence = ({ input }) => {
           <div className="col-md-2 col-xs">
             {image && image.url && (
               <figure className="">
-                <GatsbyImage
-                  image={getImage(image)}
-                  alt={image.alt || ""}
-                  style={{
-                    aspectRatio: "1/1",
-                  }}
-                />
+                <a href={liens.url} target="_blank" rel="noopener, noreferrer">
+                  <GatsbyImage
+                    image={getImage(image)}
+                    alt={image.alt || ""}
+                    style={{
+                      aspectRatio: "1/1",
+                    }}
+                  />
+                </a>
               </figure>
             )}
           </div>

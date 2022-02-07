@@ -25,6 +25,14 @@
               "label": "Image"
             }
           },
+          "liens": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "Liens",
+              "placeholder": "Adresse vers google map, bing, osm,..."
+            }
+          },
           "nom": {
             "type": "StructuredText",
             "config": {
