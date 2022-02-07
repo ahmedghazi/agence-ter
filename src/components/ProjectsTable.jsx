@@ -83,8 +83,17 @@ const Td = styled.td`
     height: 46px;
     max-width: 100px;
   }
-
+  @media all and (min-width: 768px) {
+    h2 {
+      min-height: 66px;
+      line-height: 66px;
+    }
+  }
   @media all and (max-width: 768px) {
+    h2 {
+      min-height: 56px;
+      line-height: 56px;
+    }
     &.col-symbole,
     &.col-theme,
     &.col-status {
@@ -189,7 +198,7 @@ const ProjectsTable = () => {
       case "status":
         return <span>{columnValue}</span>
       case "symbole":
-        return isArchive ? (
+        return isArchive || !columnValue ? (
           ""
         ) : (
           <img src={columnValue} alt={`picto `} loading="lazy" />
@@ -206,7 +215,7 @@ const ProjectsTable = () => {
   }
 
   const projets = sorted ? data : allPrismicProject.nodes
-  console.log(projets)
+  // console.log(projets)
   const _handleSwitchView = () => {
     PubSub.publish("TABLE_TOGGLE")
   }
@@ -252,10 +261,7 @@ const ProjectsTable = () => {
                 {columns.map((column, j) => (
                   <Td key={j} className={`col-${column} `}>
                     {el.data.archive ? (
-                      <div>
-                        {_getHmlByColumn(column, el.data)}
-                        {/* <pre>{JSON.stringify(el.data)}</pre> */}
-                      </div>
+                      <div>{_getHmlByColumn(column, el.data)}</div>
                     ) : (
                       <Link to={linkResolver(el)} className="py-xs">
                         <div>{_getHmlByColumn(column, el.data)}</div>
