@@ -53,7 +53,13 @@ const ImageTextes = ({ input }) => {
           )}
         >
           {input.items.map((el, i) => (
-            <div key={i} className={clsx("col-xs text-center", `col-${i}`)}>
+            <div
+              key={i}
+              className={clsx(
+                "col-xs text-center",
+                `col-${i} ${isTranslatable && i > 0 ? "hidden-sm" : ""}`
+              )}
+            >
               <RichText render={el.texte.raw} linkResolver={linkResolver} />
             </div>
           ))}

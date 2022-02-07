@@ -95,10 +95,10 @@ const Associate = ({ data }) => {
         <div className="col-md-4 col-xs-12">
           <div className="header mb-md">
             <ul className="flex items-baseline ">
-              <li className="mr-sm md:mr-md">
+              <li className="mr-sm md:mr-md hidden-sm">
                 <Link
                   to={"/agence"}
-                  className="font-bold flex items-center pr-xxs"
+                  className="font-bold flex items-center pr-xxs text-md"
                 >
                   <i className="icon-chevron-w pr-xs"></i>{" "}
                   <span>{_localizeText("back")}</span>
