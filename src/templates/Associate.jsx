@@ -7,7 +7,7 @@ import clsx from "clsx"
 import { RichText } from "prismic-reactjs"
 import { LocaleContext } from "../contexts/LocaleWrapper"
 import SEO from "../components/seo"
-import { linkResolver } from "../core/utils"
+import { linkResolver, _localizeText } from "../core/utils"
 
 export const pageQuery = graphql`
   query AssociateBySlug($uid: String!) {
@@ -94,12 +94,24 @@ const Associate = ({ data }) => {
         <div className="col-md-2 hidden-sm"></div>
         <div className="col-md-4 col-xs-12">
           <div className="header mb-md">
-            <ul className="flex items-baseline">
+            <ul className="flex items-baseline ">
               <li className="mr-sm md:mr-md">
+                <Link
+                  to={"/agence"}
+                  className="font-bold flex items-center pr-xxs"
+                >
+                  <i className="icon-chevron-w pr-xs"></i>{" "}
+                  <span>{_localizeText("back")}</span>
+                </Link>
+              </li>
+              <li className="mr-sm md:mr-md whitespace-nowrap">
                 <h1 className="font-bold">{title.text}</h1>
               </li>
               {associates.map((li, i) => (
-                <li key={i} className="mr-sm md:mr-md font-bold text-md">
+                <li
+                  key={i}
+                  className="mr-sm md:mr-md font-bold text-md whitespace-nowrap"
+                >
                   <Link to={linkResolver(li)}>{li.data.title.text}</Link>
                 </li>
               ))}

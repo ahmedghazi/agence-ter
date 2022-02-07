@@ -178,6 +178,7 @@ const ProjectsTable = () => {
     }
   }
   const _getHmlByColumn = (col, itemData) => {
+    const isArchive = itemData.archive
     const columnValue = _getValueByColumn(col, itemData)
     // console.log(columnValue)
     switch (col) {
@@ -188,7 +189,11 @@ const ProjectsTable = () => {
       case "status":
         return <span>{columnValue}</span>
       case "symbole":
-        return <img src={columnValue} alt={`picto `} loading="lazy" />
+        return isArchive ? (
+          ""
+        ) : (
+          <img src={columnValue} alt={`picto `} loading="lazy" />
+        )
       case "localisation":
         return <span>{itemData.localisation_short}</span>
       case "year":
@@ -201,7 +206,7 @@ const ProjectsTable = () => {
   }
 
   const projets = sorted ? data : allPrismicProject.nodes
-
+  console.log(projets)
   const _handleSwitchView = () => {
     PubSub.publish("TABLE_TOGGLE")
   }
@@ -246,8 +251,11 @@ const ProjectsTable = () => {
               <tr key={i}>
                 {columns.map((column, j) => (
                   <Td key={j} className={`col-${column} `}>
-                    {el.archive ? (
-                      <div>{_getHmlByColumn(column, el.data)}</div>
+                    {el.data.archive ? (
+                      <div>
+                        {_getHmlByColumn(column, el.data)}
+                        {/* <pre>{JSON.stringify(el.data)}</pre> */}
+                      </div>
                     ) : (
                       <Link to={linkResolver(el)} className="py-xs">
                         <div>{_getHmlByColumn(column, el.data)}</div>

@@ -83,13 +83,15 @@ header {
     }
   }
 }
-.template-home header a {
+.template-home header a,
+.template-agency header a {
   &:hover {
-    color: var(--color-gray);
+    color: var(--color-gray) !important;
   }
 }
 .template-agency header {
   position: fixed;
+
   //   mix-blend-mode: difference;
   //   .site-name svg path.pleins {
   //     fill: var(--color-white);
