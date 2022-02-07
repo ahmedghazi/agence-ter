@@ -9,7 +9,7 @@ import { Link } from "gatsby"
 const ContactsAgence = ({ input }) => {
   const { localeCtx } = useContext(LocaleContext)
   const { nom, image, infos_fr, infos_en, liens } = input
-  console.log(liens)
+  // console.log(liens)
   return (
     <AnimateOnScroll>
       <article className="mb-lg">

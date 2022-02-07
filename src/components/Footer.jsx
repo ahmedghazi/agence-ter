@@ -15,6 +15,9 @@ const Footer = () => {
           <Link to="/contacts" className="btn outline mx-sm">
             Contacts
           </Link>
+          <Link to="/mentions-legales" className="">
+            Mentions légales
+          </Link>
         </div>
         <ScrollToTop />
       </div>
