@@ -135,7 +135,7 @@ const ProjectsTable = () => {
   }
 
   const _compareBy = (key) => {
-    console.log(order, key)
+    // console.log(order, key)
     if (order == "ASC") {
       return function (a, b) {
         const _a = _getValueByColumn(key, a.data, true)
@@ -144,7 +144,7 @@ const ProjectsTable = () => {
         const _b = _getValueByColumn(key, b.data, true)
           ? _getValueByColumn(key, b.data, true)
           : ""
-        console.log(_a, _b)
+        // console.log(_a, _b)
         if (key === "superficie") {
           if (_a < _b) return -1
           if (_a > _b) return 1

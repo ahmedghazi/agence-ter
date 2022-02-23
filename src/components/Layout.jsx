@@ -86,7 +86,6 @@ const Layout = ({ children, pageContext }) => {
         <CategoriesWrapper>
           <TeamWrapper>
             <div id="page">
-              {/* <Header /> */}
               {template === "template-home" && <HeaderHome />}
               {template !== "template-home" && <Header />}
               <main>{children}</main>

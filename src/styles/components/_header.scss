@@ -85,8 +85,9 @@ header {
 }
 .template-home header a,
 .template-agency header a {
+  // background-color: red;
   &:hover {
-    color: var(--color-gray) !important;
+    color: var(--color-white) !important;
   }
 }
 .template-agency header {
