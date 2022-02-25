@@ -29,6 +29,7 @@ const ProjectsGridMasonry = ({ input }) => {
 
   //if is at bottom and has more content, set next page
   useEffect(() => {
+    if (filters.length > 0) return
     if (isBottom && hasMore) setPage(page + 1)
   }, [isBottom, hasMore])
 

@@ -74,7 +74,7 @@ const Visuel = styled.div`
 const ProjectCard = ({ input }) => {
   const carRef = useRef()
   const { filters } = useFilters()
-
+  console.log(input)
   const { largeur, marge_interne, title_offset, surface_bold, item } = input
   const { uid, data } = item.document
 
@@ -166,7 +166,8 @@ const ProjectCard = ({ input }) => {
               <h2 className="font-semibold">{data.title.text}</h2>
               {data.localisation.document && (
                 <div className="location">
-                  {data.localisation.document.data.title.text}
+                  {data.localisation.document.data.title.text}{" "}
+                  {data.localisation_short}
                 </div>
               )}
               <div
