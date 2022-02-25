@@ -9,20 +9,23 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { RichText } from "prismic-reactjs"
 import Slider from "../components/ui/slick-slider"
 import SliderPagerNum from "../components/ui/slick-slider/SliderPagerNum"
-import { linkResolver, _localizeText } from "../core/utils"
+import { linkResolver, shuffle, _localizeText } from "../core/utils"
 import { LocaleContext } from "../contexts/LocaleWrapper"
 
 // import PubSub from "pubsub-js"
 
 export const pageQuery = graphql`
-  query ProjectBySlug($uid: String!) {
+  query ProjectBySlug($uid: String!, $theme: String!) {
     project: prismicProject(uid: { eq: $uid }) {
       _previewable
       data {
         ...project
       }
     }
-    related: allPrismicProject(filter: { uid: { ne: $uid } }, limit: 2) {
+    related: allPrismicProject(
+      filter: { uid: { ne: $uid }, data: { theme: { uid: { eq: $theme } } } }
+      limit: 5
+    ) {
       nodes {
         type
         uid
@@ -48,7 +51,9 @@ const PageProject = ({ data }) => {
     localisation_short,
     images,
   } = project.data
-  // console.log(project.data)
+
+  shuffle(related.nodes)
+  // console.log(related.nodes)
 
   const { localeCtx } = useContext(LocaleContext)
 

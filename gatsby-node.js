@@ -79,6 +79,11 @@ async function createProject(graphql, actions) {
         nodes {
           uid
           type
+          data {
+            theme {
+              uid
+            }
+          }
         }
       }
     }
@@ -94,6 +99,7 @@ async function createProject(graphql, actions) {
         uid: node.uid,
         slug: node.uid,
         template: "template-project",
+        theme: node.data.theme.uid,
       },
     })
   })
