@@ -45,12 +45,11 @@ header {
   @media all and (max-width: $sm) {
     img,
     svg {
-      max-width: 106px;
+      max-width: 207px;
       margin: 0 auto;
-      // margin-bottom: 1em;
     }
-    .col-xs {
-      // flex-grow: 0;
+    a {
+      font-size: 12px;
     }
   }
 }
