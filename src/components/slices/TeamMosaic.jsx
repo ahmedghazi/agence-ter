@@ -54,10 +54,7 @@ const TeamMosaic = ({ input }) => {
           <AnimateOnScroll key={i} delay={i * 0.1}>
             <article>
               {/* <pre>{JSON.stringify(item)}</pre> */}
-              <figure
-                className="md:mb-sm bg-gray"
-                style={{ aspectRatio: "1/1" }}
-              >
+              <figure className=" bg-gray" style={{ aspectRatio: "1/1" }}>
                 {item.image && item.image.url && (
                   <GatsbyImage
                     image={getImage(item.image)}
@@ -65,9 +62,9 @@ const TeamMosaic = ({ input }) => {
                   />
                 )}
               </figure>
-              <div className="overlay md:w-full md:h-full md:absolute md:top-0 md:left-0 pt-xs md:p-sm md:opacity-0 hover:opacity-100 transition-opacity">
+              <div className="pt-xs bg-gray-">
                 <h3 className="font-bold">{item.name.text}</h3>
-                <div className="position mb-1e hidden-sm">
+                <div className="position hidden-sm">
                   {localeCtx === "en-gb" ? item.position_en : item.position_fr}
                 </div>
               </div>
