@@ -75,7 +75,7 @@ async function createProject(graphql, actions) {
 
   const projects = await graphql(`
     {
-      allPrismicProject {
+      allPrismicProject(filter: { data: { archive: { eq: false } } }) {
         nodes {
           uid
           type

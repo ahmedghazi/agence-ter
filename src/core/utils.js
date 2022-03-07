@@ -38,7 +38,7 @@ export const linkResolver = (doc) => {
   // if (doc.data.home_page) {
   //   return "/"
   // }
-  // console.log(doc)
+  console.log(doc)
   switch (doc.type) {
     case "project":
       return `/project/${doc.uid}`

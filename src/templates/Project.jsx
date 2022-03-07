@@ -50,6 +50,7 @@ const PageProject = ({ data }) => {
     year_short,
     localisation_short,
     images,
+    // archive,
   } = project.data
 
   shuffle(related.nodes)
