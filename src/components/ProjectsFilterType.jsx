@@ -64,7 +64,7 @@ const ProjectsFilterType = ({ input }) => {
   }
   const _updateBackgroundColor = () => {
     setTimeout(() => {
-      console.log(color)
+      // console.log(color)
       document.querySelector(".grid-view .backdrop").style.backgroundColor =
         color
     }, 150)

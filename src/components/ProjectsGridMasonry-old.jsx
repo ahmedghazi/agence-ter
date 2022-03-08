@@ -13,14 +13,13 @@ const ProjectsFilters = loadable(() => import("./ProjectsFilters"))
 const ProjectsGridMasonry = ({ input }) => {
   // console.log(input)
   let _isotopeRendered = false
-  let _isotopeFilterRendered = false
   const backDropRef = useRef()
   const gridRef = useRef()
   const isoRef = useRef()
   const { filters } = useFilters()
   // console.log(input.length)
   const [page, setPage] = useState(0)
-  const PER_PAGE = 10
+  const PER_PAGE = 20
   const MAX_PAGE = Math.floor(input.length / PER_PAGE)
   const [inputPaged, setInputPaged] = useState([])
   // const [inputAll, setInputPaged] = useState([])
@@ -28,57 +27,37 @@ const ProjectsGridMasonry = ({ input }) => {
   const { isBottom } = useScroll()
   let _isAppending = false
 
-  // console.log(inputPaged)
+  // console.log("isBottom", isBottom)
 
-  // const getNextCards = (portion) =>
-  //   portion.map((item, i) => (
-  //     <ProjectCard
-  //       key={`${item.item.document.uid}-${Math.floor(Math.random() * 1000)}`}
-  //       input={item}
-  //     />
-  //   ))
+  //if is at bottom and has more content, set next page
+  useEffect(() => {
+    if (filters.length > 0) return
+    if (isBottom && hasMore) setPage(page + 1)
+  }, [isBottom, hasMore])
 
-  // //if is at bottom and has more content, set next page
-  // useEffect(() => {
-  //   if (filters.length > 0) return
-  //   if (isBottom && hasMore) setPage(page + 1)
-  // }, [isBottom, hasMore])
+  //on page change pull new content
+  useEffect(() => {
+    const start = page * PER_PAGE
+    const end = start + PER_PAGE
+    const nextPageContent = input.slice(start, end)
+    // console.log(filters)
+    setInputPaged((inputPaged) => [...inputPaged, ...nextPageContent])
 
-  // //on page change pull new content
-  // useEffect(() => {
-  //   console.log(filters)
-  //   const start = page * PER_PAGE
-  //   const end = start + PER_PAGE
-  //   const nextPageContent = input.slice(start, end)
-  //   // const unique = inputPaged.filter()
-  //   // console.log(nextPageContent)
-  //   const items = getNextCards(nextPageContent)
-  //   setInputPaged((inputPaged) => [...inputPaged, ...items])
-  //   // gridRef.current.append(items)
+    setHasMore(page < MAX_PAGE)
+  }, [page])
 
-  //   if (isoRef.current) {
-  //     isoRef.current.appended(items)
-  //     isoRef.current.layout()
-  //   } else {
-  //   }
-  //   // console.log(filters)
-  //   // setInputPaged((inputPaged) => [...inputPaged, ...nextPageContent])
+  //new content added, render it
+  useEffect(() => {
+    // console.log(inputPaged)
+    if (!inputPaged.length) return
 
-  //   setHasMore(page < MAX_PAGE)
-  // }, [page])
-
-  // //new content added, render it
-  // useEffect(() => {
-  //   // console.log(inputPaged)
-  //   if (!inputPaged.length) return
-
-  //   if (!_isotopeRendered) {
-  //     _renderIsotope()
-  //   } else {
-  //     isoRef.current.layout()
-  //   }
-  //   _isAppending = false
-  // }, [inputPaged])
+    if (!_isotopeRendered) {
+      _renderIsotope()
+    } else {
+      isoRef.current.layout()
+    }
+    _isAppending = false
+  }, [inputPaged])
 
   const _renderIsotope = () => {
     if (_isotopeRendered) return
@@ -107,42 +86,18 @@ const ProjectsGridMasonry = ({ input }) => {
     })
   }
 
-  useEffect(async () => {
-    _renderIsotope()
-  }, [])
-
-  useEffect(async () => {
+  useEffect(() => {
     if (isoRef.current) {
       // inputPaged = _filterGrid()
-      // const remaining = await _loadRemainingCards()
       _filterGrid()
       // _renderIsotope()
     }
   }, [filters])
 
-  // const _loadRemainingCards = () => {
-  //   if (_isotopeFilterRendered) return "already done"
-  //   const start = page * PER_PAGE
-  //   const end = input.length
-  //   const nextPageContent = input.slice(start, end)
-  //   // console.log(nextPageContent)
-  //   const items = getNextCards(nextPageContent)
-  //   setInputPaged((inputPaged) => [...inputPaged, ...items])
-  //   // gridRef.current.append(items)
-
-  //   if (isoRef.current) {
-  //     isoRef.current.appended(items)
-  //     isoRef.current.layout()
-  //   }
-  //   setHasMore(false)
-  //   _isotopeFilterRendered = true
-  //   return "done"
-  // }
-
   const _filterGrid = () => {
-    const f = filters.length ? _renderFilterClassNames() : "*"
-    // console.log(f)
-    isoRef.current.arrange({ filter: f })
+    const _filter = filters.length ? _renderFilterClassNames() : "*"
+    console.log(_filter)
+    isoRef.current.arrange({ filter: _filter })
   }
 
   const _renderFilterClassNames = () =>
@@ -163,7 +118,7 @@ const ProjectsGridMasonry = ({ input }) => {
     else headerFiltersRef.current.classList.remove("slide-top")
   }, [inView])
 
-  // const data = filters.length > 0 ? input : inputPaged
+  const data = filters.length > 0 ? input : inputPaged
 
   // console.log(inputPaged)
   return (
@@ -200,10 +155,9 @@ const ProjectsGridMasonry = ({ input }) => {
       </>
 
       <div className="projects-grid-masonry" ref={gridRef}>
-        {input.map((item, i) => (
+        {data.map((item, i) => (
           <ProjectCard key={i} input={item} />
         ))}
-        {/* {inputPaged} */}
       </div>
     </section>
   )

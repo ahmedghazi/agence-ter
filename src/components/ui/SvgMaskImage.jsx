@@ -22,7 +22,13 @@ const SvgMaskImage = (props) => {
 
   useEffect(() => {
     // console.log(props.svg)
-    fetch(props.svg)
+    const headers = {
+      // mode: "no-cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    }
+    fetch(props.svg, headers)
       .then((res) => res.text())
       .then((res) => {
         // console.log(res);
@@ -108,6 +114,7 @@ const SvgMaskImage = (props) => {
             height="100%"
             preserveAspectRatio="xMinYMin slice"
             className="transition-opacity--"
+            crossOrigin="anonymous"
           ></image>
         </g>
       </svg>
