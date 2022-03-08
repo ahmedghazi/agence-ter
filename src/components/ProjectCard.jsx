@@ -73,8 +73,8 @@ const Visuel = styled.div`
 
 const ProjectCard = ({ input }) => {
   const carRef = useRef()
-  const { filters } = useFilters()
-  console.log(input)
+  // const { filters } = useFilters()
+  // console.log(input)
   const { largeur, marge_interne, title_offset, surface_bold, item } = input
   const { uid, data } = item.document
 

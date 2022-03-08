@@ -22,9 +22,11 @@ const ProjectsGridMasonry = ({ input }) => {
   const PER_PAGE = 20
   const MAX_PAGE = Math.floor(input.length / PER_PAGE)
   const [inputPaged, setInputPaged] = useState([])
+  // const [inputAll, setInputPaged] = useState([])
   const [hasMore, setHasMore] = useState()
   const { isBottom } = useScroll()
   let _isAppending = false
+  const data = filters.length > 0 ? input : inputPaged
   // console.log("isBottom", isBottom)
 
   //if is at bottom and has more content, set next page
@@ -38,7 +40,7 @@ const ProjectsGridMasonry = ({ input }) => {
     const start = page * PER_PAGE
     const end = start + PER_PAGE
     const nextPageContent = input.slice(start, end)
-    console.log(filters)
+    // console.log(filters)
     setInputPaged((inputPaged) => [...inputPaged, ...nextPageContent])
 
     setHasMore(page < MAX_PAGE)
@@ -108,6 +110,7 @@ const ProjectsGridMasonry = ({ input }) => {
     /* Optional options */
     threshold: 0,
   })
+
   useEffect(() => {
     if (!headerFiltersRef.current) return
     if (inView) headerFiltersRef.current.classList.add("slide-top")
@@ -149,7 +152,7 @@ const ProjectsGridMasonry = ({ input }) => {
       </>
 
       <div className="projects-grid-masonry" ref={gridRef}>
-        {inputPaged.map((item, i) => (
+        {data.map((item, i) => (
           <ProjectCard key={i} input={item} />
         ))}
       </div>
