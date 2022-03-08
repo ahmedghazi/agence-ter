@@ -24,6 +24,7 @@ export const pageQuery = graphql`
     }
     related: allPrismicProject(
       filter: { uid: { ne: $uid }, data: { theme: { uid: { eq: $theme } } } }
+      limit: 10
     ) {
       nodes {
         type
