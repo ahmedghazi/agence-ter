@@ -5,18 +5,17 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { LocaleContext } from "../../contexts/LocaleWrapper"
 
 const Philosophie = ({ input }) => {
-  // console.log(input)
+  console.log(input)
   const { localeCtx } = useContext(LocaleContext)
 
   return (
     <section className="slice-philosphie px-md py-lg ">
-      <div className="row ">
+      <div className="row center-xs">
         <div className="col-md-2 hidden-sm"></div>
-        <div className="col-md-8 col-xs-12">
+        <div className="col-md-6 col-xs-12">
           {input.items.map((el, i) => (
-            <article key={i} className="mb-lg">
-              <div className="row">
-                <div className="col-md-2 col-xs">
+            <article key={i} className="mb-lg text-left">
+              {/* <div className="col-md-2 col-xs">
                   {el.image && (
                     <figure className="">
                       <GatsbyImage
@@ -28,37 +27,34 @@ const Philosophie = ({ input }) => {
                       />
                     </figure>
                   )}
-                </div>
-                <div className="col-md-1 hidden-sm"></div>
-                <div className="col-xs">
-                  <div
-                    className={clsx(
-                      "row",
-                      localeCtx === "en-gb" ? "reverse" : ""
-                    )}
-                  >
-                    <div
-                      className={clsx(
-                        "col-xs",
-                        localeCtx !== "fr-fr" ? "text-gray hidden-sm" : ""
-                      )}
-                    >
-                      <div className="mb-sm ">
-                        <RichText render={el.texte_fr.raw} />
-                      </div>
-                    </div>
-                    <div
-                      className={clsx(
-                        "col-xs",
-                        localeCtx !== "en-gb" ? "text-gray" : ""
-                      )}
-                    >
-                      <div className="mb-sm ">
-                        <RichText render={el.texte_en.raw} />
-                      </div>
-                    </div>
+                </div> */}
+              {/* <div className="col-md-1 hidden-sm"></div> */}
+
+              <div
+                className={clsx("row", localeCtx === "en-gb" ? "reverse" : "")}
+              >
+                <div
+                  className={clsx(
+                    "col-xs",
+                    localeCtx !== "fr-fr" ? "text-gray hidden-sm" : ""
+                  )}
+                >
+                  <div className="mb-sm ">
+                    <RichText render={el.texte_fr.raw} />
                   </div>
                 </div>
+                {el.texte_en.text && (
+                  <div
+                    className={clsx(
+                      "col-xs",
+                      localeCtx !== "en-gb" ? "text-gray" : ""
+                    )}
+                  >
+                    <div className="mb-sm ">
+                      <RichText render={el.texte_en.raw} />
+                    </div>
+                  </div>
+                )}
               </div>
             </article>
           ))}

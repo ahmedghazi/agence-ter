@@ -79,9 +79,11 @@ export const query = graphql`
               }
               texte_fr {
                 raw
+                text
               }
               texte_en {
                 raw
+                text
               }
               image {
                 gatsbyImageData(width: 1500, placeholder: BLURRED)
