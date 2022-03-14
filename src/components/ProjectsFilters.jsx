@@ -149,6 +149,12 @@ const ProjectsFilters = () => {
     <Wrapper>
       {/* <pre>{JSON.stringify(filter)}</pre> */}
       <div className="header mb-xs flex items-center">
+        <button
+          onClick={() => _handleSwitchView()}
+          className="font-bold pr-xs text-lg"
+        >
+          Liste
+        </button>
         <DropDownButton
           className="drop-down--header pr-md"
           onClick={_toggle}
@@ -186,9 +192,9 @@ const ProjectsFilters = () => {
           <ProjectsFilterType key={i} input={item} />
         ))}
 
-        <button onClick={() => _handleSwitchView()} className="font-bold">
+        {/* <button onClick={() => _handleSwitchView()} className="font-bold">
           Liste
-        </button>
+        </button> */}
       </DropDownContent>
     </Wrapper>
   )

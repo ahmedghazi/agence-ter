@@ -245,7 +245,7 @@ const ProjectsTable = () => {
           <div className="col-xs">
             <button
               onClick={() => _handleSwitchView()}
-              className="font-bold flex items-center"
+              className="font-bold flex items-center text-lg"
             >
               <i className="icon-chevron-w  absolute -left-xs"></i>{" "}
               <span>{_localizeText("back")}</span>
