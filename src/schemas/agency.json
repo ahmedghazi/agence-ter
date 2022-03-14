@@ -16,15 +16,17 @@
     "texte_fr": {
       "type": "StructuredText",
       "config": {
-        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-        "label": "Texte FR"
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item",
+        "label": "Texte FR",
+        "labels": ["text-right", "text-center", "text-justify"]
       }
     },
     "texte_en": {
       "type": "StructuredText",
       "config": {
-        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-        "label": "Texte EN"
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item",
+        "label": "Texte EN",
+        "labels": ["text-right", "text-center", "text-justify"]
       }
     },
     "image": {
@@ -95,7 +97,7 @@
               "bio_fr": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Bio fr"
                 }
@@ -103,7 +105,7 @@
               "bio_en": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Bio en"
                 }
@@ -144,9 +146,10 @@
               "texte": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item",
                   "allowTargetBlank": true,
-                  "label": "Texte"
+                  "label": "Texte",
+                  "labels": ["text-right", "text-center", "text-justify"]
                 }
               }
             }

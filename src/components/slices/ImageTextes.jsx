@@ -45,22 +45,18 @@ const ImageTextes = ({ input }) => {
             alt={input.primary.image.alt || ""}
           />
         </figure>
-        <div
-          className={clsx(
-            // "ttttttttttttttttt",
-            "row"
-            // localeCtx === "en-gb" ? "reverse" : ""
-          )}
-        >
+        <div className={clsx("row")}>
           {input.items.map((el, i) => (
             <div
               key={i}
               className={clsx(
-                "col-xs text-center",
+                "col-xs text-center ",
                 `col-${i} ${isTranslatable && i > 0 ? "hidden-sm" : ""}`
               )}
             >
-              <RichText render={el.texte.raw} linkResolver={linkResolver} />
+              <div className="text-justify-">
+                <RichText render={el.texte.raw} linkResolver={linkResolver} />
+              </div>
             </div>
           ))}
         </div>
