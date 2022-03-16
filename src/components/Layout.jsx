@@ -41,18 +41,6 @@ const Layout = ({ children, pageContext }) => {
     }
   }, [])
 
-  // let _prevScrollTop = 0
-  // const _onScroll = () => {
-  //   window.pageYOffset > _prevScrollTop
-  //     ? setDirection("down")
-  //     : setDirection("up")
-
-  //   if (window.pageYOffset === 0) {
-  //     setDirection("")
-  //   }
-
-  //   _prevScrollTop = window.pageYOffset
-  // }
   const _format = () => {
     // console.log("format");
     // const ww = window.innerWidth;

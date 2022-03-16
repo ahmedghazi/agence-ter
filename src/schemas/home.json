@@ -110,7 +110,8 @@
                     "text-justify",
                     "text-sm",
                     "text-md",
-                    "text-lg"
+                    "text-lg",
+                    "text-xl"
                   ]
                 }
               },
@@ -126,7 +127,8 @@
                     "text-justify",
                     "text-sm",
                     "text-md",
-                    "text-lg"
+                    "text-lg",
+                    "text-xl"
                   ]
                 }
               }

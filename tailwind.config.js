@@ -29,6 +29,7 @@ module.exports = {
       sm: ["var(--text-sm)", "1.1"],
       md: ["var(--text-md)", "1.257142857"],
       lg: ["var(--text-lg)", "1.25"],
+      xl: ["var(--text-xl)", "1.25"],
     },
     fontWeight: {
       light: 300,

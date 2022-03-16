@@ -74,6 +74,12 @@ p {
     display: inline-block;
   }
 }
+.text-xl {
+  font-size: var(--text-xl);
+  @media all and (max-width: $sm) {
+    font-size: var(--text-_xl);
+  }
+}
 // .texte {
 //   p {
 //     text-indent: 1em;
