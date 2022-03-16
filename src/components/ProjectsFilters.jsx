@@ -151,7 +151,7 @@ const ProjectsFilters = () => {
       <div className="header mb-xs flex items-center">
         <button
           onClick={() => _handleSwitchView()}
-          className="font-bold pr-xs text-lg"
+          className="font-bold pr-xs text-lg toggle w-[114px]"
         >
           Liste
         </button>

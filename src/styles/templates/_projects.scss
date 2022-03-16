@@ -2,20 +2,24 @@
   header {
   }
   .page-template {
-    // padding-top: 240px;
-    // padding-top: var(--space-xxl);
     .header-filters--fixed {
       top: 0.8em;
       &.slide-top {
         transform: translateY(-100%);
       }
     }
-    .header-filters {
-      // padding-top: calc(var(--space-md) + 1.3em);
-      // top: 1.4em;
-    }
+
     .table-view {
       padding-top: 1.4em;
+    }
+    @media all and (min-width: $sm) {
+      .header-filters button.toggle {
+        width: 114px;
+        text-align: left;
+      }
+      .drop-down--content {
+        padding-left: 114px;
+      }
     }
   }
 }

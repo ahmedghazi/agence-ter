@@ -2,9 +2,10 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 body {
-  // @include debugFiletY(74px);
+  // @include debugFiletX(271px);
   // @include debugSquare(273px);
   scroll-behavior: smooth;
+  // opacity: 0;
   &.is-transiting {
     main {
       opacity: 0;

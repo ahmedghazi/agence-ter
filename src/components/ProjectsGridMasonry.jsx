@@ -5,7 +5,7 @@ import imagesLoaded from "imagesloaded"
 import ProjectCard from "./ProjectCard"
 import useFilters from "../contexts/FiltersWrapper"
 // import { FiltersContext } from "../contexts/FiltersWrapper"
-import { useScroll } from "../hooks/useScroll"
+// import { useScroll } from "../hooks/useScroll"
 import { useInView } from "react-intersection-observer"
 import loadable from "@loadable/component"
 const ProjectsFilters = loadable(() => import("./ProjectsFilters"))
@@ -13,20 +13,20 @@ const ProjectsFilters = loadable(() => import("./ProjectsFilters"))
 const ProjectsGridMasonry = ({ input }) => {
   // console.log(input)
   let _isotopeRendered = false
-  let _isotopeFilterRendered = false
+  // let _isotopeFilterRendered = false
   const backDropRef = useRef()
   const gridRef = useRef()
   const isoRef = useRef()
   const { filters } = useFilters()
   // console.log(input.length)
-  const [page, setPage] = useState(0)
-  const PER_PAGE = 10
-  const MAX_PAGE = Math.floor(input.length / PER_PAGE)
-  const [inputPaged, setInputPaged] = useState([])
+  // const [page, setPage] = useState(0)
+  // const PER_PAGE = 10
+  // const MAX_PAGE = Math.floor(input.length / PER_PAGE)
+  // const [inputPaged, setInputPaged] = useState([])
   // const [inputAll, setInputPaged] = useState([])
-  const [hasMore, setHasMore] = useState()
-  const { isBottom } = useScroll()
-  let _isAppending = false
+  // const [hasMore, setHasMore] = useState()
+  // const { isBottom } = useScroll()
+  // let _isAppending = false
 
   // console.log(inputPaged)
 
