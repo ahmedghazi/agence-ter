@@ -224,7 +224,7 @@ const ProjectsTable = () => {
       case "year":
         return <span>{itemData.year_short}</span>
       case "theme":
-        return <span>{itemData.theme.document.data.title.text}</span>
+        return <span>{itemData.theme.document?.data.title.text}</span>
       default:
         return <span>{columnValue}</span>
     }

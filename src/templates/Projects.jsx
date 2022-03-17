@@ -58,7 +58,7 @@ const PageProjects = ({ data }) => {
   const { meta_title, meta_description, meta_image, projects_featured } =
     data.prismicProjects.data
 
-  const [isTableView, setIsTableView] = useState(false)
+  const [isTableView, setIsTableView] = useState(true)
   useEffect(() => {
     const tokenA = PubSub.subscribe("TABLE_TOGGLE", (e, d) => {
       // console.log(e)
