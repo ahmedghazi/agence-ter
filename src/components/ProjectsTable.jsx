@@ -224,7 +224,6 @@ const ProjectsTable = () => {
       case "year":
         return <span>{itemData.year_short}</span>
       case "theme":
-        console.log(itemData.title.text)
         return (
           <span>
             {itemData.theme.document
