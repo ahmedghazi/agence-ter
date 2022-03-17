@@ -39,7 +39,7 @@ const Philosophie = ({ input }) => {
                     localeCtx !== "fr-fr" ? "text-gray hidden-sm" : ""
                   )}
                 >
-                  <div className="mb-sm ">
+                  <div className="mb-sm text-justify">
                     <RichText render={el.texte_fr.raw} />
                   </div>
                 </div>
