@@ -118,10 +118,11 @@ const News = ({ data }) => {
         <div className="row">
           <div className="col-md-2 hidden-sm"></div>
           <div className="col-xs md:text-lg">
-            <SummaryDetail
+            {/* <SummaryDetail
               summary={"Filtre"}
               detail={<PostCategories />}
-            ></SummaryDetail>
+            ></SummaryDetail> */}
+            <PostCategories />
           </div>
         </div>
       </div>

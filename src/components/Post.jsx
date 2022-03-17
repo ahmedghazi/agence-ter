@@ -10,7 +10,7 @@ import AnimateOnScroll from "./ui/AnimateOnScroll"
 
 const Post = ({ input }) => {
   const { image, title, texte_fr, texte_en } = input.data
-  const postCategoryUID = input.data.category.document.uid
+  const postCategoryUID = input.data.category.document?.uid
 
   const { localeCtx } = useContext(LocaleContext)
 
