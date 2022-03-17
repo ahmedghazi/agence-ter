@@ -23,9 +23,11 @@ header {
   }
 
   nav {
-    padding-top: 0.35em;
-    &#nav-primary {
-      padding-top: 0.45em;
+    @media all and (min-width: $sm) {
+      padding-top: 0.35em;
+      &#nav-primary {
+        padding-top: 0.45em;
+      }
     }
   }
   .social {
@@ -48,6 +50,7 @@ header {
       max-width: 207px;
       margin: 0 auto;
       margin-bottom: 11px;
+      margin-bottom: 8px;
     }
     li {
       margin-bottom: 4px;
@@ -95,26 +98,4 @@ header {
 }
 .template-agency header {
   position: fixed;
-
-  //   mix-blend-mode: difference;
-  //   .site-name svg path.pleins {
-  //     fill: var(--color-white);
-  //   }
-  //   a,
-  //   button {
-  //     color: white;
-  //   }
 }
-
-// .downscroll {
-//   header {
-//     .inner {
-//       @include slide(top, 0);
-//     }
-//   }
-// }
-
-// @media all and (max-width: $sm) {
-//   header {
-//   }
-// }
