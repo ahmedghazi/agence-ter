@@ -205,7 +205,7 @@ const ProjectsTable = () => {
   const _getHmlByColumn = (col, itemData) => {
     const isArchive = itemData.archive
     const columnValue = _getValueByColumn(col, itemData, false)
-    // console.log(columnValue)
+
     switch (col) {
       case "title":
         return <h2>{columnValue}</h2>
@@ -224,7 +224,14 @@ const ProjectsTable = () => {
       case "year":
         return <span>{itemData.year_short}</span>
       case "theme":
-        return <span>{itemData.theme.document?.data.title.text}</span>
+        console.log(itemData.title.text)
+        return (
+          <span>
+            {itemData.theme.document
+              ? itemData.theme.document.data.title.text
+              : ""}
+          </span>
+        )
       default:
         return <span>{columnValue}</span>
     }
