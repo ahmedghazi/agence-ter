@@ -10,16 +10,23 @@ import PostCategories from "../components/PostCategories"
 
 export const pageQuery = graphql`
   query NewsCategory($uid: String!) {
-    prismicNews {
+    # prismicNews {
+    #   data {
+    #     meta_title {
+    #       text
+    #     }
+    #     meta_description {
+    #       text
+    #     }
+    #     meta_image {
+    #       url
+    #     }
+    #   }
+    # }
+    prismicCategory(uid: { eq: $uid }) {
       data {
-        meta_title {
+        title {
           text
-        }
-        meta_description {
-          text
-        }
-        meta_image {
-          url
         }
       }
     }
@@ -62,7 +69,8 @@ export const pageQuery = graphql`
   }
 `
 const NewsCategory = ({ data }) => {
-  const { meta_title, meta_description, meta_image } = data.prismicNews.data
+  // const { meta_title, meta_description, meta_image } = data.prismicNews.data
+  const { title } = data.prismicCategory.data
   const items = data.allPrismicPost.nodes
   // console.log(items)
   // const { categories } = useContext(CategoriesContext)
@@ -70,9 +78,9 @@ const NewsCategory = ({ data }) => {
   return (
     <div className="page-template page-news px-xs md:px-md ">
       <SEO
-        pageTitle={meta_title.text}
-        pageDescription={meta_description.text}
-        pageImage={meta_image.url}
+        pageTitle={title.text}
+        pageDescription={""}
+        pageImage={""}
         template={`template-news bg-yellow`}
         page={true}
       />

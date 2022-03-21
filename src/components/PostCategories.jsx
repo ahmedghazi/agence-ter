@@ -7,6 +7,7 @@ const query = graphql`
     allPrismicCategory(sort: { fields: data___order }) {
       nodes {
         uid
+        type
         data {
           title {
             text

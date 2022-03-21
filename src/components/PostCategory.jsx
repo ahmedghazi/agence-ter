@@ -1,21 +1,22 @@
 import clsx from "clsx"
+import { Link } from "gatsby"
 import React, { useEffect, useState } from "react"
-import useCategories from "../contexts/CategoriesWrapper"
-import { _localizeText } from "../core/utils"
+// import useCategories from "../contexts/CategoriesWrapper"
+import { _localizeText, linkResolver } from "../core/utils"
 
 const PostCategory = ({ input }) => {
   // const { category, dispatch } = useContext(CategoriesContext)
-  const { category, dispatchCategory } = useCategories()
-  const [active, setActive] = useState()
+  // const { category, dispatchCategory } = useCategories()
+  // const [active, setActive] = useState()
 
-  useEffect(() => {
-    if (active) dispatchCategory(input.uid)
-    else dispatchCategory("")
-  }, [active])
+  // useEffect(() => {
+  //   if (active) dispatchCategory(input.uid)
+  //   else dispatchCategory("")
+  // }, [active])
 
   return (
     <li className="">
-      <button
+      {/* <button
         className={clsx(
           "outline pr-xs capitalize",
           active ? "is-active button-deletable" : ""
@@ -23,7 +24,10 @@ const PostCategory = ({ input }) => {
         onClick={() => setActive(!active)}
       >
         {_localizeText(input.uid)}
-      </button>
+      </button> */}
+      <Link to={linkResolver(input)} className="pr-xs capitalize">
+        {_localizeText(input.uid)}
+      </Link>
     </li>
   )
 }
