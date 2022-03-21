@@ -40,10 +40,14 @@ export const linkResolver = (doc) => {
   // }
   // console.log(doc)
   switch (doc.type) {
+    case "home":
+      return `/`
     case "project":
       return `/project/${doc.uid}`
     case "associate":
       return `/associate/${doc.uid}`
+    case "category":
+      return `/category/${doc.uid}`
 
     default:
       return `/${doc.uid}`

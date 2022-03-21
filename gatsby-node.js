@@ -11,6 +11,7 @@ const templateProject = path.resolve("src/templates/Project.jsx")
 const templateNews = path.resolve("src/templates/News.jsx")
 const templateContact = path.resolve("src/templates/Contact.jsx")
 const templatePageDefault = path.resolve("src/templates/PageDefault.jsx")
+const templateNewsCategory = path.resolve("src/templates/NewsCategory.jsx")
 
 // const getLocalizedPath = (node, path) => {
 //   // console.log(path, node.locale)
@@ -123,7 +124,7 @@ async function createPagesDefault(graphql, actions) {
 
   pages.data.allPrismicPage.nodes.forEach((node) => {
     const path = `/${node.uid}`
-    console.log("path", path)
+    // console.log("path", path)
     createPage({
       path: path,
       component: templatePageDefault,
@@ -154,7 +155,7 @@ async function createAssociates(graphql, actions) {
 
   pages.data.allPrismicAssociate.nodes.forEach((node) => {
     const path = `/associate/${node.uid}`
-    console.log("path", path)
+    // console.log("path", path)
     createPage({
       path: path,
       component: templateAssociate,
@@ -167,10 +168,42 @@ async function createAssociates(graphql, actions) {
   })
 }
 
+/// /////////////////////////////////////////////////////////////
+/// /////////////////////////////////////////////////////////////
+async function createNewsCategories(graphql, actions) {
+  const { createPage } = actions
+
+  const pages = await graphql(`
+    {
+      allPrismicCategory {
+        nodes {
+          uid
+          type
+        }
+      }
+    }
+  `)
+
+  pages.data.allPrismicCategory.nodes.forEach((node) => {
+    const path = `/category/${node.uid}`
+    console.log("path", path)
+    createPage({
+      path: path,
+      component: templateNewsCategory,
+      context: {
+        uid: node.uid,
+        slug: node.uid,
+        template: "template-category",
+      },
+    })
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   await createPages(graphql, actions)
   await createProjects(graphql, actions)
   await createProject(graphql, actions)
   await createPagesDefault(graphql, actions)
   await createAssociates(graphql, actions)
+  await createNewsCategories(graphql, actions)
 }
