@@ -35,7 +35,7 @@ export const pageQuery = graphql`
 `
 
 const PageProject = ({ data }) => {
-  // console.log(data)
+  console.log(data)
   const { project, related } = data
   const {
     meta_title,

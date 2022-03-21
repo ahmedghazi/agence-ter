@@ -81,6 +81,7 @@ export const query = graphql`
   }
 
   fragment project on PrismicProjectDataType {
+    archive
     meta_title {
       text
     }

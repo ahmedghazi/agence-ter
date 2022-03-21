@@ -30,8 +30,11 @@ const Header = () => {
         </div>
         <div className="col-xs">
           <Menu />
+          <div className="flex- justify-end- absolute right-xs">
+            <LocaleSwitcher />
+          </div>
         </div>
-        <div className="col-md-3 hidden-sm col-right sm-only">
+        <div className="col-md-3 hidden-sm col-right sm-only-">
           <nav className="flex justify-end items-center font-light">
             <Social input={settings.data.links} />
             <Link to="/contacts" className="btn outline mx-sm">

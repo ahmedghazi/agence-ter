@@ -4,7 +4,7 @@ import PostCategory from "./PostCategory"
 
 const query = graphql`
   query {
-    allPrismicCategory {
+    allPrismicCategory(sort: { fields: data___order }) {
       nodes {
         uid
         data {

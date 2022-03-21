@@ -12,6 +12,13 @@
         "single": "heading1,heading2,heading3,heading4,heading5,heading6",
         "label": "Title"
       }
+    },
+    "order": {
+      "type": "Number",
+      "config": {
+        "label": "Order",
+        "placeholder": "Pour gérer l'ordre d'affichage dans le menu catégorie"
+      }
     }
   }
 }
