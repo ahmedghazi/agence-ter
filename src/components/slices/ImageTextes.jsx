@@ -8,6 +8,11 @@ import AnimateOnScroll from "../ui/AnimateOnScroll"
 import { linkResolver } from "../../core/utils"
 
 const Container = styled.section`
+  iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
   &.is-translatable {
     .row {
       .col-O {
