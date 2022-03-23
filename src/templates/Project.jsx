@@ -35,7 +35,7 @@ export const pageQuery = graphql`
 `
 
 const PageProject = ({ data }) => {
-  console.log(data)
+  // console.log(data)
   const { project, related } = data
   const {
     meta_title,
@@ -167,7 +167,7 @@ const PageProject = ({ data }) => {
           </div>
 
           <div
-            className="content md:px-md md:pb-sm md:mb-sm scroller md:overflow-y-scroll no-scrollbar flex flex-col font-semibold"
+            className="content md:px-md md:pb-sm md:mb-sm scroller md:overflow-y-scroll no-scrollbar flex- flex-col- font-semibold"
             ref={scrollerRef}
           >
             <div className="texte mb-1e">

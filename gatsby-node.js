@@ -186,7 +186,7 @@ async function createNewsCategories(graphql, actions) {
 
   pages.data.allPrismicCategory.nodes.forEach((node) => {
     const path = `/category/${node.uid}`
-    console.log("path", path)
+    // console.log("path", path)
     createPage({
       path: path,
       component: templateNewsCategory,

@@ -43,11 +43,12 @@
       backdrop-filter: blur(15px);
       padding-top: 185px;
       width: 320px;
+      // height: calc(100vh - 185px);
       & > .flex.col {
         height: calc(100vh - 185px);
       }
       .content {
-        max-height: calc((100vh - 185px) - 153px);
+        height: calc(100vh - (185px * 2));
         text-align: justify;
       }
     }
