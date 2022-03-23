@@ -47,10 +47,10 @@ const Philosophie = ({ input }) => {
                   <div
                     className={clsx(
                       "col-xs-12",
-                      localeCtx !== "en-gb" ? "text-gray--" : ""
+                      localeCtx !== "en-gb" ? "text-gray" : ""
                     )}
                   >
-                    <div className="mb-sm text-yellow">
+                    <div className="mb-sm text-justify">
                       <RichText render={el.texte_en.raw} />
                     </div>
                   </div>
