@@ -103,7 +103,7 @@ const ProjectsGridMasonry = ({ input }) => {
           .querySelectorAll(".card")
           .forEach((el) => el.classList.add("reveal"))
         _isotopeRendered = true
-      }, 150)
+      }, 250)
     })
   }
 
