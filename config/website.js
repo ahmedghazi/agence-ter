@@ -4,7 +4,7 @@ module.exports = {
   titleAlt: "Site Alt", // Title for JSONLD
   description: "desc here",
   headline: "", // Headline for schema.org JSONLD
-  url: "https://aeai.eu", // Domain of your site. No trailing slash!
+  url: "https://agenceter.com", // Domain of your site. No trailing slash!
   logo: "/src/images/logo.png", // Used for SEO
   ogLanguage: "fr_FR", // Facebook Language
 
