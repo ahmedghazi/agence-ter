@@ -31,17 +31,17 @@ export const pageQuery = graphql`
         title {
           text
         }
-        texte_fr {
-          raw
-        }
-        texte_en {
-          raw
-        }
-        image {
-          gatsbyImageData(width: 2000, placeholder: BLURRED)
-          url
-          alt
-        }
+        # texte_fr {
+        #   raw
+        # }
+        # texte_en {
+        #   raw
+        # }
+        # image {
+        #   gatsbyImageData(width: 2000, placeholder: BLURRED)
+        #   url
+        #   alt
+        # }
         body {
           ... on PrismicAgencyDataBodyImageTextes {
             slice_type
@@ -117,9 +117,9 @@ const Agency = ({ data }) => {
     meta_title,
     meta_description,
     meta_image,
-    texte_fr,
-    texte_en,
-    image,
+    // texte_fr,
+    // texte_en,
+    // image,
     body,
   } = data.prismicAgency.data
 
