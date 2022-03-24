@@ -123,9 +123,10 @@ const Associate = ({ data }) => {
               render={localeCtx === "fr-fr" ? texte_fr.raw : texte_en.raw}
             />
           </div>
+
           <div className={clsx("texte", "text-gray")}>
             <RichText
-              render={localeCtx === "en-gb" ? texte_en.raw : texte_fr.raw}
+              render={localeCtx === "en-gb" ? texte_fr.raw : texte_en.raw}
             />
           </div>
         </div>
