@@ -95,10 +95,10 @@ export const query = graphql`
       text
     }
     texte_fr {
-      raw
+      richText
     }
     texte_en {
-      raw
+      richText
     }
     localisation {
       document {

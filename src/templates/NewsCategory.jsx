@@ -41,10 +41,10 @@ export const pageQuery = graphql`
             text
           }
           texte_fr {
-            raw
+            richText
           }
           texte_en {
-            raw
+            richText
           }
           image {
             gatsbyImageData(width: 500, placeholder: BLURRED)

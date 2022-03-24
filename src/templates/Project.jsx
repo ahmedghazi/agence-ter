@@ -172,12 +172,16 @@ const PageProject = ({ data }) => {
           >
             <div className="texte mb-1e">
               <RichText
-                render={localeCtx === "fr-fr" ? texte_fr.raw : texte_en.raw}
+                render={
+                  localeCtx === "fr-fr" ? texte_fr.richText : texte_en.richText
+                }
               />
             </div>
             <div className="texte text-gray mb-1e font-regular">
               <RichText
-                render={localeCtx === "en-gb" ? texte_fr.raw : texte_en.raw}
+                render={
+                  localeCtx === "en-gb" ? texte_fr.richText : texte_en.richText
+                }
               />
             </div>
           </div>

@@ -41,7 +41,7 @@ const ContactsAgence = ({ input }) => {
                 )}
               >
                 <h2 className="font-bold">{nom.text}</h2>
-                <RichText render={infos_fr.raw} />
+                <RichText render={infos_fr.richText} />
               </div>
               <div
                 className={clsx(
@@ -50,7 +50,7 @@ const ContactsAgence = ({ input }) => {
                 )}
               >
                 <h2 className="font-bold">{nom.text}</h2>
-                <RichText render={infos_en.raw} />
+                <RichText render={infos_en.richText} />
               </div>
             </div>
           </div>

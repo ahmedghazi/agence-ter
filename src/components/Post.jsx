@@ -60,7 +60,7 @@ const Post = ({ input }) => {
               >
                 <div className="mb-sm">
                   <h2 className="font-bold ">{title.text}</h2>
-                  <RichText render={texte_fr.raw} />
+                  <RichText render={texte_fr.richText} />
                 </div>
               </div>
               <div
@@ -71,7 +71,7 @@ const Post = ({ input }) => {
               >
                 <div className="mb-sm">
                   <h2 className="font-bold  text-black-">{title.text}</h2>
-                  <RichText render={texte_en.raw} />
+                  <RichText render={texte_en.richText} />
                 </div>
               </div>
             </div>

@@ -27,7 +27,7 @@ export const query = graphql`
         }
         texte {
           text
-          raw
+          richText
         }
       }
     }
@@ -55,7 +55,7 @@ const PageDefault = ({ data }) => {
         <div className="col-md-2 hidden-sm"></div>
         <div className="col-md-8 col-xs-12">
           <h1>{title.text}</h1>
-          {RichText.render(texte.raw)}
+          {RichText.render(texte.richText)}
         </div>
         <div className="col-md-2 hidden-sm"></div>
       </div>

@@ -54,7 +54,7 @@ export const pageQuery = graphql`
             }
             items {
               texte {
-                raw
+                richText
               }
             }
           }
@@ -77,11 +77,11 @@ export const pageQuery = graphql`
               position_fr
               position_en
               bio_fr {
-                raw
+                richText
                 text
               }
               bio_en {
-                raw
+                richText
                 text
               }
               bureau

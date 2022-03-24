@@ -40,7 +40,7 @@ const Philosophie = ({ input }) => {
                   )}
                 >
                   <div className="mb-sm text-justify">
-                    <RichText render={el.texte_fr.raw} />
+                    <RichText render={el.texte_fr.richText} />
                   </div>
                 </div>
                 {el.texte_en.text && (
@@ -51,7 +51,7 @@ const Philosophie = ({ input }) => {
                     )}
                   >
                     <div className="mb-sm text-justify">
-                      <RichText render={el.texte_en.raw} />
+                      <RichText render={el.texte_en.richText} />
                     </div>
                   </div>
                 )}

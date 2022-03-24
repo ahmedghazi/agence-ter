@@ -2,7 +2,7 @@ import "./src/styles/tailwind.css"
 import "./src/styles/index.scss"
 
 // Styling for the preview modals.
-import "gatsby-plugin-prismic-previews/dist/styles.css"
+// import "gatsby-plugin-prismic-previews/dist/styles.css"
 
 import {
   _wrapRootElement,

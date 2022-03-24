@@ -60,7 +60,10 @@ const ImageTextes = ({ input }) => {
               )}
             >
               <div className="text-justify-">
-                <RichText render={el.texte.raw} linkResolver={linkResolver} />
+                <RichText
+                  render={el.texte.richText}
+                  linkResolver={linkResolver}
+                />
               </div>
             </div>
           ))}

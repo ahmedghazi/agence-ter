@@ -98,11 +98,13 @@ const ProjectsGridMasonry = ({ input }) => {
     imagesLoaded(isoRef.current, () => {
       setTimeout(() => {
         isoRef.current.layout()
-        _filterGrid()
-        gridRef.current
-          .querySelectorAll(".card")
-          .forEach((el) => el.classList.add("reveal"))
-        _isotopeRendered = true
+        // _filterGrid()
+        setTimeout(() => {
+          gridRef.current
+            .querySelectorAll(".card")
+            .forEach((el) => el.classList.add("reveal"))
+          _isotopeRendered = true
+        }, 250)
       }, 250)
     })
   }

@@ -78,11 +78,11 @@ export const query = graphql`
                 text
               }
               texte_fr {
-                raw
+                richText
                 text
               }
               texte_en {
-                raw
+                richText
                 text
               }
               image {

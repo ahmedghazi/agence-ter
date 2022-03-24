@@ -26,10 +26,10 @@ export const pageQuery = graphql`
           text
         }
         texte_fr {
-          raw
+          richText
         }
         texte_en {
-          raw
+          richText
         }
         image {
           url
@@ -95,12 +95,12 @@ const Associate = ({ data }) => {
         <div className="col-md-4 col-xs-12">
           <div className="header mb-md">
             <ul className="flex items-baseline ">
-              <li className="mr-sm md:mr-md hidden-sm">
+              <li className="mr-sm md:mr-md hidden-sm pl-sm">
                 <Link
                   to={"/agence"}
                   className="font-bold flex items-center pr-xxs text-md"
                 >
-                  <i className="icon-chevron-w pr-xs"></i>{" "}
+                  <i className="icon-chevron-w pr-xs absolute left-0"></i>{" "}
                   <span>{_localizeText("back")}</span>
                 </Link>
               </li>
@@ -120,13 +120,17 @@ const Associate = ({ data }) => {
 
           <div className={clsx("texte mb-sm")}>
             <RichText
-              render={localeCtx === "fr-fr" ? texte_fr.raw : texte_en.raw}
+              render={
+                localeCtx === "fr-fr" ? texte_fr.richText : texte_en.richText
+              }
             />
           </div>
 
           <div className={clsx("texte", "text-gray")}>
             <RichText
-              render={localeCtx === "en-gb" ? texte_fr.raw : texte_en.raw}
+              render={
+                localeCtx === "en-gb" ? texte_fr.richText : texte_en.richText
+              }
             />
           </div>
         </div>
