@@ -148,7 +148,7 @@ const ProjectCard = ({ input }) => {
         >
           <Visuel>
             <SvgMaskImage
-              svg={data.pictogramme.url}
+              svg={data.pictogramme}
               image={data.image.url}
               // placeHolderColor={_isSelected() ? "transparent" : "transparent"}
               // placeHolderColor={"#878787"}

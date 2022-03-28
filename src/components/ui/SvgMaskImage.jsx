@@ -28,7 +28,7 @@ const SvgMaskImage = (props) => {
         "Access-Control-Allow-Origin": "*",
       },
     }
-    fetch(props.svg, headers)
+    fetch(props.svg.url, headers)
       .then((res) => res.text())
       .then((res) => {
         // console.log(res);
@@ -77,9 +77,22 @@ const SvgMaskImage = (props) => {
   //   // console.log(parts);
   //   return { width: parts[2], height: parts[3] };
   // };
+  const _getAspectRatio = () => {
+    const { width, height } = props.svg.dimensions
+    const h = (height * 3) / width
+    return `3 / ${Math.round(h)}`
+  }
+
+  const aspectRatio = _getAspectRatio()
+  // console.log(aspectRatio)
 
   return (
-    <div className="svg-mask-image">
+    <div
+      className="svg-mask-image"
+      style={{
+        aspectRatio: aspectRatio,
+      }}
+    >
       <div
         className="svg-ghost-renderer"
         ref={svgRef}

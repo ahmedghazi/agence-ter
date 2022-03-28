@@ -37,6 +37,10 @@ export const query = graphql`
     }
     pictogramme {
       url
+      dimensions {
+        width
+        height
+      }
     }
     localisation {
       document {
