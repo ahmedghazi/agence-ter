@@ -112,6 +112,9 @@ export const query = graphql`
             title {
               text
             }
+            title_en {
+              text
+            }
           }
         }
       }
@@ -125,6 +128,9 @@ export const query = graphql`
             title {
               text
             }
+            title_en {
+              text
+            }
           }
         }
       }
@@ -135,6 +141,9 @@ export const query = graphql`
           id
           data {
             title {
+              text
+            }
+            title_en {
               text
             }
           }

@@ -9,7 +9,12 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { RichText } from "prismic-reactjs"
 import Slider from "../components/ui/slick-slider"
 import SliderPagerNum from "../components/ui/slick-slider/SliderPagerNum"
-import { linkResolver, shuffle, _localizeText } from "../core/utils"
+import {
+  linkResolver,
+  shuffle,
+  _localizeText,
+  _localizeTitle,
+} from "../core/utils"
 import { LocaleContext } from "../contexts/LocaleWrapper"
 
 // import PubSub from "pubsub-js"
@@ -101,7 +106,7 @@ const PageProject = ({ data }) => {
   const _getTagByName = (tag) => {
     switch (tag) {
       case "theme":
-        return theme.document.data.title.text
+        return _localizeTitle(theme.document.data)
       case "localisation":
         return localisation.document.data.title.text
       case "year":

@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react"
 import clsx from "clsx"
 import styled from "styled-components"
 import useFilters from "../contexts/FiltersWrapper"
+import { _localizeTitle } from "../core/utils"
 // import { FiltersContext } from "../contexts/FiltersWrapper"
 
 const Wrapper = styled.div``
@@ -92,7 +93,8 @@ const ProjectsFilterType = ({ input }) => {
                 // filter === item.uid ? "font-bold" : ""
               )}
             >
-              {item.data.title.text}
+              {/* {item.data.title.text} */}
+              {_localizeTitle(item.data)}
             </button>
           </li>
         ))}

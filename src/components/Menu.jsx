@@ -33,7 +33,7 @@ const Menu = () => {
           <li key={i} className="menu-item">
             <Link
               to={`/${li.item.uid}`}
-              className="pr-xxs md:pr-sm hover:text-white"
+              className="pr-xxs md:pr-sm hover:text-white "
             >
               {localeCtx === "fr-fr" ? li.title_fr.text : li.title_en.text}
             </Link>

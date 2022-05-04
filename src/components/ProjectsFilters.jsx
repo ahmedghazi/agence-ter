@@ -5,7 +5,7 @@ import clsx from "clsx"
 import styled from "styled-components"
 import ProjectsFilterType from "./ProjectsFilterType"
 import useFilters from "../contexts/FiltersWrapper"
-import { _localizeText } from "../core/utils"
+import { _localizeTitle, _localizeText } from "../core/utils"
 
 const query = graphql`
   query {
@@ -15,6 +15,9 @@ const query = graphql`
         type
         data {
           title {
+            text
+          }
+          title_en {
             text
           }
         }
@@ -28,6 +31,9 @@ const query = graphql`
           title {
             text
           }
+          title_en {
+            text
+          }
         }
       }
     }
@@ -35,9 +41,11 @@ const query = graphql`
       nodes {
         uid
         type
-
         data {
           title {
+            text
+          }
+          title_en {
             text
           }
         }
@@ -111,6 +119,9 @@ const ProjectsFilters = () => {
         title: {
           text: el.data.title.text,
         },
+        title_en: {
+          text: el.data.title_en.text,
+        },
       },
     }))
   }
@@ -177,7 +188,8 @@ const ProjectsFilters = () => {
                     "cursor-pointer pr-xs hover:font-bold button-deletable"
                   )}
                 >
-                  {item.data.title.text}
+                  {/* {item.data.title.text} */}
+                  {_localizeTitle(item.data)}
                 </button>
               </li>
             ))}

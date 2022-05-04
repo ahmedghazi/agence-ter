@@ -59,6 +59,20 @@ export const _localizeText = (text) => {
   return locales[locale] && locales[locale][text] ? locales[locale][text] : text
 }
 
+export const _localizeTitle = (data) => {
+  const locale = _getLocale()
+  if (!data) return ""
+  // console.log(locale)
+  // console.table(data)
+  if (locale === "en-gb") {
+    return data.title_en && data.title_en.text
+      ? data.title_en.text
+      : data.title.text
+  } else {
+    return data.title.text
+  }
+  // return field && field[locale] ? field[locale] : field["en"]
+}
 // export const _fixYears = (nodes) => {
 //   return nodes.map((el) => ({
 //     uid: `tag_year-${el.uid}`,
