@@ -9,7 +9,7 @@ import clsx from "clsx"
 import AnimateOnScroll from "./ui/AnimateOnScroll"
 
 const Post = ({ input }) => {
-  const { image, title, texte_fr, texte_en } = input.data
+  const { image, title, title_en, texte_fr, texte_en } = input.data
   const postCategoryUID = input.data.category.document?.uid
 
   const { localeCtx } = useContext(LocaleContext)
@@ -70,7 +70,7 @@ const Post = ({ input }) => {
                 )}
               >
                 <div className="mb-sm">
-                  <h2 className="font-bold  text-black-">{title.text}</h2>
+                  <h2 className="font-bold  text-black-">{title_en.text}</h2>
                   <RichText render={texte_en.richText} />
                 </div>
               </div>

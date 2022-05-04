@@ -33,6 +33,9 @@ export const pageQuery = graphql`
                   title {
                     text
                   }
+                  title_en {
+                    text
+                  }
                   texte_fr {
                     richText
                   }
@@ -63,38 +66,38 @@ export const pageQuery = graphql`
         }
       }
     }
-    allPrismicPost(sort: { fields: first_publication_date }) {
-      nodes {
-        data {
-          title {
-            text
-          }
-          texte_fr {
-            richText
-          }
-          texte_en {
-            richText
-          }
-          image {
-            gatsbyImageData(width: 500, placeholder: BLURRED)
-            url
-            alt
-          }
-          category {
-            document {
-              ... on PrismicCategory {
-                uid
-                data {
-                  title {
-                    text
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    # allPrismicPost(sort: { fields: first_publication_date }) {
+    #   nodes {
+    #     data {
+    #       title {
+    #         text
+    #       }
+    #       texte_fr {
+    #         richText
+    #       }
+    #       texte_en {
+    #         richText
+    #       }
+    #       image {
+    #         gatsbyImageData(width: 500, placeholder: BLURRED)
+    #         url
+    #         alt
+    #       }
+    #       category {
+    #         document {
+    #           ... on PrismicCategory {
+    #             uid
+    #             data {
+    #               title {
+    #                 text
+    #               }
+    #             }
+    #           }
+    #         }
+    #       }
+    #     }
+    #   }
+    # }
   }
 `
 const News = ({ data }) => {
