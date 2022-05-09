@@ -103,9 +103,6 @@ export const pageQuery = graphql`
 const News = ({ data }) => {
   const { meta_title, meta_description, meta_image, items } =
     data.prismicNews.data
-  // const posts = data.allPrismicPost.nodes
-  // console.log(items)
-  // const { categories } = useContext(CategoriesContext)
 
   return (
     <div className="page-template page-news px-xs md:px-md ">
