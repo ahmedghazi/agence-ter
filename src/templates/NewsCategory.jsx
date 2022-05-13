@@ -40,6 +40,9 @@ export const pageQuery = graphql`
           title {
             text
           }
+          title_en {
+            text
+          }
           texte_fr {
             richText
           }
