@@ -195,10 +195,6 @@ const ProjectsFilters = () => {
         {data.map((item, i) => (
           <ProjectsFilterType key={i} input={item} />
         ))}
-
-        {/* <button onClick={() => _handleSwitchView()} className="font-bold">
-          Liste
-        </button> */}
       </DropDownContent>
     </Wrapper>
   )
