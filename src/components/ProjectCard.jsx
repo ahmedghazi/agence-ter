@@ -132,8 +132,6 @@ const ProjectCard = ({ input }) => {
         "card p-xs px-sm md:p-sm",
         `card-${largeur.toLowerCase()}`,
         tagsClassString
-        // _isFiltering ? "is-filtering" : "",
-        // _isFiltering ? _isSelected() : ""
       )}
       style={{
         width: `${_getGridSize()}%`,
@@ -150,8 +148,6 @@ const ProjectCard = ({ input }) => {
             <SvgMaskImage
               svg={data.pictogramme}
               image={data.image.url}
-              // placeHolderColor={_isSelected() ? "transparent" : "transparent"}
-              // placeHolderColor={"#878787"}
               placeHolderColor={"#ffffff"}
               outline={true}
             />

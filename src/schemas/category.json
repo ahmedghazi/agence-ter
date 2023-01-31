@@ -19,6 +19,22 @@
         "label": "Order",
         "placeholder": "Pour gérer l'ordre d'affichage dans le menu catégorie"
       }
+    },
+    "items": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "item": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": ["post"],
+              "label": "Item"
+            }
+          }
+        },
+        "label": "Items"
+      }
     }
   }
 }

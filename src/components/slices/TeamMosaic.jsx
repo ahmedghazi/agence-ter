@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useMemo } from "react"
 import clsx from "clsx"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import AnimateOnScroll from "../ui/AnimateOnScroll"
@@ -34,10 +34,14 @@ const TeamMosaic = ({ input }) => {
   //   </ul>
   // )
 
-  const getDataByFiltre = () =>
-    input.items.filter((el) => el.bureau === location)
-  // console.log(input.items)
-  const data = location ? getDataByFiltre() : input.items
+  // const getDataByFiltre = () =>
+  //   input.items.filter((el) => el.bureau === location)
+  // const data = location ? getDataByFiltre() : input.items
+  const data = useMemo(() => {
+    const dataByFiltre = input.items.filter((el) => el.bureau === location)
+    return location ? dataByFiltre : input.items
+  }, [location])
+  console.log(data)
 
   return (
     <section className="slice-team ">
@@ -51,15 +55,23 @@ const TeamMosaic = ({ input }) => {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-xs md:gap-sm">
         {data.map((item, i) => (
-          <AnimateOnScroll key={i} delay={i * 0.1}>
+          <AnimateOnScroll key={i} delay={i * 0.05}>
             <article>
-              {/* <pre>{JSON.stringify(item)}</pre> */}
               <figure className=" bg-gray" style={{ aspectRatio: "1/1" }}>
                 {item.image && item.image.url && (
                   <GatsbyImage
                     image={getImage(item.image)}
                     alt={item.image.alt || ""}
                   />
+                )}
+                {!item.image && (
+                  <div
+                    className="placeholder"
+                    style={{
+                      aspectRatio: "1/1",
+                      background: "var(--color-gray)",
+                    }}
+                  ></div>
                 )}
               </figure>
               <div className="pt-xs bg-gray-">
@@ -70,6 +82,22 @@ const TeamMosaic = ({ input }) => {
               </div>
             </article>
           </AnimateOnScroll>
+          // <article key={i}>
+          //   <figure className=" bg-gray" style={{ aspectRatio: "1/1" }}>
+          //     {item.image && item.image.url && (
+          //       <GatsbyImage
+          //         image={getImage(item.image)}
+          //         alt={item.image.alt || ""}
+          //       />
+          //     )}
+          //   </figure>
+          //   <div className="pt-xs bg-gray-">
+          //     <h3 className="font-bold">{item.name.text}</h3>
+          //     <div className="position hidden-sm">
+          //       {localeCtx === "en-gb" ? item.position_en : item.position_fr}
+          //     </div>
+          //   </div>
+          // </article>
         ))}
       </div>
     </section>

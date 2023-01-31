@@ -22,11 +22,14 @@ const SvgMaskImage = (props) => {
 
   useEffect(() => {
     // console.log(props.svg)
+    const abortController = new AbortController()
+
     const headers = {
       // mode: "no-cors",
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
+      signal: abortController.signal,
     }
     fetch(props.svg.url, headers)
       .then((res) => res.text())
@@ -35,6 +38,8 @@ const SvgMaskImage = (props) => {
         setSvg(res)
       })
       .catch(console.error.bind(console))
+
+    return () => abortController.abort()
   }, [])
 
   useEffect(() => {
@@ -66,17 +71,6 @@ const SvgMaskImage = (props) => {
     setPath(pathdata)
   }
 
-  // useEffect(() => {
-  //   if (!viewBox) return;
-  //   setDimensions(_getDimensions());
-  //   console.log(_getDimensions());
-  // }, [viewBox]);
-
-  // const _getDimensions = () => {
-  //   const parts = viewBox.split(" ");
-  //   // console.log(parts);
-  //   return { width: parts[2], height: parts[3] };
-  // };
   const _getAspectRatio = () => {
     const { width, height } = props.svg.dimensions
     const h = (height * 3) / width

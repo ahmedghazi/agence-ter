@@ -34,7 +34,7 @@ const Container = styled.section`
 `
 
 const ImageTextes = ({ input }) => {
-  const { localeCtx } = useContext(LocaleContext)
+  // const { localeCtx } = useContext(LocaleContext)
   const isTranslatable = input.items.length === 2
   return (
     <AnimateOnScroll>
@@ -44,12 +44,15 @@ const ImageTextes = ({ input }) => {
           isTranslatable ? "is-translatable" : ""
         )}
       >
-        <figure className="mb-md-alt">
-          <GatsbyImage
-            image={getImage(input.primary.image)}
-            alt={input.primary.image.alt || ""}
-          />
-        </figure>
+        {input.primary.image && input.primary.image.gatsbyImageData && (
+          <figure className="mb-md-alt">
+            <GatsbyImage
+              image={getImage(input.primary.image)}
+              alt={input.primary.image.alt || ""}
+            />
+            {/* <pre>{JSON.stringify(input.primary.image)}</pre> */}
+          </figure>
+        )}
         <div className={clsx("row")}>
           {input.items.map((el, i) => (
             <div

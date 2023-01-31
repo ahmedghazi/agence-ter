@@ -3,8 +3,8 @@ import { graphql, useStaticQuery } from "gatsby"
 import PostCategory from "./PostCategory"
 
 const query = graphql`
-  query {
-    allPrismicCategory(sort: { fields: data___order }) {
+  query AllCategoriesQ {
+    allPrismicCategory(sort: { data: { order: ASC } }) {
       nodes {
         uid
         type

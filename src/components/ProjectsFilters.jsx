@@ -6,10 +6,11 @@ import styled from "styled-components"
 import ProjectsFilterType from "./ProjectsFilterType"
 import useFilters from "../contexts/FiltersWrapper"
 import { _localizeTitle, _localizeText } from "../core/utils"
+import ProjectsSearch from "./ProjectsSearch"
 
 const query = graphql`
-  query {
-    allPrismicTagTheme(sort: { fields: data___ordre }) {
+  query ProjectsFiltersQ {
+    allPrismicTagTheme(sort: { data: { ordre: ASC } }) {
       nodes {
         uid
         type
@@ -23,7 +24,7 @@ const query = graphql`
         }
       }
     }
-    allPrismicTagLocalisation(sort: { fields: uid }) {
+    allPrismicTagLocalisation(sort: { uid: ASC }) {
       nodes {
         uid
         type
@@ -37,7 +38,7 @@ const query = graphql`
         }
       }
     }
-    allPrismicTagYear(sort: { fields: uid }) {
+    allPrismicTagYear(sort: { uid: ASC }) {
       nodes {
         uid
         type
@@ -100,17 +101,6 @@ const ProjectsFilters = () => {
   // console.log(filters)
   const [collapsed, setCollapsed] = useState(true)
 
-  // const _getFixedYears = () => {
-  //   return allPrismicTagYear.nodes.map((el) => ({
-  //     uid: `tag_year-${el.uid}`,
-  //     type: "tag_year",
-  //     data: {
-  //       title: {
-  //         text: el.data.title.text,
-  //       },
-  //     },
-  //   }))
-  // }
   const _getPrefixedTags = (nodes, type) => {
     return nodes.map((el) => ({
       uid: `tag_${type}-${el.uid}`,
@@ -162,7 +152,7 @@ const ProjectsFilters = () => {
       <div className="header mb-xs flex items-center">
         <button
           onClick={() => _handleSwitchView()}
-          className="font-bold pr-xs md:text-lg toggle w-[114px]"
+          className="font-bold pr-xs md:text-lg toggle w-[114px] text-left"
         >
           Liste
         </button>
@@ -195,6 +185,8 @@ const ProjectsFilters = () => {
             ))}
           </ul>
         )}
+
+        <ProjectsSearch />
       </div>
 
       <DropDownContent

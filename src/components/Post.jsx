@@ -7,9 +7,10 @@ import useCategories from "../contexts/CategoriesWrapper"
 import { _localizeText } from "../core/utils"
 import clsx from "clsx"
 import AnimateOnScroll from "./ui/AnimateOnScroll"
+import { publish } from "pubsub-js"
 
 const Post = ({ input }) => {
-  const { image, title, title_en, texte_fr, texte_en } = input.data
+  const { image, title, title_en, texte_fr, texte_en, slidershow } = input.data
   const postCategoryUID = input.data.category.document?.uid
 
   const { localeCtx } = useContext(LocaleContext)
@@ -22,6 +23,11 @@ const Post = ({ input }) => {
     setActive(category === postCategoryUID)
   }, [category])
 
+  const _onImageClick = () => {
+    console.log("_onImageClick", slidershow.length)
+    if (slidershow.length) publish("SLIDESHOW", slidershow)
+  }
+
   return (
     <AnimateOnScroll>
       <article
@@ -33,7 +39,13 @@ const Post = ({ input }) => {
         <div className="row">
           <div className="col-md-2 col-xs">
             {image && image.url && (
-              <figure className="sm:aspectio-ratio-1-1">
+              <figure
+                className={clsx(
+                  "sm:aspectio-ratio-1-1",
+                  slidershow.length > 0 ? "cursor-zoom-in" : ""
+                )}
+                onClick={_onImageClick}
+              >
                 <GatsbyImage
                   image={getImage(image)}
                   alt={image.alt || ""}

@@ -44,6 +44,22 @@
         "label": "Image"
       }
     },
+    "slidershow": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "image": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Image"
+            }
+          }
+        },
+        "label": "SliderShow"
+      }
+    },
     "category": {
       "type": "Link",
       "config": {

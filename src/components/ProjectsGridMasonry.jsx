@@ -8,6 +8,7 @@ import useFilters from "../contexts/FiltersWrapper"
 // import { useScroll } from "../hooks/useScroll"
 import { useInView } from "react-intersection-observer"
 import loadable from "@loadable/component"
+import { subscribe, unsubscribe } from "pubsub-js"
 const ProjectsFilters = loadable(() => import("./ProjectsFilters"))
 
 const ProjectsGridMasonry = ({ input }) => {
@@ -18,67 +19,6 @@ const ProjectsGridMasonry = ({ input }) => {
   const gridRef = useRef()
   const isoRef = useRef()
   const { filters } = useFilters()
-  // console.log(input.length)
-  // const [page, setPage] = useState(0)
-  // const PER_PAGE = 10
-  // const MAX_PAGE = Math.floor(input.length / PER_PAGE)
-  // const [inputPaged, setInputPaged] = useState([])
-  // const [inputAll, setInputPaged] = useState([])
-  // const [hasMore, setHasMore] = useState()
-  // const { isBottom } = useScroll()
-  // let _isAppending = false
-
-  // console.log(inputPaged)
-
-  // const getNextCards = (portion) =>
-  //   portion.map((item, i) => (
-  //     <ProjectCard
-  //       key={`${item.item.document.uid}-${Math.floor(Math.random() * 1000)}`}
-  //       input={item}
-  //     />
-  //   ))
-
-  // //if is at bottom and has more content, set next page
-  // useEffect(() => {
-  //   if (filters.length > 0) return
-  //   if (isBottom && hasMore) setPage(page + 1)
-  // }, [isBottom, hasMore])
-
-  // //on page change pull new content
-  // useEffect(() => {
-  //   console.log(filters)
-  //   const start = page * PER_PAGE
-  //   const end = start + PER_PAGE
-  //   const nextPageContent = input.slice(start, end)
-  //   // const unique = inputPaged.filter()
-  //   // console.log(nextPageContent)
-  //   const items = getNextCards(nextPageContent)
-  //   setInputPaged((inputPaged) => [...inputPaged, ...items])
-  //   // gridRef.current.append(items)
-
-  //   if (isoRef.current) {
-  //     isoRef.current.appended(items)
-  //     isoRef.current.layout()
-  //   } else {
-  //   }
-  //   // console.log(filters)
-  //   // setInputPaged((inputPaged) => [...inputPaged, ...nextPageContent])
-
-  //   setHasMore(page < MAX_PAGE)
-  // }, [page])
-
-  // //new content added, render it
-  // useEffect(() => {
-  //   // console.log(inputPaged)
-  //   if (!inputPaged.length) return
-
-  //   if (!_isotopeRendered) {
-  //     _renderIsotope()
-  //   } else {
-  //     isoRef.current.layout()
-  //   }
-  //   _isAppending = false
-  // }, [inputPaged])
 
   const _renderIsotope = () => {
     if (_isotopeRendered) return
@@ -109,37 +49,36 @@ const ProjectsGridMasonry = ({ input }) => {
     })
   }
 
-  useEffect(async () => {
+  // useEffect(async () => {
+  //   _renderIsotope()
+  // }, [])
+  useEffect(() => {
     _renderIsotope()
+
+    /**
+     * Handle Search result
+     */
+    const token = subscribe("PROJECTS_SEARCH", (e, term) => {
+      isoRef.current.arrange({
+        filter: (item) => {
+          return item.textContent.match(new RegExp(term, "gi"))
+        },
+      })
+    })
+
+    return () => unsubscribe(token)
   }, [])
 
-  useEffect(async () => {
+  // useEffect(async () => {
+  //   if (isoRef.current) {
+  //     _filterGrid()
+  //   }
+  // }, [filters])
+  useEffect(() => {
     if (isoRef.current) {
-      // inputPaged = _filterGrid()
-      // const remaining = await _loadRemainingCards()
       _filterGrid()
-      // _renderIsotope()
     }
   }, [filters])
-
-  // const _loadRemainingCards = () => {
-  //   if (_isotopeFilterRendered) return "already done"
-  //   const start = page * PER_PAGE
-  //   const end = input.length
-  //   const nextPageContent = input.slice(start, end)
-  //   // console.log(nextPageContent)
-  //   const items = getNextCards(nextPageContent)
-  //   setInputPaged((inputPaged) => [...inputPaged, ...items])
-  //   // gridRef.current.append(items)
-
-  //   if (isoRef.current) {
-  //     isoRef.current.appended(items)
-  //     isoRef.current.layout()
-  //   }
-  //   setHasMore(false)
-  //   _isotopeFilterRendered = true
-  //   return "done"
-  // }
 
   const _filterGrid = () => {
     const f = filters.length ? _renderFilterClassNames() : "*"

@@ -26,6 +26,7 @@ module.exports = {
     prevProject: "Projet précédent",
     nextProject: "Projet suivant",
     back: "Retour",
+    recherche: "Recherche",
   },
   "en-gb": {
     default: false,
@@ -52,5 +53,6 @@ module.exports = {
     prevProject: "Previous projet",
     nextProject: "Next projet",
     back: "Back",
+    recherche: "Search",
   },
 }
