@@ -85,6 +85,10 @@ export const pageQuery = graphql`
                 text
               }
               bureau
+              link {
+                type
+                uid
+              }
             }
           }
         }
@@ -93,24 +97,24 @@ export const pageQuery = graphql`
   }
 `
 
-const IntroContainer = styled.section`
-  .row {
-    .col-O {
-      color: var(--color-black);
-    }
-    .col-1 {
-      color: var(--color-gray);
-    }
-    &.reverse {
-      .col-1 {
-        color: var(--color-black);
-      }
-      .col-0 {
-        color: var(--color-gray);
-      }
-    }
-  }
-`
+// const IntroContainer = styled.section`
+//   .row {
+//     .col-O {
+//       color: var(--color-black);
+//     }
+//     .col-1 {
+//       color: var(--color-gray);
+//     }
+//     &.reverse {
+//       .col-1 {
+//         color: var(--color-black);
+//       }
+//       .col-0 {
+//         color: var(--color-gray);
+//       }
+//     }
+//   }
+// `
 
 const Agency = ({ data }) => {
   const {

@@ -12,7 +12,8 @@
     "preview": "npm run build && npm run serve",
     "format": "prettier --write src/**/*.{js,jsx}",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "dploy": "git add . && git commit -m 'build' && git push"
+    "dploy": "git add . && git commit -m 'build' && git push",
+    "d": "git add . && git commit -m 'build' && git push"
   },
   "dependencies": {
     "@prismicio/react": "^2.5.1",

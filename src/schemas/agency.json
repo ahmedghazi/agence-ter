@@ -99,6 +99,13 @@
                   "default_value": "Paris",
                   "label": "Bureau"
                 }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "select": "document",
+                  "label": "Link"
+                }
               }
             }
           },

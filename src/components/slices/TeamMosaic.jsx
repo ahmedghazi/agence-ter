@@ -4,9 +4,10 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import AnimateOnScroll from "../ui/AnimateOnScroll"
 import SummaryDetail from "../ui/SummaryDetail"
 import { LocaleContext } from "../../contexts/LocaleWrapper"
-import { _localizeText } from "../../core/utils"
+import { linkResolver, _localizeText } from "../../core/utils"
 import TeamFilters from "./TeamFilters"
 import useTeam from "../../contexts/TeamWrapper"
+import { Link } from "gatsby"
 
 const TeamMosaic = ({ input }) => {
   const { localeCtx } = useContext(LocaleContext)
@@ -56,7 +57,7 @@ const TeamMosaic = ({ input }) => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-xs md:gap-sm">
         {data.map((item, i) => (
           <AnimateOnScroll key={i} delay={i * 0.05}>
-            <article>
+            <article className="relative">
               <figure className=" bg-gray" style={{ aspectRatio: "1/1" }}>
                 {item.image && item.image.url && (
                   <GatsbyImage
@@ -80,6 +81,12 @@ const TeamMosaic = ({ input }) => {
                   {localeCtx === "en-gb" ? item.position_en : item.position_fr}
                 </div>
               </div>
+              {item.link && item.link.uid && (
+                <Link
+                  to={linkResolver(item.link)}
+                  className="absolute inset-0"
+                ></Link>
+              )}
             </article>
           </AnimateOnScroll>
           // <article key={i}>
