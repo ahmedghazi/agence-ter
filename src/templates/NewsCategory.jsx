@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import { graphql } from "gatsby"
 import { withPrismicPreview } from "gatsby-plugin-prismic-previews"
 import { repositoryConfigs } from "../core/prismicPreviews"
@@ -136,7 +136,11 @@ const NewsCategory = ({ data }) => {
     return () => unsubscribe(token)
   }, [])
 
-  console.log(items)
+  // console.log(items)
+  const itemsNotNull = useMemo(() => {
+    return items.filter(({ item }) => item.document !== null)
+  }, [items])
+  // console.log(itemsNotNull)
 
   return (
     <div className="page-template page-news px-xs md:px-md ">
@@ -160,7 +164,7 @@ const NewsCategory = ({ data }) => {
       <div className="row ">
         <div className="col-md-2 hidden-sm"></div>
         <div className="col-md-8 col-xs-12">
-          {items.map(({ item }, i) => (
+          {itemsNotNull.map(({ item }, i) => (
             <Post key={i} input={item.document} />
           ))}
         </div>
