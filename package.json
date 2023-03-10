@@ -14,7 +14,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "dploy": "git add . && git commit -m 'build' && git push",
     "d": "git add . && git commit -m 'build' && git push",
-    "d:p": "git add . && git commit -m 'build' && git push origigin v2"
+    "d:p": "git add . && git commit -m 'build' && git push origin v2"
   },
   "dependencies": {
     "@prismicio/react": "^2.5.1",
