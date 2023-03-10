@@ -27,7 +27,7 @@ const VideoPlayer = ({ input }) => {
       },
     },
     vimeo: {
-      title: false,
+      title: "false",
       background: true,
       controls: false,
     },
