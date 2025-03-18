@@ -21,13 +21,51 @@
         color: var(--color-white);
       }
     }
+    nav:not(#nav-primary) {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: var(--space-md);
+      li {
+        margin: 0;
+      }
+      .locale-switcher {
+        display: none;
+      }
+      a.mx-sm {
+        margin-right: 0;
+      }
+    }
   }
   main {
     .w-screen {
       width: 100%;
+      .video-player,
+      .h-full {
+        height: 100%;
+      }
+      video {
+        vertical-align: top;
+      }
     }
+    .slice-news-marquee {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+  footer {
+    display: none;
   }
 }
 
 @media all and (max-width: $sm) {
+  .template-home {
+    header {
+      nav:not(#nav-primary) {
+        padding: var(--space-xs);
+      }
+    }
+  }
 }

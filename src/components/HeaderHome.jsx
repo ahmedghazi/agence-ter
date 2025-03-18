@@ -13,6 +13,8 @@ import { useState } from "react"
 // import ProjectsFilter from "./ProjectsFilters"
 
 const HeaderHome = () => {
+  const _WrapperContext = useContext(WrapperContext)
+  const { settings, template } = _WrapperContext
   // const [visible, setVisible] = useState()
   // // const _WrapperContext = useContext(WrapperContext)
   // // const { settings, template } = _WrapperContext
@@ -56,6 +58,13 @@ const HeaderHome = () => {
           <Menu />
         </div>
       </div>
+      <nav className="flex justify-end items-center font-light">
+        <Social input={settings.data.links} />
+        <Link to="/contacts" className="btn outline mx-sm">
+          Contacts
+        </Link>
+        <LocaleSwitcher />
+      </nav>
     </header>
   )
 }

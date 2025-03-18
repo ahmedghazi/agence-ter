@@ -135,7 +135,7 @@ const Home = ({ data }) => {
   useEffect(() => {
     if (visible) {
       document.querySelector("header").classList.add("is-visible")
-      document.querySelector(".call-to-scroll").classList.add("is-visible")
+      // document.querySelector(".call-to-scroll").classList.add("is-visible")
     }
   }, [visible])
 
@@ -169,7 +169,7 @@ const Home = ({ data }) => {
             poster: image.url,
           }}
         />
-        <CallToScroll />
+        {/*<CallToScroll />*/}
       </div>
       {slices}
     </div>
