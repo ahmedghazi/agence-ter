@@ -53,6 +53,7 @@
       bottom: 0;
       left: 0;
       width: 100%;
+      padding: 12px 0 10px !important;
     }
   }
   footer {
@@ -65,6 +66,11 @@
     header {
       nav:not(#nav-primary) {
         padding: var(--space-xs);
+      }
+    }
+    main {
+      .slice-news-marquee {
+        padding: 8px 0 6px !important;
       }
     }
   }
