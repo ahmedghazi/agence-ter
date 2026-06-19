@@ -27,7 +27,7 @@ const SvgMaskImage = (props) => {
     const headers = {
       // mode: "no-cors",
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        //"Access-Control-Allow-Origin": "*",
       },
       signal: abortController.signal,
     }
